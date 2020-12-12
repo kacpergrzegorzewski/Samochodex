@@ -28,3 +28,6 @@ buildNumber.properties
 
 ### VS Code ###
 .vscode/
+
+### Spring datasource ###
+src/main/resources/application.properties

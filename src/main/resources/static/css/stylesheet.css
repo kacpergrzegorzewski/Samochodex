@@ -1,0 +1,34 @@
+body {
+    /* Background pattern from Subtle Patterns */
+    background-image: url(../img/footer_lodyas.png);
+    font-family: 'Lato', sans-serif;
+    color: azure;
+}
+
+header {
+    text-align: center;
+    font-size: 42px;
+}
+
+#time {
+    text-align: right;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+table#poczty {
+    border: 3px solid azure;
+}
+
+table#poczty th {
+    padding: 10px;
+    border: 1px solid azure;
+}
+
+table#poczty td {
+    padding: 10px;
+    border: 1px solid azure;
+}

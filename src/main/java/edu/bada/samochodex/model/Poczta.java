@@ -1,6 +1,7 @@
 package edu.bada.samochodex.model;
 
 public class Poczta {
+
     private int id_poczty;
     private String kod_pocztowy;
     private String poczta;

@@ -7,8 +7,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
-@Repository
+@Repository("pocztaDao")
 public class PocztaDao implements IDao<Poczta> {
 
     private final JdbcTemplate jdbcTemplate;
@@ -18,9 +19,17 @@ public class PocztaDao implements IDao<Poczta> {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    @Override
+    public Optional<Poczta> getById(int id) {
+        String sqlQuery = String.format("SELECT * FROM POCZTY WHERE ID_POCZTY=%s", id);
+        return jdbcTemplate.query(sqlQuery, BeanPropertyRowMapper.newInstance(Poczta.class))
+                .stream()
+                .findFirst();
+    }
+
     public List<Poczta> getAll() {
-        String sql = "SELECT * FROM POCZTY";
-        return jdbcTemplate.query(sql, BeanPropertyRowMapper.newInstance(Poczta.class));
+        String sqlQuery = "SELECT * FROM POCZTY";
+        return jdbcTemplate.query(sqlQuery, BeanPropertyRowMapper.newInstance(Poczta.class));
     }
 
     // CRUD methods

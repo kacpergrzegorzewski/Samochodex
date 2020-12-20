@@ -10,6 +10,7 @@ Developing by two University of Technology students.
 - Java with Maven
 - Spring Boot
 - Thymeleaf
+- JDBC with Oracle database
 
 ## Features
 
@@ -19,20 +20,22 @@ Developing by two University of Technology students.
 ## To do list
 
 1. Add user registration
-    - credentials stored in DB
-    - DB hosted on VM (cloud server) ???
+   - credentials stored in DB
+   - DB hosted on VM (cloud server) ???
 
 2. Improve web design
-    - css/js (React framework)
-    - Change login site
+   - css/js (React framework)
+   - change login site
+   - add csrf token in authentication form via React
 
-3. Use ORM instead of JDBC
-    - for big databases its better and convenient to use ORM
-    - Hibernate framework
+3. Use ORM
+   - for big databases its better and convenient to use ORM
+   - Hibernate framework
+   - easier, baster, better way of defining database objects
 
 4. Define roles of users and permissions
-    - administrator, moderator (in our case this will be worker), user
-    - set different permissions to each role
+   - administrator, moderator (in our case this will be worker), user
+   - set different permissions to each role
 
 ## How to contribute
 

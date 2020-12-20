@@ -17,4 +17,12 @@ public class Hidden {
     public String getHiddenSentence() {
         return hiddenSentence;
     }
+
+    @Override
+    public String toString() {
+        return "Hidden{" +
+                "hiddenId=" + hiddenId +
+                ", hiddenSentence='" + hiddenSentence + '\'' +
+                '}';
+    }
 }

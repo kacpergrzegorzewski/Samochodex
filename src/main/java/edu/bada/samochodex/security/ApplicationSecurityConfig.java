@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -18,6 +19,7 @@ import static edu.bada.samochodex.security.ApplicationUserRole.*;
 
 @Configuration
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
@@ -72,13 +74,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
-                .antMatchers("/poczty").hasRole(ADMIN.name())
-                .antMatchers(HttpMethod.DELETE, "/hidden").hasAuthority(HIDDEN_WRITE.getPermission())
-                .antMatchers(HttpMethod.POST, "/hidden").hasAuthority(HIDDEN_WRITE.getPermission())
-                .antMatchers(HttpMethod.PUT, "/hidden").hasAuthority(HIDDEN_WRITE.getPermission())
-                .antMatchers(HttpMethod.GET, "/hidden").hasAnyRole(ADMIN.name(), MODERATOR.name())
+                .antMatchers("/poczty/**").hasAnyRole(ADMIN.name(), MODERATOR.name())
                 .anyRequest().authenticated()
                 .and()
-                .httpBasic();
+                .formLogin()
+                .loginPage("/login").permitAll();
     }
 }

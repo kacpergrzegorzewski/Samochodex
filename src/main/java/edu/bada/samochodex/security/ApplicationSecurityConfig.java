@@ -35,28 +35,24 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
         UserDetails mateuszUser = User.builder()
                 .username("mateusz")
                 .password(passwordEncoder.encode("admin"))
-//                .roles(ADMIN.name())
                 .authorities(ADMIN.getGrantedAuthorities())
                 .build();
 
         UserDetails kacperUser = User.builder()
                 .username("kacper")
                 .password(passwordEncoder.encode("admin"))
-//                .roles(ADMIN.name())
                 .authorities(ADMIN.getGrantedAuthorities())
                 .build();
 
         UserDetails zbyszekUser = User.builder()
                 .username("zbyszek")
                 .password(passwordEncoder.encode("123"))
-//                .roles(USER.name())
                 .authorities(USER.getGrantedAuthorities())
                 .build();
 
         UserDetails monikaUser = User.builder()
                 .username("monika")
                 .password(passwordEncoder.encode("12345"))
-//                .roles(MODERATOR.name())
                 .authorities(MODERATOR.getGrantedAuthorities())
                 .build();
 
@@ -71,13 +67,15 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
+                // TODO: Remove line below as soon as csrf token can be passed to server via requests
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
                 .antMatchers("/poczty/**").hasAnyRole(ADMIN.name(), MODERATOR.name())
                 .anyRequest().authenticated()
                 .and()
-                .formLogin()
-                .loginPage("/login").permitAll();
+                .formLogin().permitAll();
+                // TODO: Uncomment this and comment "permitAll()" above to set custom login page
+                //.loginPage("/login").permitAll();
     }
 }

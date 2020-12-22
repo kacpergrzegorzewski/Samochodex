@@ -1,20 +1,17 @@
 package edu.bada.samochodex.security;
 
+import edu.bada.samochodex.security.auth.ApplicationUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
-import static edu.bada.samochodex.security.ApplicationUserPermission.*;
 import static edu.bada.samochodex.security.ApplicationUserRole.*;
 
 @Configuration
@@ -23,45 +20,25 @@ import static edu.bada.samochodex.security.ApplicationUserRole.*;
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
+    private final ApplicationUserService applicationUserService;
 
     @Autowired
-    public ApplicationSecurityConfig(PasswordEncoder passwordEncoder) {
+    public ApplicationSecurityConfig(PasswordEncoder passwordEncoder, ApplicationUserService applicationUserService) {
         this.passwordEncoder = passwordEncoder;
+        this.applicationUserService = applicationUserService;
+    }
+
+    @Bean
+    public DaoAuthenticationProvider daoAuthenticationProvider() {
+        DaoAuthenticationProvider provider = new DaoAuthenticationProvider();
+        provider.setPasswordEncoder(passwordEncoder);
+        provider.setUserDetailsService(applicationUserService);
+        return provider;
     }
 
     @Override
-    @Bean
-    protected UserDetailsService userDetailsService() {
-        UserDetails mateuszUser = User.builder()
-                .username("mateusz")
-                .password(passwordEncoder.encode("admin"))
-                .authorities(ADMIN.getGrantedAuthorities())
-                .build();
-
-        UserDetails kacperUser = User.builder()
-                .username("kacper")
-                .password(passwordEncoder.encode("admin"))
-                .authorities(ADMIN.getGrantedAuthorities())
-                .build();
-
-        UserDetails zbyszekUser = User.builder()
-                .username("zbyszek")
-                .password(passwordEncoder.encode("123"))
-                .authorities(USER.getGrantedAuthorities())
-                .build();
-
-        UserDetails monikaUser = User.builder()
-                .username("monika")
-                .password(passwordEncoder.encode("12345"))
-                .authorities(MODERATOR.getGrantedAuthorities())
-                .build();
-
-        return new InMemoryUserDetailsManager(
-                mateuszUser,
-                kacperUser,
-                zbyszekUser,
-                monikaUser
-        );
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(daoAuthenticationProvider());
     }
 
     @Override

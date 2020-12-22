@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository("pocztaDao")
-public class PocztaDao implements IDao<Poczta> {
+public class PocztaDao implements Dao<Poczta> {
 
     private final JdbcTemplate jdbcTemplate;
 

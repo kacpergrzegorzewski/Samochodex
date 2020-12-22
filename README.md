@@ -1,5 +1,7 @@
 # Samochodex Web Application
 
+![](https://github.com/kacpergrzegorzewski/Samochodex/workflows/Java%20CI%20with%20Maven/badge.svg)
+
 ## About
 
 Samochodex is a web application for Database and Big Data course.

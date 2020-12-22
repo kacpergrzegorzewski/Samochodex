@@ -1,6 +1,6 @@
 package edu.bada.samochodex.service;
 
-import edu.bada.samochodex.dao.IDao;
+import edu.bada.samochodex.dao.Dao;
 import edu.bada.samochodex.model.Poczta;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -12,10 +12,10 @@ import java.util.Optional;
 @Service
 public class PocztaService {
 
-    private final IDao<Poczta> pocztaDao;
+    private final Dao<Poczta> pocztaDao;
 
     @Autowired
-    public PocztaService(@Qualifier("pocztaDao") IDao<Poczta> pocztaDao) {
+    public PocztaService(@Qualifier("pocztaDao") Dao<Poczta> pocztaDao) {
         this.pocztaDao = pocztaDao;
     }
 

@@ -13,12 +13,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import java.util.List;
 
 @Controller
-public class ApplicationController {
+public class PocztyController {
 
     private final PocztaService pocztaService;
 
     @Autowired
-    public ApplicationController(PocztaService pocztaService) {
+    public PocztyController(PocztaService pocztaService) {
         this.pocztaService = pocztaService;
     }
 
@@ -30,6 +30,7 @@ public class ApplicationController {
         return "index";
     }
 
+    // TODO: Not implemented yet
     @RequestMapping("/poczty/{id}")
     public String viewPocztyPage(Model model, @PathVariable("id") int id) {
         Poczta poczta = pocztaService.getById(id)

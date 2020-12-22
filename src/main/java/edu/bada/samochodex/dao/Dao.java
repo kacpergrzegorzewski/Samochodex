@@ -5,7 +5,7 @@ import edu.bada.samochodex.model.Poczta;
 import java.util.List;
 import java.util.Optional;
 
-public interface IDao<T> {
+public interface Dao<T> {
 
     Optional<Poczta> getById(int id);
 

@@ -49,10 +49,14 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
                 .antMatchers("/poczty/**").hasAnyRole(ADMIN.name(), MODERATOR.name())
-                .anyRequest().authenticated()
+                .anyRequest()
+                .authenticated()
                 .and()
-                .formLogin().permitAll();
-                // TODO: Uncomment this and comment "permitAll()" above to set custom login page
-                //.loginPage("/login").permitAll();
-    }
+                .formLogin()
+                .loginPage("/login").permitAll()
+                .defaultSuccessUrl("/poczty", true)
+                .and()
+                .rememberMe()
+
+    ;}
 }

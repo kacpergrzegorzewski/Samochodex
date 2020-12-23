@@ -10,8 +10,8 @@ import static edu.bada.samochodex.security.ApplicationUserPermission.*;
 
 public enum ApplicationUserRole {
     ADMIN(Sets.newHashSet(POCZTY_READ, POCZTY_WRITE, HIDDEN_READ, HIDDEN_WRITE)),
-    MODERATOR(Sets.newHashSet(POCZTY_READ, HIDDEN_READ)),
-    USER(Sets.newHashSet());
+    EMPLOYEE(Sets.newHashSet(POCZTY_READ, HIDDEN_READ)),
+    CLIENT(Sets.newHashSet());
 
     private final Set<ApplicationUserPermission> permissions;
 

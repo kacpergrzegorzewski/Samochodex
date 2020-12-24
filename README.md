@@ -1,6 +1,6 @@
 # Samochodex Web Application
 
-![](https://github.com/kacpergrzegorzewski/Samochodex/workflows/Java%20CI%20with%20Maven/badge.svg)
+![Java CI with Maven badge](https://github.com/kacpergrzegorzewski/Samochodex/workflows/Java%20CI%20with%20Maven/badge.svg)
 
 ## About
 
@@ -36,7 +36,7 @@ Developing by two University of Technology students.
     - for big databases its better and convenient to use ORM
     - Hibernate framework
     - easier, baster, better way of defining database objects
-    
+
 4. Create own server to host the application
     - azure ???
     - if this won't be working we will use hosting server (Heroku)

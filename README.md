@@ -14,21 +14,22 @@ Developing by two University of Technology students.
 - Spring Security
 - Thymeleaf
 - JDBC with Oracle database
+- JPA and Hibernate
 
 ## Features
 
 - retrieving data from a database and displaying them on the website
 - logging to the website excluding home page
+- https connection and self-signed ssl certificate (very trusted)
+- user credentials stored in a database on a very secure server and password stored are encrypted (not MD5)
 
 ## To do list
 
 1. Add user registration
-    - credentials stored in DB
-    - hashed passwords with bcrypt
-    - 3 types of user account (admin, worker, client) - each with different permissions
+    - add registration page to register new users and add their credentials to database
 
 2. Improve web design
-    - css/js (React framework)
+    - html/css/js (React framework)
     - change login site
     - add csrf token in authentication form via React
 
@@ -40,6 +41,7 @@ Developing by two University of Technology students.
 4. Create own server to host the application
     - azure ???
     - if this won't be working we will use hosting server (Heroku)
+    - add trusted ssl certificate to the server... maybe 
 
 ## How to contribute
 

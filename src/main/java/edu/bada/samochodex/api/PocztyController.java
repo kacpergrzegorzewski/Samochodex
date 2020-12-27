@@ -5,10 +5,8 @@ import edu.bada.samochodex.service.PocztaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -27,7 +25,7 @@ public class PocztyController {
         List<Poczta> poczty = pocztaService.getAll();
 
         model.addAttribute("poczty", poczty);
-        return "index";
+        return "poczty";
     }
 
     // TODO: Not implemented yet
@@ -37,13 +35,7 @@ public class PocztyController {
                 .orElse(null);
 
         model.addAttribute("pocztaById", poczta);
-        return "index";
+        return "poczty";
     }
 
-    @GetMapping("/")
-    @ResponseBody
-    public String greetings() {
-        return "<b>*** Witamy na Samochodex ***</b> </br></br>" +
-                "Przejdz do /poczty aby sprawdzić aktualne poczty";
-    }
 }

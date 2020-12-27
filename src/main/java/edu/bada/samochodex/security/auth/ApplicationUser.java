@@ -1,5 +1,6 @@
 package edu.bada.samochodex.security.auth;
 
+import edu.bada.samochodex.security.ApplicationUserRole;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -11,32 +12,13 @@ public class ApplicationUser implements UserDetails {
     private final String username;
     private final String password;
     private final Set<? extends GrantedAuthority> grantedAuthorities;
-    private final boolean isAccountNonExpired;
-    private final boolean isAccountNonLocked;
-    private final boolean isCredentialsNonExpired;
-    private final boolean isEnabled;
+    private final boolean isEnable;
 
-    public ApplicationUser(String username, String password,
-                           Set<? extends GrantedAuthority> grantedAuthorities,
-                           boolean isAccountNonExpired, boolean isAccountNonLocked,
-                           boolean isCredentialsNonExpired, boolean isEnabled) {
-        this.grantedAuthorities = grantedAuthorities;
-        this.username = username;
-        this.password = password;
-        this.isAccountNonExpired = isAccountNonExpired;
-        this.isAccountNonLocked = isAccountNonLocked;
-        this.isCredentialsNonExpired = isCredentialsNonExpired;
-        this.isEnabled = isEnabled;
-    }
-
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return grantedAuthorities;
-    }
-
-    @Override
-    public String getPassword() {
-        return password;
+    public ApplicationUser(User user) {
+        this.username = user.getUsername();
+        this.password = user.getPassword();
+        this.grantedAuthorities = ApplicationUserRole.valueOf(user.getRole()).getGrantedAuthorities();
+        this.isEnable = user.isEnabled();
     }
 
     @Override
@@ -45,22 +27,32 @@ public class ApplicationUser implements UserDetails {
     }
 
     @Override
+    public String getPassword() {
+        return password;
+    }
+
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return grantedAuthorities;
+    }
+
+    @Override
     public boolean isAccountNonExpired() {
-        return isAccountNonExpired;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return isAccountNonLocked;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return isCredentialsNonExpired;
+        return true;
     }
 
     @Override
     public boolean isEnabled() {
-        return isEnabled;
+        return isEnable;
     }
 }

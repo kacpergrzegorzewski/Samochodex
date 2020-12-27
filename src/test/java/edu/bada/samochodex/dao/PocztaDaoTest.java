@@ -8,7 +8,7 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 class PocztaDaoTest {
 
@@ -17,6 +17,7 @@ class PocztaDaoTest {
     @BeforeEach
     void setUp() throws Exception {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        // TODO: Testing database - maybe from another database user ???
         dataSource.setUrl("jdbc:oracle:thin:@ora3.elka.pw.edu.pl:1521:ora3inf");
         dataSource.setUsername("msuchoc1");
         dataSource.setPassword("msuchoc1");

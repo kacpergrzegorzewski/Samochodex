@@ -26,7 +26,7 @@ public class PocztyController {
         List<Poczta> poczty = pocztaService.getAll();
 
         model.addAttribute("poczty", poczty);
-        return "index";
+        return "poczty";
     }
 
     // TODO: Not implemented yet
@@ -36,6 +36,6 @@ public class PocztyController {
                 .orElse(null);
 
         model.addAttribute("pocztaById", poczta);
-        return "index";
+        return "poczty";
     }
 }

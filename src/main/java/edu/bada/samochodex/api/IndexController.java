@@ -1,20 +1,16 @@
 package edu.bada.samochodex.api;
 
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class TemplateController {
+public class IndexController {
 
-    @GetMapping("login")
-    public String getLoginView() {
-        return "login";
-    }
-
-    @GetMapping("salony")
+    @GetMapping("")
     public String getSalony() {
-        return "salony";
+        return "index";
     }
 }

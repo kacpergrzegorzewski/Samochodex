@@ -1,40 +1,19 @@
 <!DOCTYPE html>
-<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Samochodex</title>
-    <link rel="stylesheet" th:href="@{css/stylesheet.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-    <script type="text/javascript" th:src="@{js/app.js}"></script>
 </head>
-<body onload="timer()">
+<body>
 
-<div id="time">
-    <h1 id="currentTime"></h1>
-</div>
+<a href="/salony">Salony</a> <br />
+<a href="/poczty">Poczty</a> <br />
+<a href="/login">Logowannie</a> <br />
+<a href="/register-user">rejestracja</a> <br />
+<a href="/zamowienia">zamówienia</a> <br />
+<a href="/logout">wyloguj</a> <br />
 
-<header>
-    <h1>Poczty</h1>
-</header>
 
-<table id="poczty" class="center">
-    <thead>
-        <tr>
-            <th>ID</th>
-            <th>Kod pocztowy</th>
-            <th>Poczta</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr th:each="poczta : ${poczty}">
-            <td th:text="${poczta.id_poczty}">ID</td>
-            <td th:text="${poczta.kod_pocztowy}">Kod pocztowy</td>
-            <td th:text="${poczta.poczta}">Poczta</td>
-        </tr>
-    </tbody>
-</table>
 
 </body>
 </html>

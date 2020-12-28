@@ -19,7 +19,7 @@ public class TemplateController {
         this.applicationUserService = applicationUserService;
     }
 
-    @GetMapping("/login")
+    @GetMapping("login")
     public String getLoginView() {
         return "login";
     }
@@ -36,5 +36,10 @@ public class TemplateController {
         applicationUserService.registerUser(user);
 
         return "home";
+    }
+  
+    @GetMapping("salony")
+    public String getSalony() {
+        return "salony";
     }
 }

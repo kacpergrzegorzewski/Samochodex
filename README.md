@@ -49,7 +49,7 @@ Developing by two University of Technology students.
 
 6. Proper site
     - first /index, in it:
-        * register
+        * register and successful register site
         * login
         * logout if user is sign-in
         * buttons to other html files (poczty, salony, użytkownicy), secured with role based authorization

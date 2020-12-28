@@ -2,7 +2,6 @@ package edu.bada.samochodex.api;
 
 import edu.bada.samochodex.security.auth.ApplicationUserService;
 import edu.bada.samochodex.security.auth.User;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +33,7 @@ public class TemplateController {
     @PostMapping("/register-user")
     public String registerUser (@ModelAttribute User user, Model model) {
         model.addAttribute("user", user);
-        applicationUserService.signUpUser(user);
+        applicationUserService.registerUser(user);
 
         return "home";
     }

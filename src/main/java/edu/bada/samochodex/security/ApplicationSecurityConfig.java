@@ -52,8 +52,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/poczty/**").hasAnyRole(ADMIN.name(), EMPLOYEE.name())
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().permitAll();
-                // TODO: Uncomment this and comment "permitAll()" above to set custom login page
-                //.loginPage("/login").permitAll();
-    }
+                .formLogin()
+                .loginPage("/logowanie").permitAll()
+                .defaultSuccessUrl("/index", true)
+                .and()
+//                idk why its not working (problem with cookies?)
+//                .rememberMe()
+
+    ;}
 }

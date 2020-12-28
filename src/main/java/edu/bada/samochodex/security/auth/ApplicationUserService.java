@@ -26,7 +26,7 @@ public class ApplicationUserService implements UserDetailsService {
         return new ApplicationUser(user);
     }
 
-    public void signUpUser(User user) {
+    public void registerUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         applicationUserDao.save(user);
     }

@@ -2,6 +2,7 @@ package edu.bada.samochodex.security.auth;
 
 import edu.bada.samochodex.security.ApplicationUserRole;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -16,6 +17,7 @@ import static org.springframework.security.test.web.servlet.setup.SecurityMockMv
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@Disabled("Disabled because of wrong database source")
 class LoginTest {
 
     @Autowired

@@ -1,5 +1,7 @@
 package edu.bada.samochodex.security.auth;
 
+import edu.bada.samochodex.security.ApplicationUserRole;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,27 +10,36 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private int user_id;
-    private String username;
-    private String user_password;
-    private String user_role;
-    private boolean enabled;
+    @Column(name = "user_id", unique = true)
+    private int id;
 
-    public User(String username, String user_password, String user_role, boolean enabled) {
+    @Column(name = "username", nullable = false)
+    private String username;
+
+    @Column(name = "user_password", nullable = false)
+    private String password;
+
+    @Column(name = "user_role")
+    private String role = ApplicationUserRole.CLIENT.name();
+
+    @Column(name = "enabled")
+    private boolean isEnabled = true;
+
+    public User(String username, String password, String role, boolean enabled) {
         this.username = username;
-        this.user_password = user_password;
-        this.user_role = user_role;
-        this.enabled = enabled;
+        this.password = password;
+        this.role = role;
+        this.isEnabled = enabled;
     }
 
     public User() {}
 
-    public long getId() {
-        return user_id;
+    public int getId() {
+        return id;
     }
 
     public void setId(int id) {
-        this.user_id = id;
+        this.id = id;
     }
 
     public String getUsername() {
@@ -40,26 +51,26 @@ public class User {
     }
 
     public String getPassword() {
-        return user_password;
+        return password;
     }
 
     public void setPassword(String password) {
-        this.user_password = password;
+        this.password = password;
     }
 
     public String getRole() {
-        return user_role;
+        return role;
     }
 
     public void setRole(String role) {
-        this.user_role = role;
+        this.role = role;
     }
 
     public boolean isEnabled() {
-        return enabled;
+        return isEnabled;
     }
 
     public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+        isEnabled = enabled;
     }
 }

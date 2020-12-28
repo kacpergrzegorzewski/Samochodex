@@ -27,6 +27,8 @@ Developing by two University of Technology students.
 
 1. Add user registration
     - add registration page to register new users and add their credentials to database
+    - add password check (length)
+    - add verification via email
 
 2. Improve web design
     - html/css/js (React framework)
@@ -41,8 +43,18 @@ Developing by two University of Technology students.
 4. Create own server to host the application
     - azure ???
     - if this won't be working we will use hosting server (Heroku)
-    - add trusted ssl certificate to the server... maybe 
+    - add trusted ssl certificate to the server... maybe
 
+5. Encrypt personal data in application.properties
+
+6. Proper site
+    - first /index, in it:
+        * register and successful register site
+        * login
+        * logout if user is sign-in
+        * buttons to other html files (poczty, salony, użytkownicy), secured with role based authorization
+    - proper URL structure (things forbidden for normal clients, employees in separate URL paths)
+    
 ## How to contribute
 
 If you want to add any feature to the project please create a new branch from the `develop`.

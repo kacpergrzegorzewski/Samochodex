@@ -1,4 +1,4 @@
-<html lang="en"><head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -9,22 +9,18 @@
 </head>
 <body>
 <div class="container">
-    <form class="form-signin" method="post" action="/login">
-        <h2 class="form-signin-heading">Zaloguj się w Samochodex</h2>
+    <form th:action="@{/logowanie}" method="post" style="max-width: 400px; margin: 0 auto;">
+        <h2 class="form-signin-heading">Zaloguj się</h2>
         <p>
             <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Username" required="" autofocus="">
+            <input type="text" id="username" name="username" class="form-control" placeholder="Nazwa użytkownika" required="" autofocus="">
         </p>
         <p>
             <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
+            <input type="password" id="password" name="password" class="form-control" placeholder="Hasło" required="">
         </p>
-        <p>
-            Zapamiętaj mnie
-            <label for="remember-me" class="sr-only">Zapamiętaj mnie</label>
-            <input type="checkbox" id="remember-me" name="remember-me" class="form-control" placeholder="Password">
-        </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Logowanie</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj się</button>
     </form>
 </div>
-</body></html>
+</body>
+</html>

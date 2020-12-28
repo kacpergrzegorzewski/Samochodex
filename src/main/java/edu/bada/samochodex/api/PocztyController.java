@@ -21,7 +21,7 @@ public class PocztyController {
         this.pocztaService = pocztaService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping
     public String viewPocztyPage(Model model) {
         List<Poczta> poczty = pocztaService.getAll();
 

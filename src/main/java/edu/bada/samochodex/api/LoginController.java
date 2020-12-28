@@ -13,8 +13,4 @@ public class LoginController {
         return "login";
     }
 
-    @GetMapping("/salony")
-    public String getSalony() {
-        return "salony";
-    }
 }

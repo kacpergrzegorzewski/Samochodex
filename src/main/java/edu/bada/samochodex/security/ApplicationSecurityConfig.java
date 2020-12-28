@@ -54,7 +54,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/logowanie").permitAll()
-                .failureUrl("/login?error=true")
+                .failureUrl("/logowanie?error=true")
                 .defaultSuccessUrl("/", false)
 //                .and()
 //                idk why its not working (problem with cookies?)

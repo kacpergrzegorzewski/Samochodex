@@ -11,6 +11,8 @@
 <div class="container">
     <form th:action="@{/logowanie}" method="post" style="max-width: 400px; margin: 0 auto;">
         <h2 class="form-signin-heading">Zaloguj się</h2>
+
+
         <p>
             <label for="username" class="sr-only">Username</label>
             <input type="text" id="username" name="username" class="form-control" placeholder="Nazwa użytkownika" required="" autofocus="">
@@ -21,6 +23,12 @@
         </p>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj się</button>
     </form>
+
+    <!--error message-->
+    <div th:if="${param.error}" class="alert alert-error" style="color: red; font-size: 22px; text-align: center">
+        Nieprawidłowe dane logowania!
+    </div>
+
 </div>
 </body>
 </html>

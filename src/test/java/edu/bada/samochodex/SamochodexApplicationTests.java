@@ -8,6 +8,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 @SpringBootTest
 class SamochodexApplicationTests {
+
     @Autowired
     private SamochodexApplication controller;
 

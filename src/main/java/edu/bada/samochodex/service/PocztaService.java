@@ -15,7 +15,7 @@ public class PocztaService {
     private final Dao<Poczta> pocztaDao;
 
     @Autowired
-    public PocztaService(@Qualifier("pocztaDao") Dao<Poczta> pocztaDao) {
+    public PocztaService(@Qualifier("oracle") Dao<Poczta> pocztaDao) {
         this.pocztaDao = pocztaDao;
     }
 

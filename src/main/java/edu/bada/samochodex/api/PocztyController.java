@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.List;
 
 @Controller
+@RequestMapping("/poczty")
 public class PocztyController {
 
     private final PocztaService pocztaService;
@@ -20,7 +21,7 @@ public class PocztyController {
         this.pocztaService = pocztaService;
     }
 
-    @RequestMapping("/poczty")
+    @RequestMapping("/")
     public String viewPocztyPage(Model model) {
         List<Poczta> poczty = pocztaService.getAll();
 
@@ -29,7 +30,7 @@ public class PocztyController {
     }
 
     // TODO: Not implemented yet
-    @RequestMapping("/poczty/{id}")
+    @RequestMapping("/{id}")
     public String viewPocztyPage(Model model, @PathVariable("id") int id) {
         Poczta poczta = pocztaService.getById(id)
                 .orElse(null);
@@ -37,5 +38,4 @@ public class PocztyController {
         model.addAttribute("pocztaById", poczta);
         return "poczty";
     }
-
 }

@@ -10,36 +10,25 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/")
-public class TemplateController {
-
+@RequestMapping("/rejestracja")
+public class RegisterUserController {
     private final ApplicationUserService applicationUserService;
 
-    public TemplateController(ApplicationUserService applicationUserService) {
+    public RegisterUserController(ApplicationUserService applicationUserService) {
         this.applicationUserService = applicationUserService;
     }
 
-    @GetMapping("login")
-    public String getLoginView() {
-        return "login";
-    }
-
-    @GetMapping("/register-user")
+    @GetMapping
     public String getRegistrationView(Model model) {
         model.addAttribute("user", new User());
         return "registration";
     }
 
-    @PostMapping("/register-user")
+    @PostMapping
     public String registerUser (@ModelAttribute User user, Model model) {
         model.addAttribute("user", user);
         applicationUserService.registerUser(user);
 
-        return "home";
-    }
-  
-    @GetMapping("salony")
-    public String getSalony() {
-        return "salony";
+        return "index";
     }
 }

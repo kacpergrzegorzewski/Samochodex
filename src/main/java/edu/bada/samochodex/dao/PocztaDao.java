@@ -33,7 +33,9 @@ public class PocztaDao implements Dao<Poczta> {
     }
 
     // CRUD methods
-    public void save(Poczta poczta) {}
+    public void save(Poczta poczta) {
+        //String sql = String.format("INSERT INTO POCZTY()")
+    }
 
     public Poczta get(int id) {
         return null;

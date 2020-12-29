@@ -27,8 +27,8 @@ class ApplicationUserDaoTest {
 
     @Test
     void findByUsernameTest() {
-        applicationUserDao.save(new User("test", "test", ADMIN.name(), true));
-        User user = applicationUserDao.findByUsername("test").orElseThrow(() -> new UsernameNotFoundException("Username test not found"));
+        applicationUserDao.save(new ApplicationUser("test", "test", ADMIN.name(), true));
+        ApplicationUser user = applicationUserDao.findByUsername("test").orElseThrow(() -> new UsernameNotFoundException("Username test not found"));
 
         assertThat(user).isNotNull();
         assertThat(user.getUsername()).isEqualTo("test");
@@ -40,7 +40,7 @@ class ApplicationUserDaoTest {
     @Test
     void findByUsernameTest_notFoundShouldThrowException() {
         // Given
-        applicationUserDao.save(new User("test1", "test", ADMIN.name(), true));
+        applicationUserDao.save(new ApplicationUser("test1", "test", ADMIN.name(), true));
 
         // When
         Throwable thrown = catchThrowable(() -> {
@@ -55,10 +55,10 @@ class ApplicationUserDaoTest {
 
     @Test
     void createUserAndSaveToDatabaseTest() {
-        User user = new User("test123", "test", ADMIN.name(), true);
-        User savedUser = applicationUserDao.save(user);
+        ApplicationUser user = new ApplicationUser("test123", "test", ADMIN.name(), true);
+        ApplicationUser savedUser = applicationUserDao.save(user);
 
-        User existUser = entityManager.find(User.class, savedUser.getId());
+        ApplicationUser existUser = entityManager.find(ApplicationUser.class, savedUser.getId());
 
         assertThat(existUser).isNotNull();
         assertThat(existUser.getUsername()).isEqualTo(user.getUsername());

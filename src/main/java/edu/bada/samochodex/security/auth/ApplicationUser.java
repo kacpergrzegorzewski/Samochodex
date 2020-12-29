@@ -1,39 +1,43 @@
 package edu.bada.samochodex.security.auth;
 
 import edu.bada.samochodex.security.ApplicationUserRole;
+import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import javax.persistence.*;
 import java.util.Collection;
-import java.util.Set;
 
+@Getter
+@Setter
+@NoArgsConstructor
+@EqualsAndHashCode
+@Entity
+@Table(name = "application_users")
 public class ApplicationUser implements UserDetails {
 
-    private final String username;
-    private final String password;
-    private final Set<? extends GrantedAuthority> grantedAuthorities;
-    private final boolean isEnable;
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "user_id", unique = true)
+    private int id;
 
-    public ApplicationUser(User user) {
-        this.username = user.getUsername();
-        this.password = user.getPassword();
-        this.grantedAuthorities = ApplicationUserRole.valueOf(user.getRole()).getGrantedAuthorities();
-        this.isEnable = user.isEnabled();
-    }
+    @Column(name = "username", nullable = false)
+    private String username;
 
-    @Override
-    public String getUsername() {
-        return username;
-    }
+    @Column(name = "user_password", nullable = false)
+    private String password;
 
-    @Override
-    public String getPassword() {
-        return password;
-    }
+    @Column(name = "user_role")
+    private String role = ApplicationUserRole.CLIENT.name();
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() {
-        return grantedAuthorities;
+    @Column(name = "enabled")
+    private boolean isEnabled = true;
+
+    public ApplicationUser(String username, String password, String role, boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.isEnabled = enabled;
     }
 
     @Override
@@ -52,7 +56,12 @@ public class ApplicationUser implements UserDetails {
     }
 
     @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return ApplicationUserRole.valueOf(role).getGrantedAuthorities();
+    }
+
+    @Override
     public boolean isEnabled() {
-        return isEnable;
+        return isEnabled;
     }
 }

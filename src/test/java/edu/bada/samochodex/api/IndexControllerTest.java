@@ -25,7 +25,6 @@ class IndexControllerTest {
         mockMvc.perform(get("/"))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(content().string(containsString("Witamy na Samochodex")));
+                .andExpect(content().string(containsString("Samochodex")));
     }
-
 }

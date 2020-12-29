@@ -32,7 +32,6 @@ Developing by two University of Technology students.
 
 2. Improve web design
     - html/css/js (React framework)
-    - change login site
     - add csrf token in authentication form via React
 
 3. Use ORM
@@ -51,10 +50,11 @@ Developing by two University of Technology students.
     - first /index, in it:
         * register and successful register site
         * login
+        * show current user logged in
         * logout if user is sign-in
         * buttons to other html files (poczty, salony, użytkownicy), secured with role based authorization
     - proper URL structure (things forbidden for normal clients, employees in separate URL paths)
-    
+
 ## How to contribute
 
 If you want to add any feature to the project please create a new branch from the `develop`.

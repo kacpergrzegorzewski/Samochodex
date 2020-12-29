@@ -1,8 +1,5 @@
 package edu.bada.samochodex.security.auth;
 
-import edu.bada.samochodex.dao.Dao;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -10,16 +7,17 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.annotation.Rollback;
-import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.test.context.TestPropertySource;
 
 import static edu.bada.samochodex.security.ApplicationUserRole.ADMIN;
-import static org.assertj.core.api.AssertionsForClassTypes.*;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.catchThrowable;
 
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@TestPropertySource(locations = "classpath:application-test.properties")
 @Rollback(false)
 class ApplicationUserDaoTest {
-
 
     @Autowired
     private ApplicationUserDao applicationUserDao;

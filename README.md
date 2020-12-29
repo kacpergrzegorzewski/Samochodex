@@ -22,6 +22,7 @@ Developing by two University of Technology students.
 - logging to the website excluding home page
 - https connection and self-signed ssl certificate (very trusted)
 - user credentials stored in a database on a very secure server and password stored are encrypted (not MD5)
+- user registration
 
 ## To do list
 
@@ -54,6 +55,9 @@ Developing by two University of Technology students.
         * logout if user is sign-in
         * buttons to other html files (poczty, salony, użytkownicy), secured with role based authorization
     - proper URL structure (things forbidden for normal clients, employees in separate URL paths)
+
+7. This is how site should look like from client account
+![Strona z konta klienta](https://user-images.githubusercontent.com/52577030/103287091-eb5ad580-49e1-11eb-84cc-c87aefc6074a.png)
 
 ## How to contribute
 

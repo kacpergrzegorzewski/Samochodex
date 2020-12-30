@@ -18,10 +18,10 @@ public class Post {
     @Column(name = "id_poczty", unique = true)
     private Long id;
 
-    @Column(name = "kod_pocztowy", unique = true)
+    @Column(name = "kod_pocztowy", unique = true, nullable = false)
     private String kod;
 
-    @Column(name = "poczta")
+    @Column(name = "poczta", nullable = false)
     private String miejscowosc;
 
     public Post(String kod, String miejscowosc) {

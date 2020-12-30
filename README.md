@@ -7,7 +7,7 @@
 Samochodex is a web application for Database and Big Data course.
 Developing by two University of Technology students.
 
-## Frameworks
+## Used Technologies
 
 - Java with Maven
 - Spring Boot
@@ -19,6 +19,7 @@ Developing by two University of Technology students.
 ## Features
 
 - retrieving data from a database and displaying them on the website
+- modifying data from database in website 
 - logging to the website excluding home page
 - https connection and self-signed ssl certificate (very trusted)
 - user credentials stored in a database on a very secure server and password stored are encrypted (not MD5)
@@ -27,7 +28,6 @@ Developing by two University of Technology students.
 ## To do list
 
 1. Add user registration
-    - add registration page to register new users and add their credentials to database
     - add password check (length)
     - add verification via email
 

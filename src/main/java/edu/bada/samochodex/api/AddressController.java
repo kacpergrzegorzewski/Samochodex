@@ -7,8 +7,7 @@ import edu.bada.samochodex.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -45,5 +44,23 @@ public class AddressController {
         model.addAttribute("posts", posts);
 
         return "addresses/add_address";
+    }
+
+    @PostMapping("/zapisz")
+    public String saveAddress(@ModelAttribute("address") Address address) {
+        addressService.save(address);
+
+        return "redirect:/adresy";
+    }
+
+    @GetMapping("/edytuj/{id}")
+    public String showAddressEditForm(@PathVariable("id") long id, Model model) {
+        Address address = addressService.getById(id);
+        List<Post> posts = postService.getAll();
+
+        model.addAttribute("address", address);
+        model.addAttribute("posts", posts);
+
+        return "addresses/edit_address";
     }
 }

@@ -42,11 +42,11 @@
             <td th:text="${address.nrMieszkania}">Nr mieszkania</td>
             <td th:text="${address.post.kod}">Kod pocztowy</td>
             <td th:text="${address.post.poczta}">Poczta</td>
-<!--            <td>-->
-<!--                <a th:href="@{'/poczty/edytuj/' + ${post.id}}">Edytuj</a>-->
+            <td>
+                <a th:href="@{'/adresy/edytuj/' + ${address.id}}">Edytuj</a>
 
-<!--                <a th:href="@{'/poczty/usuń/' + ${post.id}}">Usuń</a>-->
-<!--            </td>-->
+                <a th:href="@{'/adresy/usuń/' + ${address.id}}">Usuń</a>
+            </td>
         </tr>
     </tbody>
 </table>

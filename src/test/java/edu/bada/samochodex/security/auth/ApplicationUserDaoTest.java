@@ -27,20 +27,20 @@ class ApplicationUserDaoTest {
 
     @Test
     void findByUsernameTest() {
-        applicationUserDao.save(new ApplicationUser("test", "test", ADMIN.name(), true));
+        applicationUserDao.save(new ApplicationUser("test", "test"));
         ApplicationUser user = applicationUserDao.findByUsername("test").orElseThrow(() -> new UsernameNotFoundException("Username test not found"));
 
         assertThat(user).isNotNull();
         assertThat(user.getUsername()).isEqualTo("test");
         assertThat(user.getPassword()).isEqualTo("test");
-        assertThat(user.getRole()).isEqualTo("ADMIN");
+        assertThat(user.getRole()).isEqualTo("CLIENT");
         assertThat(user.isEnabled()).isEqualTo(true);
     }
 
     @Test
     void findByUsernameTest_notFoundShouldThrowException() {
         // Given
-        applicationUserDao.save(new ApplicationUser("test1", "test", ADMIN.name(), true));
+        applicationUserDao.save(new ApplicationUser("test1", "test"));
 
         // When
         Throwable thrown = catchThrowable(() -> {
@@ -55,7 +55,7 @@ class ApplicationUserDaoTest {
 
     @Test
     void createUserAndSaveToDatabaseTest() {
-        ApplicationUser user = new ApplicationUser("test123", "test", ADMIN.name(), true);
+        ApplicationUser user = new ApplicationUser("test123", "test");
         ApplicationUser savedUser = applicationUserDao.save(user);
 
         ApplicationUser existUser = entityManager.find(ApplicationUser.class, savedUser.getId());

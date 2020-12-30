@@ -31,6 +31,13 @@ public class Address {
     private String nrMieszkania;
 
     @ManyToOne()
-    @JoinColumn(name = "id_poczty", referencedColumnName = "id_poczty", nullable = false)
+    @JoinColumn(name = "id_poczty", foreignKey = @ForeignKey(name = "ma_poczte"), nullable = false)
     private Post post;
+
+    public Address(String miejscowosc, String ulica, String nrBudynku, Post post) {
+        this.miejscowosc = miejscowosc;
+        this.ulica = ulica;
+        this.nrBudynku = nrBudynku;
+        this.post = post;
+    }
 }

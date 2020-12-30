@@ -1,7 +1,7 @@
 package edu.bada.samochodex.api;
 
-import edu.bada.samochodex.security.auth.ApplicationUserService;
 import edu.bada.samochodex.security.auth.ApplicationUser;
+import edu.bada.samochodex.security.auth.ApplicationUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

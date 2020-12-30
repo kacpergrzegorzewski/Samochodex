@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edytuj pocztę</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+<div align="center">
+    <h1>Edytuj pocztę</h1> <br/>
+
+    <form action="#" th:action="@{/poczty/zapisz}" th:method="post" th:object="${editPost}">
+        <table>
+            <tr>
+                <td>Id poczty:</td>
+                <td><input type="text" th:field="*{id}" readonly="readonly"></td>
+            </tr>
+            <tr>
+                <td>Kod pocztowy:</td>
+                <td><input type="text" th:field="*{kod}"></td>
+            </tr>
+            <tr>
+                <td>Miejscowość:</td>
+                <td><input type="text" th:field="*{miejscowosc}"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Zapisz</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

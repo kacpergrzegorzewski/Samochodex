@@ -12,14 +12,15 @@ import java.util.Collection;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode
+@ToString
 @Entity
 @Table(name = "application_users")
 public class ApplicationUser implements UserDetails {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id", unique = true)
-    private int id;
+    private Long id;
 
     @Column(name = "username", nullable = false)
     private String username;

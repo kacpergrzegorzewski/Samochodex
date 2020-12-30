@@ -63,4 +63,11 @@ public class AddressController {
 
         return "addresses/edit_address";
     }
+
+    @GetMapping("/usuń/{id}")
+    public String deleteAddress(@PathVariable("id") long id) {
+        addressService.deleteById(id);
+
+        return "redirect:/adresy";
+    }
 }

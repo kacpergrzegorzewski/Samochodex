@@ -5,13 +5,22 @@
     <title>menu</title>
 </head>
 <body>
-    <div th:fragment="menu">
+    <div th:fragment="menu" style="width: 100%">
         <div id="menu_container">
-            <a href="/poczty">Poczty</a>
-            <a href="/zamowienia">zamówienia</a>
-            <a href="/logowanie">Logowannie</a>
-            <a href="/logout">wyloguj</a>
-            <a href="/rejestracja">rejestracja</a>
+            <div class="left">
+                <div id="menu_logo"><img th:src="@{/img/logo.png}" /></div>
+                <div class="menu_object"> <a href="/poczty">Poczty</a> </div>
+                <div class="menu_object"> <a href="/zamowienia">zamówienia</a> </div>
+                <div class="menu_object"> <a href="/salony">salony</a> </div>
+                <div class="menu_object"> <a href="/samochody">samochody</a> </div>
+
+            </div>
+            <div class="right">
+                <a href="/logowanie">Logowannie</a>
+                <a href="/logout">wyloguj</a>
+                <a href="/rejestracja">rejestracja</a>
+            </div>
+
         </div>
     </div>
 </body>

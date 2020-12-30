@@ -60,10 +60,7 @@ a {
 
 #menu_logo {
     height: 40px;
-    margin-top: auto;
-    margin-bottom: auto;
-    margin-right: 5px;
-    margin-left: 5px;
+    margin: auto 5px;
 }
 
 .menu_object {
@@ -72,7 +69,7 @@ a {
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: 500ms;
+    transition: 300ms;
 
 }
 

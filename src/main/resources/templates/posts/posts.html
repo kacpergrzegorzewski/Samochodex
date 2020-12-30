@@ -34,7 +34,7 @@
         <tr th:each="post : ${posts}">
             <td th:text="${post.id}">ID</td>
             <td th:text="${post.kod}">Kod pocztowy</td>
-            <td th:text="${post.miejscowosc}">Miejscowość</td>
+            <td th:text="${post.poczta}">Miejscowość</td>
             <td>
                 <a th:href="@{'/poczty/edytuj/' + ${post.id}}">Edytuj</a>
 

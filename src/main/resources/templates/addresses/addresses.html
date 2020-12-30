@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Samochodex</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
+    <script type="text/javascript" th:src="@{js/app.js}"></script>
+</head>
+<body onload="timer()">
+
+<div id="time">
+    <h1 id="currentTime"></h1>
+</div>
+
+<header>
+    <h1>Poczty</h1>
+</header>
+<div id="new_post">
+    <a href="/adresy/dodaj">Dodaj nowy adres</a>
+</div>
+<table id="poczty" class="center">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Miejscowość</th>
+            <th>Ulica</th>
+            <th>Nr budynku</th>
+            <th>Nr mieszkania</th>
+            <th>Kod pocztowy</th>
+            <th>Poczta</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="address : ${addresses}">
+            <td th:text="${address.id}">ID</td>
+            <td th:text="${address.miejscowosc}">Miejscowość</td>
+            <td th:text="${address.ulica}">Ulica</td>
+            <td th:text="${address.nrBudynku}">Nr budynku</td>
+            <td th:text="${address.nrMieszkania}">Nr mieszkania</td>
+            <td th:text="${address.post.kod}">Kod pocztowy</td>
+            <td th:text="${address.post.poczta}">Poczta</td>
+<!--            <td>-->
+<!--                <a th:href="@{'/poczty/edytuj/' + ${post.id}}">Edytuj</a>-->
+
+<!--                <a th:href="@{'/poczty/usuń/' + ${post.id}}">Usuń</a>-->
+<!--            </td>-->
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

@@ -22,10 +22,10 @@ public class Post {
     private String kod;
 
     @Column(name = "poczta", nullable = false)
-    private String miejscowosc;
+    private String poczta;
 
-    public Post(String kod, String miejscowosc) {
+    public Post(String kod, String poczta) {
         this.kod = kod;
-        this.miejscowosc = miejscowosc;
+        this.poczta = poczta;
     }
 }

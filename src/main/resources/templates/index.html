@@ -7,15 +7,24 @@
     <link rel="stylesheet" th:href="@{css/stylesheet.css}"/>
 </head>
 <body>
+<!--menu-->
 <div th:replace="menu :: menu"></div>
-<h1> Witamy na Samochodex </h1>
 
-<a href="/poczty">Poczty</a> <br />
-<a href="/logowanie">Logowannie</a> <br />
-<a href="/rejestracja">rejestracja</a> <br />
-<a href="/zamowienia">zamówienia</a> <br />
-<a href="/logout">wyloguj</a> <br />
+<!--welcome image-->
+<div id="welcome">
+    <div id="welcome_image_inside">
+        <div id="welcome_image_text">
+            Witaj w świecie <br /> Samochodex
+        </div>
+<!--        <div id="welcome_image_inside_button">-->
+            <a href="/cars" id="welcome_image_button">Poznaj nasze modele</a>
+<!--        </div>-->
+    </div>
 
+    <div id="welcome_image">
+        <img th:src="@{/img/Mercedes-SLS-car-and-girl_1920x1080.jpg}" class="fit_to_div"/>
+    </div>
+</div>
 
 
 </body>

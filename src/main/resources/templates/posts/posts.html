@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Samochodex</title>
-    <link rel="stylesheet" th:href="@{css/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 
     <script type="text/javascript" th:src="@{js/app.js}"></script>
@@ -18,20 +18,28 @@
 <header>
     <h1>Poczty</h1>
 </header>
-
+<div id="new_post">
+    <a href="/poczty/dodaj">Dodaj nową pocztę</a>
+</div>
 <table id="poczty" class="center">
     <thead>
         <tr>
             <th>ID</th>
             <th>Kod pocztowy</th>
             <th>Poczta</th>
+            <th>Opcje</th>
         </tr>
     </thead>
     <tbody>
-        <tr th:each="poczta : ${poczty}">
-            <td th:text="${poczta.id_poczty}">ID</td>
-            <td th:text="${poczta.kod_pocztowy}">Kod pocztowy</td>
-            <td th:text="${poczta.poczta}">Poczta</td>
+        <tr th:each="post : ${posts}">
+            <td th:text="${post.id}">ID</td>
+            <td th:text="${post.kod}">Kod pocztowy</td>
+            <td th:text="${post.miejscowosc}">Miejscowość</td>
+            <td>
+                <a th:href="@{'/poczty/edytuj/' + ${post.id}}">Edytuj</a>
+
+                <a th:href="@{'/poczty/usuń/' + ${post.id}}">Usuń</a>
+            </td>
         </tr>
     </tbody>
 </table>

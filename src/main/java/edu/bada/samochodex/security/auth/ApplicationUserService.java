@@ -21,12 +21,12 @@ public class ApplicationUserService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = applicationUserDao.findByUsername(username)
+        ApplicationUser user = applicationUserDao.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException(String.format("Username %s not found", username)));
-        return new ApplicationUser(user);
+        return user;
     }
 
-    public void registerUser(User user) {
+    public void registerUser(ApplicationUser user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         applicationUserDao.save(user);
     }

@@ -4,7 +4,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;
 
-public interface ApplicationUserDao extends CrudRepository<User, Integer> {
+public interface ApplicationUserDao extends CrudRepository<ApplicationUser, Long> {
 
-    Optional<User> findByUsername(String username);
+    Optional<ApplicationUser> findByUsername(String username);
 }

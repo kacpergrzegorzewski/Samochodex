@@ -1,9 +1,7 @@
 package edu.bada.samochodex.api;
 
+import edu.bada.samochodex.security.auth.ApplicationUser;
 import edu.bada.samochodex.security.auth.ApplicationUserService;
-import edu.bada.samochodex.security.auth.User;
-import org.springframework.security.access.prepost.PostAuthorize;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,12 +21,12 @@ public class RegisterUserController {
 
     @GetMapping
     public String getRegistrationView(Model model) {
-        model.addAttribute("user", new User());
+        model.addAttribute("user", new ApplicationUser());
         return "registration";
     }
 
     @PostMapping
-    public String registerUser (@ModelAttribute User user, Model model) {
+    public String registerUser (@ModelAttribute ApplicationUser user, Model model) {
         model.addAttribute("user", user);
         applicationUserService.registerUser(user);
 

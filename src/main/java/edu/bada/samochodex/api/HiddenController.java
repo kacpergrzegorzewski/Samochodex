@@ -1,7 +1,6 @@
 package edu.bada.samochodex.api;
 
 import edu.bada.samochodex.model.Hidden;
-
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 

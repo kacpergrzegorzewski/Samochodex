@@ -1,8 +1,9 @@
+
+/*global config*/
 body {
-    /* Background pattern from Subtle Patterns */
-    background-image: url(../img/footer_lodyas.png);
-    font-family: 'Lato', sans-serif;
-    color: azure;
+    font-family: 'Roboto', serif;
+    color: Black;
+    margin: 0;
 }
 
 header {
@@ -10,6 +11,183 @@ header {
     font-size: 42px;
 }
 
+/*images*/
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.fit_to_div {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+/*links*/
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*basic classes*/
+.left {
+    float: left;
+    margin-right: auto;
+    display: inherit;
+    flex-direction: inherit;
+}
+
+.right {
+    float: right;
+    margin-left: auto;
+    display: inherit;
+    flex-direction: inherit;
+}
+
+
+/*menu*/
+#menu_container {
+    width: 100%;
+    height: 50px;
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+    border-bottom-width: 1px;
+    border-bottom-color: grey;
+    border-bottom-style: solid;
+    box-shadow: 0 2px 5px grey;
+    display: flex;
+    flex-direction: row;
+}
+
+#menu_container:visited {
+    color: black;
+}
+
+#menu_logo {
+    height: 40px;
+    margin: auto 5px;
+}
+
+.menu_object {
+    width: auto;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms;
+
+}
+
+
+.menu_object:hover {
+    background-color: darkslategrey;
+    color: white;
+}
+
+/*index*/
+
+/*welcome section*/
+#welcome {
+    position: relative;
+    height: 600px;
+    background-color: black;
+    overflow: hidden;
+}
+
+#welcome_image_inside {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#welcome_image_text {
+    display: flex;
+    align-self: center;
+    font-size: 48pt;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10%;
+    /*text border 1px to all sites*/
+    /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+}
+
+#welcome_image_button {
+    display: flex;
+    align-self: center;
+    text-align: center;
+    padding: 30px 60px;
+    /*background-color: darkslategrey;*/
+    color: white;
+    font-size: 14pt;
+    border: solid white 3px;
+}
+
+#welcome_image_button:hover {
+    background-color: rgba(255,255,255, 0.1);
+}
+
+#welcome_image {
+    height: 100%;
+    width: 100%;
+    transition: 300ms;
+    z-index: 10;
+}
+
+#welcome:hover #welcome_image {
+    opacity: 60%;
+    transform: scale(1.1);
+}
+
+/*About section*/
+#samochodex_description_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#samochodex_description_title {
+    display: flex;
+    width: 40%;
+    font-size: 30pt;
+    margin: 15px;
+}
+
+#samochodex_description {
+    display: flex;
+    width: 40%;
+    text-align: justify;
+    text-justify: inter-word;
+    flex-direction: column;
+    font-size: 14pt;
+
+}
+
+
+
+/*Animations*/
+
+@keyframes background_white_to_grey {
+    from {
+        background-color: white;
+    }
+    to {
+        background-color: dimgrey;
+        color: white;
+
+    }
+}
+
+/*Suchodolski's styles*/
 #time {
     text-align: right;
 }

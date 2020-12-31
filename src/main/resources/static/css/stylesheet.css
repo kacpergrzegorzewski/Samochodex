@@ -89,6 +89,8 @@ a {
 }
 
 /*index*/
+
+/*welcome section*/
 #welcome {
     position: relative;
     height: 600px;
@@ -118,7 +120,6 @@ a {
     /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
 }
 
-
 #welcome_image_button {
     display: flex;
     align-self: center;
@@ -130,11 +131,15 @@ a {
     border: solid white 3px;
 }
 
+#welcome_image_button:hover {
+    background-color: rgba(255,255,255, 0.1);
+}
+
 #welcome_image {
     height: 100%;
     width: 100%;
     transition: 300ms;
-    z-index: 5;
+    z-index: 10;
 }
 
 #welcome:hover #welcome_image {
@@ -142,9 +147,30 @@ a {
     transform: scale(1.1);
 }
 
+/*About section*/
+#samochodex_description_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
 
+#samochodex_description_title {
+    display: flex;
+    width: 40%;
+    font-size: 30pt;
+    margin: 15px;
+}
 
+#samochodex_description {
+    display: flex;
+    width: 40%;
+    text-align: justify;
+    text-justify: inter-word;
+    flex-direction: column;
+    font-size: 14pt;
 
+}
 
 
 

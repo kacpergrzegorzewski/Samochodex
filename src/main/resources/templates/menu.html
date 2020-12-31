@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>menu</title>
@@ -16,9 +16,12 @@
                 <div class="menu_object"> <a href="/kontakt">kontakt</a> </div>
             </div>
             <div class="right">
-                <a href="/logowanie">Logowannie</a>
-                <a href="/logout">wyloguj</a>
-                <a href="/rejestracja">rejestracja</a>
+                <div sec:authorize="isAuthenticated()">
+                    <a th:href="@{/logout}">Log out</a>
+                </div>
+                <div sec:authorize="isAnonymous()">
+                    <a th:href="@{/login}">Log in</a>
+                </div>
             </div>
 
         </div>

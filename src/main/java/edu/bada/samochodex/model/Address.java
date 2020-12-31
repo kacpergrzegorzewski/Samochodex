@@ -30,7 +30,7 @@ public class Address {
     @Column(name = "nr_mieszkania")
     private String nrMieszkania;
 
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "id_poczty", foreignKey = @ForeignKey(name = "ma_poczte"), nullable = false)
     private Post post;
 

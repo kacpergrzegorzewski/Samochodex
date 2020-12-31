@@ -17,7 +17,7 @@ public class AddressService {
         this.addressDao = addressDao;
     }
 
-    public Address getById(long id) {
+    public Address getById(Long id) {
         return addressDao.findById(id).orElse(null);
     }
 
@@ -31,7 +31,7 @@ public class AddressService {
 
     public void update(Address address) {}
 
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         addressDao.deleteById(id);
     }
 }

@@ -47,8 +47,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 // TODO: Remove line below as soon as csrf token can be passed to server via requests
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/js/*").permitAll()
-                .antMatchers("/rejestracja").permitAll()
+                .antMatchers("/", "index", "/css/*", "/img/*", "/js/*").permitAll()
+                .antMatchers("/rejestracja", "/samochody").permitAll()
                 .antMatchers("/poczty/**").hasAnyRole(ADMIN.name(), EMPLOYEE.name())
                 .anyRequest().authenticated()
                 .and()

@@ -17,7 +17,7 @@ public class PostService {
         this.postDao = postDao;
     }
 
-    public Post getById(long id) {
+    public Post getById(Long id) {
         return postDao.findById(id).orElse(null);
     }
 
@@ -31,7 +31,7 @@ public class PostService {
 
     public void update(Post post) {}
 
-    public void deleteById(long id) {
+    public void deleteById(Long id) {
         postDao.deleteById(id);
     }
 }

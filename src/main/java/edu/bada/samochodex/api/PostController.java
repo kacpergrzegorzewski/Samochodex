@@ -45,13 +45,11 @@ public class PostController {
     }
 
     @GetMapping("/edytuj/{id}")
-    public ModelAndView showPostEditForm(@PathVariable("id") long id) {
-        ModelAndView mav = new ModelAndView("posts/edit_post");
-
+    public String showPostEditForm(@PathVariable("id") long id, Model model) {
         Post post = postService.getById(id);
-        mav.addObject("editPost", post);
+        model.addAttribute("editPost", post);
 
-        return mav;
+        return "posts/edit_post";
     }
 
     @GetMapping("/usuń/{id}")

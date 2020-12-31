@@ -19,26 +19,34 @@
     <h1>Poczty</h1>
 </header>
 <div id="new_post">
-    <a href="/poczty/dodaj">Dodaj nową pocztę</a>
+    <a href="/adresy/dodaj">Dodaj nowy adres</a>
 </div>
 <table id="poczty" class="center">
     <thead>
         <tr>
             <th>ID</th>
+            <th>Miejscowość</th>
+            <th>Ulica</th>
+            <th>Nr budynku</th>
+            <th>Nr mieszkania</th>
             <th>Kod pocztowy</th>
             <th>Poczta</th>
             <th>Opcje</th>
         </tr>
     </thead>
     <tbody>
-        <tr th:each="post : ${posts}">
-            <td th:text="${post.id}">ID</td>
-            <td th:text="${post.kod}">Kod pocztowy</td>
-            <td th:text="${post.poczta}">Miejscowość</td>
+        <tr th:each="address : ${addresses}">
+            <td th:text="${address.id}">ID</td>
+            <td th:text="${address.miejscowosc}">Miejscowość</td>
+            <td th:text="${address.ulica}">Ulica</td>
+            <td th:text="${address.nrBudynku}">Nr budynku</td>
+            <td th:text="${address.nrMieszkania}">Nr mieszkania</td>
+            <td th:text="${address.post.kod}">Kod pocztowy</td>
+            <td th:text="${address.post.poczta}">Poczta</td>
             <td>
-                <a th:href="@{'/poczty/edytuj/' + ${post.id}}">Edytuj</a>
+                <a th:href="@{'/adresy/edytuj/' + ${address.id}}">Edytuj</a>
 
-                <a th:href="@{'/poczty/usuń/' + ${post.id}}">Usuń</a>
+                <a th:href="@{'/adresy/usuń/' + ${address.id}}">Usuń</a>
             </td>
         </tr>
     </tbody>

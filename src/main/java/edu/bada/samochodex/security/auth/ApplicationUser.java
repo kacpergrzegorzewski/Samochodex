@@ -22,7 +22,7 @@ public class ApplicationUser implements UserDetails {
     @Column(name = "user_id", unique = true)
     private Long id;
 
-    @Column(name = "username", nullable = false)
+    @Column(name = "username", nullable = false, unique = true)
     private String username;
 
     @Column(name = "user_password", nullable = false)
@@ -34,11 +34,9 @@ public class ApplicationUser implements UserDetails {
     @Column(name = "enabled")
     private boolean isEnabled = true;
 
-    public ApplicationUser(String username, String password, String role, boolean enabled) {
+    public ApplicationUser(String username, String password) {
         this.username = username;
         this.password = password;
-        this.role = role;
-        this.isEnabled = enabled;
     }
 
     @Override

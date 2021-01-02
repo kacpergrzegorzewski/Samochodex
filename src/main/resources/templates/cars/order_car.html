@@ -11,64 +11,58 @@
 <div align="center">
     <h1>Złóż zamówienie</h1> <br/>
 
-    <!-- TODO: Usunac niepotrzebne pola do wyswietlania, ale zapis potrzebuje aby obowiazkowe pola samochodu byly zapsane -->
     <form action="#" th:action="@{/samochody/zapisz}" th:method="post" th:object="${car}">
         <table>
             <tr>
-                <td>Id samochodu:</td>
-                <td><input type="text" th:field="*{id}" readonly="readonly"></td>
+                <td><input type="hidden" th:field="*{id}" readonly="readonly"></td>
             </tr>
             <tr>
                 <td>Marka:</td>
-                <td><input type="text" th:field="*{carModel.carBrand.nazwa}" readonly="readonly"></td>
+                <td th:text="${car.carModel.carBrand.nazwa}"></td>
             </tr>
             <tr>
                 <td>Model:</td>
-                <td><input type="text" th:field="*{carModel.nazwa}" readonly="readonly"></td>
+                <td th:text="${car.carModel.nazwa}"></td>
             </tr>
             <tr>
                 <td>Rocznik:</td>
-                <td><input type="text" th:field="*{rokProdukcji}" readonly="readonly"></td>
+                <td th:text="${car.rokProdukcji}"></td>
             </tr>
             <tr>
                 <td>Kraj produkcji:</td>
-                <td><input type="text" th:field="*{krajProdukcji}" readonly="readonly"></td>
+                <td th:text="${car.krajProdukcji}"></td>
             </tr>
             <tr>
                 <td>Rodzaj napędu:</td>
-                <td><input type="text" th:field="*{naped}" readonly="readonly"></td>
+                <td th:text="${car.naped}"></td>
             </tr>
             <tr>
                 <td>Ilość miejsc:</td>
-                <td><input type="text" th:field="*{iloscMiejsc}" readonly="readonly"></td>
+                <td th:text="${car.iloscMiejsc}"></td>
             </tr>
             <tr>
                 <td>Ilość drzwi:</td>
-                <td><input type="text" th:field="*{iloscDrzwi}" readonly="readonly"></td>
+                <td th:text="${car.iloscDrzwi}"></td>
             </tr>
             <tr>
                 <td>Opony:</td>
-                <td><input type="text" th:field="*{opony}" readonly="readonly"></td>
+                <td th:text="${car.opony}"></td>
             </tr>
             <tr>
                 <td>Rodzaj nadwozia:</td>
-                <td><input type="text" th:field="*{nadwozie}" readonly="readonly"></td>
+                <td th:text="${car.nadwozie}"></td>
             </tr>
             <tr>
                 <td>Kolor nadwozia:</td>
-                <td><input type="text" th:field="*{kolorNadwozia}" readonly="readonly"></td>
+                <td th:text="${car.kolorNadwozia}"></td>
             </tr>
             <tr>
                 <td>Kolor tapicerki:</td>
-                <td><input type="text" th:field="*{kolorTapicerki}" readonly="readonly"></td>
+                <td th:text="${car.kolorTapicerki}"></td>
             </tr>
             <tr>
                 <td>Numer VIN:</td>
-                <td><input type="text" th:field="*{VIN}" readonly="readonly"></td>
-            </tr>
-            <tr>
-                <td>Na sprzedaż?:</td>
-                <td><input type="checkbox" th:field="*{naSprzedaz}" readonly="readonly"/></td>
+                <td th:text="${car.VIN}"></td>
             </tr>
             <tr>
                 <td>Salon:</td>
@@ -103,7 +97,7 @@
             </tr>
             <tr>
                 <td>Cena</td>
-                <td><input type="text" th:field="*{cena}" readonly="readonly">zł</td>
+                <td th:text="${car.cena} + ' zł'"></td>
             </tr>
             <tr>
                 <td colspan="2"><button type="submit">Zamów</button></td>

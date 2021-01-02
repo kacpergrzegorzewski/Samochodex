@@ -48,7 +48,11 @@ public class CarController {
     @PostMapping("/zapisz")
     public String savePost(@ModelAttribute("car") Car orderedCar) {
         Order order = new Order();
+
+        // TODO: Randomly chosen employee
         Employee employee = employeeService.getById(2L);
+
+        // TODO: Client who is currently logged-in
         Client client = clientService.getById(1L);
 
         order.setData(new Date(System.currentTimeMillis()));

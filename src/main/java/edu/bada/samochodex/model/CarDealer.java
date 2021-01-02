@@ -25,7 +25,7 @@ public class CarDealer {
     @Column(name = "data_zalozenia", nullable = false)
     private Date dataZalozenia;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_adresu", foreignKey = @ForeignKey(name = "salon_ma_adres"), nullable = false)
     private Address address;
 

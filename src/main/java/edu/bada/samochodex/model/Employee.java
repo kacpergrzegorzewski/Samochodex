@@ -50,7 +50,7 @@ public class Employee {
     @JoinColumn(name = "id_salonu", foreignKey = @ForeignKey(name = "pracuja_w_salonie"), nullable = false)
     private CarDealer carDealer;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_adresu", foreignKey = @ForeignKey(name = "pracownik_ma_adres"), nullable = false)
     private Address address;
 

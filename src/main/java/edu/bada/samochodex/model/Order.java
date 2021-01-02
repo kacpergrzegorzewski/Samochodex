@@ -37,4 +37,12 @@ public class Order {
     @ManyToOne
     @JoinColumn(name = "id_salonu", foreignKey = @ForeignKey(name = "obsluguje_zamowienie"), nullable = false)
     private CarDealer carDealer;
+
+    public Order(Date data, Employee employee, Car car, Client client, CarDealer carDealer) {
+        this.data = data;
+        this.employee = employee;
+        this.car = car;
+        this.client = client;
+        this.carDealer = carDealer;
+    }
 }

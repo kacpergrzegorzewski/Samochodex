@@ -5,9 +5,9 @@ import edu.bada.samochodex.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.sql.Date;
 import java.util.List;
 
 @Controller
@@ -16,38 +16,64 @@ public class CarController {
 
     private final CarService carService;
     private final CarDealerService carDealerService;
-    private final CarModelService carModelService;
-    private final CarBrandService carBrandService;
+
     private final EngineService engineService;
     private final EquipmentVersionService equipmentVersionService;
+    private final OrderService orderService;
+    private final EmployeeService employeeService;
+    private final ClientService clientService;
 
     @Autowired
-    public CarController(CarService carService, CarDealerService carDealerService, CarModelService carModelService,
-                         CarBrandService carBrandService, EngineService engineService, EquipmentVersionService equipmentVersionService) {
+    public CarController(CarService carService, CarDealerService carDealerService, EngineService engineService,
+                         EquipmentVersionService equipmentVersionService, OrderService orderService,
+                         EmployeeService employeeService, ClientService clientService) {
         this.carService = carService;
         this.carDealerService = carDealerService;
-        this.carModelService = carModelService;
-        this.carBrandService = carBrandService;
         this.engineService = engineService;
         this.equipmentVersionService = equipmentVersionService;
+        this.orderService = orderService;
+        this.employeeService = employeeService;
+        this.clientService = clientService;
     }
 
     @GetMapping
     public String showCarPage(Model model) {
         List<Car> cars = carService.getAll();
-        List<CarDealer> carDealers = carDealerService.getAll();
-        List<CarModel> carModels = carModelService.getAll();
-        List<CarBrand> carBrands = carBrandService.getAll();
-        List<Engine> engines = engineService.getAll();
-        List<EquipmentVersion> equipmentVersions = equipmentVersionService.getAll();
 
         model.addAttribute("cars", cars);
-        model.addAttribute("carDealers", carDealers);
-        model.addAttribute("carModels", carModels);
-        model.addAttribute("carBrands", carBrands);
-        model.addAttribute("engines", engines);
-        model.addAttribute("equipmentVersions", equipmentVersions);
 
         return "cars/cars";
+    }
+
+    @PostMapping("/zapisz")
+    public String savePost(@ModelAttribute("car") Car orderedCar) {
+        Order order = new Order();
+        Employee employee = employeeService.getById(2L);
+        Client client = clientService.getById(1L);
+
+        order.setData(new Date(System.currentTimeMillis()));
+        order.setCar(orderedCar);
+        order.setCarDealer(orderedCar.getCarDealer());
+        order.setEmployee(employee);
+        order.setClient(client);
+
+        orderService.save(order);
+
+        return "redirect:/samochody";
+    }
+
+    @GetMapping("/zamów/{id}")
+    public String showCarOrderForm(@PathVariable("id") long id, Model model) {
+        Car car = carService.getById(id);
+        List<Engine> engines = engineService.getAll();
+        List<EquipmentVersion> equipmentVersions = equipmentVersionService.getAll();
+        List<CarDealer> carDealers = carDealerService.getAll();
+
+        model.addAttribute("car", car);
+        model.addAttribute("engines", engines);
+        model.addAttribute("equipmentVersions", equipmentVersions);
+        model.addAttribute("carDealers", carDealers);
+
+        return "cars/order_car";
     }
 }

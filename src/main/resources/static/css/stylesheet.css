@@ -55,8 +55,8 @@ a {
     text-decoration: none;
     font-size: 22px;
     color: black;
-    border-bottom-width: 1px;
-    border-bottom-color: grey;
+    border-bottom-width: 2px;
+    border-bottom-color: darkslategrey;
     border-bottom-style: solid;
     box-shadow: 0 2px 5px grey;
     display: flex;

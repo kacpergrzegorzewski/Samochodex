@@ -2,17 +2,34 @@
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Samochodex User Registration</title>
+    <title>Samochodex</title>
 </head>
 <body>
-<form role="form" th:action="@{/rejestracja}" th:method="post" th:object="${user}">
-    <lable>Username</lable>
-    <input type="text" id="username" name="username" th:field="*{username}">
+    <form role="form" th:action="@{/rejestracja}" th:method="post">
+        <label>Username</label>
+        <input type="text" id="username" name="username" th:value="${user.username}">
 
-    <lable>Hasło</lable>
-    <input type="password" id="password" name="password" th:field="*{password}">
+        <label>Hasło</label>
+        <input type="password" id="password" name="password" th:field="*{user.password}">
 
-    <input type="submit">
-</form>
+        <label>Imię</label>
+        <input type="text" id="imie" name="imie" th:value="${client.imie}">
+
+        <label>Nazwisko</label>
+        <input type="text" id="nazwisko" name="nazwisko" th:value="${client.nazwisko}">
+
+        <label>Email</label>
+        <input type="text" id="email" name="email" th:value="${client.email}">
+
+        <!-- TODO: Dodać możliwość dodawania adresów do bazy danych z widoku tworzenia clienta -->
+        <label>Adres</label>
+        <select th:value="*{client.address}" name="address" required>
+            <th:block th:each="address : ${addresses}">
+                <option th:text="${address.miejscowosc}" th:value="${address.id}"></option>
+            </th:block>
+        </select>
+
+        <input type="submit">
+    </form>
 </body>
 </html>

@@ -34,7 +34,7 @@
                     <td>
                         <select th:field="*{post}" required>
                             <th:block th:each="post : ${posts}">
-                                <option th:text="${post.kod} + ' ' + ${post.poczta}" th:value="${post.id}"></option>
+                                <option th:text="${post.kodPocztowy} + ' ' + ${post.poczta}" th:value="${post.id}"></option>
                             </th:block>
                         </select>
                     </td>

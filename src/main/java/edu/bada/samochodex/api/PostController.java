@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -30,15 +29,14 @@ public class PostController {
     }
 
     @GetMapping("/dodaj")
-    public String showPostAddForm(Model model) {
-        Post post = new Post();
+    public String showPostAddForm(Model model, Post post) {
         model.addAttribute("post", post);
 
         return "posts/add_post";
     }
 
     @PostMapping("/zapisz")
-    public String savePost(@ModelAttribute("poczta") Post post) {
+    public String savePost(@ModelAttribute("post") Post post) {
         postService.save(post);
 
         return "redirect:/poczty";

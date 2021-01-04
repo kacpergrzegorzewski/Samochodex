@@ -15,7 +15,8 @@ import java.sql.Date;
 public class Client {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "client_gen", sequenceName = "klienciseq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "client_gen")
     @Column(name = "id_klienta", unique = true)
     private Long id;
 

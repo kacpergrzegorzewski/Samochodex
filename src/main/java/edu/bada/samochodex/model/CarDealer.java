@@ -15,7 +15,8 @@ import java.sql.Date;
 public class CarDealer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "carDealer_gen", sequenceName = "salonyseq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "carDealer_gen")
     @Column(name = "id_salonu", unique = true)
     private Long id;
 

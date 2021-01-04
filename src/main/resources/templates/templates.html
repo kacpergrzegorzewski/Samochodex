@@ -10,7 +10,7 @@
 
 <div th:fragment="navbar" style="width: 100%">
     <div id="navbar_container">
-        <div class="left">
+        <div id="left_navbar">
             <a href="/">
                 <div id="navbar_logo"><img th:src="@{/img/logo.png}"/></div>
             </a>
@@ -20,15 +20,22 @@
             <div class="navbar_object"><a href="/samochody">samochody</a></div>
             <div class="navbar_object"><a href="/kontakt">kontakt</a></div>
         </div>
-        <div class="right">
-            <div sec:authorize="isAuthenticated()">
-                <a th:href="@{/logout}">Log out</a>
+
+        <div sec:authorize="isAuthenticated()" class="right_navbar">
+            <div id="navbar_welcome_text">
+                Witaj&nbsp <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
             </div>
-            <div sec:authorize="isAnonymous()">
-                <a th:href="@{/logowanie}">Log in</a>
+
+            <div class="navbar_object">
+                <a th:href="@{/logout}">wyloguj się</a>
             </div>
         </div>
 
+        <div sec:authorize="isAnonymous()" class="right_navbar">
+            <div class="navbar_object">
+                <a th:href="@{/logowanie}">Zaloguj się</a>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -105,7 +112,7 @@
     </div>
 
     <div class="row footer_row">
-    Samochodex® 2020
+        Samochodex® 2020
     </div>
 
 </div>

@@ -71,6 +71,7 @@ a {
     border-bottom-style: solid;
     box-shadow: 0 2px 5px grey;
     display: flex;
+    justify-content: space-between;
     flex-direction: row;
     position: fixed;
     z-index: 500;
@@ -100,6 +101,24 @@ a {
 .navbar_object:hover {
     background-color: darkslategrey;
     color: white;
+}
+
+#navbar_welcome_text {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 4px;
+}
+
+#left_navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.right_navbar {
+    display: flex;
+    flex-direction: row;
 }
 
 /*==============| footer |==============*/
@@ -153,7 +172,7 @@ a {
 /*welcome section*/
 #welcome {
     position: relative;
-    height: 600px;
+    height: 650px;
     background-color: black;
     overflow: hidden;
 }

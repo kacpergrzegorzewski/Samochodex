@@ -47,10 +47,20 @@ a {
     flex-direction: inherit;
 }
 
+.column {
+    display: flex;
+    flex-direction: column;
+}
 
-/*==============| menu |==============*/
+.row {
+    display: flex;
+    flex-direction: row;
+}
 
-#menu_container {
+
+/*==============| navbar |==============*/
+
+#navbar_container {
     width: 100%;
     height: 50px;
     text-decoration: none;
@@ -62,18 +72,21 @@ a {
     box-shadow: 0 2px 5px grey;
     display: flex;
     flex-direction: row;
+    position: fixed;
+    z-index: 500;
+    background-color: white;
 }
 
-#menu_container:visited {
+#navbar_container:visited {
     color: black;
 }
 
-#menu_logo {
+#navbar_logo {
     height: 40px;
     margin: auto 5px;
 }
 
-.menu_object {
+.navbar_object {
     width: auto;
     padding: 5px;
     display: flex;
@@ -84,10 +97,56 @@ a {
 }
 
 
-.menu_object:hover {
+.navbar_object:hover {
     background-color: darkslategrey;
     color: white;
 }
+
+/*==============| footer |==============*/
+
+#footer_container {
+    padding-top: 30px;
+    background-color: #272c34;
+    height: 360px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: space-around;
+}
+
+.footer_column {
+    margin-right: 16px;
+    margin-left: 16px;
+    width: 20%;
+}
+
+.footer_row {
+    display: inherit;
+    justify-content: center;
+}
+
+.footer_column_header {
+    margin-bottom: 12px;
+    margin-top: 12px;
+    font-weight: bolder;
+    font-size: 18pt;
+}
+
+#footer_description {
+    width: 90%;
+    text-align: justify;
+}
+
+.footer_social_link {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border-collapse: separate;
+    margin: 12px;
+    padding: 4px;
+}
+
 
 /*==============| index |==============*/
 
@@ -178,10 +237,8 @@ a {
 
 #links_section {
     overflow: hidden;
-    margin-top: 100px;
     width: 70%;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 100px auto;
     align-items: center;
 }
 
@@ -221,7 +278,7 @@ a {
     flex-direction: column;
     justify-content: center;
     transition: 300ms;
-    text-shadow: 1px 1px black;
+    text-shadow: 2px 2px 5px black;
 }
 
 .links_section_object:hover .links_section_image{
@@ -232,6 +289,9 @@ a {
 .links_section_object:hover .links_section_text{
     transform: scale(1.5);
 }
+
+
+
 
 /*Animations*/
 

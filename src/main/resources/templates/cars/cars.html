@@ -29,7 +29,7 @@
                 </div>
 
                 <div class="car_on_hover_info_order">
-                    <a th:href="@{'/samochody/zamów/' + ${car.id}}">Zamów</a>
+                    <a th:href="@{'/samochody/' + ${car.id}}">Szczegóły</a>
                 </div>
             </div>
             <span th:if="${car.zdjecie != 'NULL'}">

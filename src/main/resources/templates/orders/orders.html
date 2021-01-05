@@ -16,26 +16,24 @@
 </div>
 
 <header>
-    <h1>Samochody</h1>
+    <h1>Twoje zamówienia</h1>
 </header>
 
 <table id="poczty" class="center">
     <thead>
     <tr>
-        <th>Marka</th>
-        <th>Model</th>
+        <th>Nr zamówienia</th>
+        <th>Data zamówienia</th>
+        <th>Samochód</th>
         <th>Cena</th>
-        <th>Opcje</th>
     </tr>
     </thead>
     <tbody>
-    <tr th:each="car : ${cars}">
-        <td th:text="${car.carModel.carBrand.nazwa}">Marka</td>
-        <td th:text="${car.carModel.nazwa}">Model</td>
-        <td th:text="${car.cena}">Cana</td>
-        <td>
-            <a th:href="@{'/samochody/zamów/' + ${car.id}}">Zamów</a>
-        </td>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}">Nr zamówienia</td>
+        <td th:text="${order.data}">Data zamówienia</td>
+        <td th:text="${order.car.carModel.carBrand.nazwa} + ' ' + ${order.car.carModel.nazwa}">Samochód</td>
+        <td th:text="${order.car.cena}">Cana</td>
     </tr>
     </tbody>
 </table>

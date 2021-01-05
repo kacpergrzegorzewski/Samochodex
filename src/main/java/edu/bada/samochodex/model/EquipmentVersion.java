@@ -14,7 +14,8 @@ import javax.persistence.*;
 public class EquipmentVersion {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "equipmentVersion_gen", sequenceName = "wersje_wyposazeniaseq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "equipmentVersion_gen")
     @Column(name = "id_wyposazenia", unique = true)
     private Long id;
 

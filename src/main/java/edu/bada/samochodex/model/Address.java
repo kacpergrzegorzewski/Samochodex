@@ -14,7 +14,8 @@ import javax.persistence.*;
 public class Address {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "address_gen", sequenceName = "adresyseq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "address_gen")
     @Column(name = "id_adresu", unique = true)
     private Long id;
 
@@ -30,7 +31,7 @@ public class Address {
     @Column(name = "nr_mieszkania")
     private String nrMieszkania;
 
-    @ManyToOne
+    @ManyToOne//(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_poczty", foreignKey = @ForeignKey(name = "ma_poczte"), nullable = false)
     private Post post;
 

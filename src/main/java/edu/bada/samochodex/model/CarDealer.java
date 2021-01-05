@@ -15,7 +15,8 @@ import java.sql.Date;
 public class CarDealer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "carDealer_gen", sequenceName = "salonyseq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "carDealer_gen")
     @Column(name = "id_salonu", unique = true)
     private Long id;
 
@@ -25,7 +26,7 @@ public class CarDealer {
     @Column(name = "data_zalozenia", nullable = false)
     private Date dataZalozenia;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_adresu", foreignKey = @ForeignKey(name = "salon_ma_adres"), nullable = false)
     private Address address;
 

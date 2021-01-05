@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Samochodex</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+<div align="center">
+    <h1>Złóż zamówienie</h1> <br/>
+
+    <form action="#" th:action="@{/samochody/zapisz}" th:method="post" th:object="${car}">
+        <table>
+            <tr>
+                <td><input type="hidden" th:field="*{id}" readonly="readonly"></td>
+            </tr>
+            <tr>
+                <td>Marka:</td>
+                <td th:text="${car.carModel.carBrand.nazwa}"></td>
+            </tr>
+            <tr>
+                <td>Model:</td>
+                <td th:text="${car.carModel.nazwa}"></td>
+            </tr>
+            <tr>
+                <td>Rocznik:</td>
+                <td th:text="${car.rokProdukcji}"></td>
+            </tr>
+            <tr>
+                <td>Kraj produkcji:</td>
+                <td th:text="${car.krajProdukcji}"></td>
+            </tr>
+            <tr>
+                <td>Rodzaj napędu:</td>
+                <td th:text="${car.naped}"></td>
+            </tr>
+            <tr>
+                <td>Ilość miejsc:</td>
+                <td th:text="${car.iloscMiejsc}"></td>
+            </tr>
+            <tr>
+                <td>Ilość drzwi:</td>
+                <td th:text="${car.iloscDrzwi}"></td>
+            </tr>
+            <tr>
+                <td>Opony:</td>
+                <td th:text="${car.opony}"></td>
+            </tr>
+            <tr>
+                <td>Rodzaj nadwozia:</td>
+                <td th:text="${car.nadwozie}"></td>
+            </tr>
+            <tr>
+                <td>Kolor nadwozia:</td>
+                <td th:text="${car.kolorNadwozia}"></td>
+            </tr>
+            <tr>
+                <td>Kolor tapicerki:</td>
+                <td th:text="${car.kolorTapicerki}"></td>
+            </tr>
+            <tr>
+                <td>Numer VIN:</td>
+                <td th:text="${car.VIN}"></td>
+            </tr>
+            <tr>
+                <td>Salon:</td>
+                <td>
+                    <select th:field="*{carDealer}" required>
+                        <th:block th:each="carDealer : ${carDealers}">
+                            <option th:text="${carDealer.nazwa}" th:value="${carDealer.id}"></option>
+                        </th:block>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Silnik:</td>
+                <td>
+                    <select th:field="*{engine}" required>
+                        <th:block th:each="engine : ${engines}">
+                            <option th:text="${engine.nazwa} + ' ' + ${engine.pojemnosc} + ' ' + ${engine.KM} + 'KM'"
+                                    th:value="${engine.id}"></option>
+                        </th:block>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Wersja wyposażenia:</td>
+                <td>
+                    <select th:field="*{equipmentVersion}" required>
+                        <th:block th:each="equipmentVersion : ${equipmentVersions}">
+                            <option th:text="${equipmentVersion.nazwa}" th:value="${equipmentVersion.id}"></option>
+                        </th:block>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Cena</td>
+                <td th:text="${car.cena} + ' zł'"></td>
+            </tr>
+            <tr>
+                <td colspan="2"><button type="submit">Zamów</button></td>
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

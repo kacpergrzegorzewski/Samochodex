@@ -19,7 +19,7 @@ Developing by two University of Technology students.
 ## Features
 
 - retrieving data from a database and displaying them on the website
-- modifying data from database in website 
+- modifying data from database in website
 - logging to the website excluding home page
 - https connection and self-signed ssl certificate (very trusted)
 - user credentials stored in a database on a very secure server and password stored are encrypted (not MD5)
@@ -57,8 +57,12 @@ Developing by two University of Technology students.
     - proper URL structure (things forbidden for normal clients, employees in separate URL paths)
 
 7. This is how site should look like from client account
-![Strona z konta klienta](https://user-images.githubusercontent.com/52577030/103287091-eb5ad580-49e1-11eb-84cc-c87aefc6074a.png)
+   ![Strona z konta klienta](https://user-images.githubusercontent.com/52577030/103287091-eb5ad580-49e1-11eb-84cc-c87aefc6074a.png)
 
+8. Orders need to depend on current logged-in user
+    - match client and employee with application user
+    - display orders of current logged-in user
+    
 ## How to contribute
 
 If you want to add any feature to the project please create a new branch from the `develop`.

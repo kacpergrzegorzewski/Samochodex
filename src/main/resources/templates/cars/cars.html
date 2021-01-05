@@ -5,40 +5,84 @@
     <meta charset="UTF-8">
     <title>Samochodex</title>
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-
-    <script type="text/javascript" th:src="@{js/app.js}"></script>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 </head>
-<body onload="timer()">
+<body>
 
-<div id="time">
-    <h1 id="currentTime"></h1>
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+
+<!--cars' list-->
+
+<div id="car_list">
+    <div th:each="car : ${cars}" class="car">
+        <div class="car_list_image">
+            <div class="car_on_hover_info">
+                <div class="car_on_hover_info_name">
+                    <span th:text="${car.carModel.carBrand.nazwa}" />
+                    <span th:text="${car.carModel.nazwa}" />
+                </div>
+                <div class="car_on_hover_info_price">
+                    <span th:text="${car.cena}" /> zł
+                </div>
+
+                <div class="car_on_hover_info_order">
+                    <a th:href="@{'/samochody/zamów/' + ${car.id}}">Zamów</a>
+                </div>
+            </div>
+            <img th:src="@{/img/samochody.jpg}" class="fit_to_div"/>
+        </div>
+    </div>
 </div>
 
-<header>
-    <h1>Samochody</h1>
-</header>
 
-<table id="poczty" class="center">
-    <thead>
-    <tr>
-        <th>Marka</th>
-        <th>Model</th>
-        <th>Cena</th>
-        <th>Opcje</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="car : ${cars}">
-        <td th:text="${car.carModel.carBrand.nazwa}">Marka</td>
-        <td th:text="${car.carModel.nazwa}">Model</td>
-        <td th:text="${car.cena}">Cana</td>
-        <td>
-            <a th:href="@{'/samochody/zamów/' + ${car.id}}">Zamów</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
 
 </body>
+
+<!--<table id="poczty" class="center">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Marka</th>-->
+<!--        <th>Model</th>-->
+<!--        <th>Cena</th>-->
+<!--        <th>Opcje</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="car : ${cars}">-->
+<!--        <td th:text="${car.carModel.carBrand.nazwa}">Marka</td>-->
+<!--        <td th:text="${car.carModel.nazwa}">Model</td>-->
+<!--        <td th:text="${car.cena}">Cana</td>-->
+<!--        <td>-->
+<!--            <a th:href="@{'/samochody/zamów/' + ${car.id}}">Zamów</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+<!--<table id="poczty" class="center">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Marka</th>-->
+<!--        <th>Model</th>-->
+<!--        <th>Cena</th>-->
+<!--        <th>Opcje</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr th:each="car : ${cars}">-->
+<!--        <td th:text="${car.carModel.carBrand.nazwa}">Marka</td>-->
+<!--        <td th:text="${car.carModel.nazwa}">Model</td>-->
+<!--        <td th:text="${car.cena}">Cana</td>-->
+<!--        <td>-->
+<!--            <a th:href="@{'/samochody/zamów/' + ${car.id}}">Zamów</a>-->
+<!--        </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+
 </html>

@@ -60,7 +60,7 @@ class LoginTest {
     }
 
     @Test
-    void loginUnathenticatedTest() throws Exception {
+    void loginUnauthenticatedTest() throws Exception {
         mockMvc.perform(formLogin("/logowanie").user("mateusz").password("password"))
                 .andExpect(unauthenticated());
     }

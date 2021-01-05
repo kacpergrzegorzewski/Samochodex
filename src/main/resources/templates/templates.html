@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>menu</title>
+</head>
+<body>
+
+<!-- navbar -->
+
+<div th:fragment="navbar" style="width: 100%">
+    <div id="navbar_container">
+        <div id="left_navbar">
+            <a href="/">
+                <div id="navbar_logo"><img th:src="@{/img/logo.png}"/></div>
+            </a>
+            <div class="navbar_object"><a href="/poczty">Poczty</a></div>
+            <div class="navbar_object"><a href="/zamowienia">zamówienia</a></div>
+            <div class="navbar_object"><a href="/salony">salony</a></div>
+            <div class="navbar_object"><a href="/samochody">samochody</a></div>
+            <div class="navbar_object"><a href="/kontakt">kontakt</a></div>
+        </div>
+
+        <div sec:authorize="isAuthenticated()" class="right_navbar">
+            <div id="navbar_welcome_text">
+                Witaj&nbsp <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+            </div>
+
+            <div class="navbar_object">
+                <a th:href="@{/logout}">wyloguj się</a>
+            </div>
+        </div>
+
+        <div sec:authorize="isAnonymous()" class="right_navbar">
+            <div class="navbar_object">
+                <a th:href="@{/logowanie}">Zaloguj się</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<div th:fragment="footer" id="footer_container">
+    <div class="row footer_row">
+        <div class="column footer_column">
+            <div class="footer_column_header">
+                Samochodex
+            </div>
+            <div id="footer_description">
+                Samochodex stanowi rozwiązanie drugiej części projektu z przedmiotu BADA.
+                Autorami witryny są Mateusz Suchocki oraz Kacper Grzegorzewski.
+            </div>
+        </div>
+
+        <div class="column footer_column">
+            <div class="footer_column_header">
+                Pomocne linki
+            </div>
+            <a href="">strona główna</a>
+            <a href="">nie wiem</a>
+            <a href="">złóż zamówienie</a>
+            <a href="">o nas</a>
+            <a href="">coś</a>
+            <a href="">salony</a>
+            <a href="">samochody</a>
+        </div>
+
+        <div class="column footer_column">
+            <div class="footer_column_header">
+                Więcej pomocnych linków
+            </div>
+            <a href="">strona główna</a>
+            <a href="">nie wiem</a>
+            <a href="">złóż zamówienie</a>
+            <a href="">o nas</a>
+            <a href="">coś</a>
+            <a href="">salony</a>
+            <a href="">samochody</a>
+        </div>
+
+        <div class="column footer_column">
+            <div class="footer_column_header">
+                Jeszcze więcej jeszcze bardziej pomocnych linków
+            </div>
+            <a href="">strona główna</a>
+            <a href="">nie wiem</a>
+            <a href="">złóż zamówienie</a>
+            <a href="">o nas</a>
+            <a href="">coś</a>
+            <a href="">salony</a>
+            <a href="">samochody</a>
+        </div>
+    </div>
+    <div class="row footer_row">
+
+        <a href="www.facebook.com">
+            <img th:src="@{/img/facebook.png}" class="fit_to_div footer_social_link"/>
+        </a>
+
+
+        <a href="www.instagram.com" about="_blank">
+            <img th:src="@{/img/instagram.png}" class="fit_to_div footer_social_link"/>
+        </a>
+
+        <a href="www.otomoto.com" about="_blank">
+            <img th:src="@{/img/otomoto.png}" class="fit_to_div footer_social_link"/>
+        </a>
+
+        <a href="www.twitter.com" about="_blank">
+            <img th:src="@{/img/twitter.png}" class="fit_to_div footer_social_link"/>
+        </a>
+    </div>
+
+    <div class="row footer_row">
+        Samochodex® 2020
+    </div>
+
+</div>
+</body>
+</html>

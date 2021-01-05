@@ -75,6 +75,9 @@ public class Car {
     @Column(name = "rata")
     private Float rata;
 
+    @Column(name = "zdjecie")
+    private String zdjecie;
+
     @ManyToOne
     @JoinColumn(name = "id_salonu", foreignKey = @ForeignKey(name = "posiada_samochody"), nullable = false)
     private CarDealer carDealer;

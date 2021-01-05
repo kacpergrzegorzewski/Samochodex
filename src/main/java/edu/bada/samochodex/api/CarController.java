@@ -48,6 +48,15 @@ public class CarController {
         return "cars/cars";
     }
 
+    @GetMapping("/{id}")
+    public String showCarDetails(@PathVariable("id") Long id, Model model) {
+        Car car = carService.getById(id);
+
+        model.addAttribute("car", car);
+
+        return "cars/car_details";
+    }
+
     @PostMapping("/zapisz")
     public String savePost(@ModelAttribute("car") Car orderedCar) {
         Order order = new Order();

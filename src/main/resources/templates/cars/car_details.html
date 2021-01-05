@@ -12,7 +12,7 @@
         <h1 th:text="${car.carModel.carBrand.nazwa} + ' ' + ${car.carModel.nazwa}">Samochoód</h1>
     </header>
 
-    <img th:src="@{'/img/'+${car.zdjecie}}" style="margin: 0 auto; width: 50%; display: block;">
+    <img th:src="@{${car.zdjecie}}" style="margin: 0 auto; width: 50%; display: block;">
 
     <table class="center">
         <tr>

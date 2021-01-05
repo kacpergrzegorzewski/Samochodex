@@ -3,12 +3,15 @@ package edu.bada.samochodex.api;
 import edu.bada.samochodex.model.*;
 import edu.bada.samochodex.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Random;
 
 @Controller
 @RequestMapping("/samochody")
@@ -48,12 +51,14 @@ public class CarController {
     @PostMapping("/zapisz")
     public String savePost(@ModelAttribute("car") Car orderedCar) {
         Order order = new Order();
+        Random random = new Random();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 
-        // TODO: Randomly chosen employee
-        Employee employee = employeeService.getById(2L);
+        // Randomly chosen employee
+        Employee employee = employeeService.getAll().get(random.nextInt(employeeService.getAll().size()));
 
-        // TODO: Client who is currently logged-in
-        Client client = clientService.getById(1L);
+        // Client who is currently logged-in
+        Client client = clientService.getByEmail(authentication.getName());
 
         order.setData(new Date(System.currentTimeMillis()));
         order.setCar(orderedCar);

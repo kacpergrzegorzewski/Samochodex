@@ -1,4 +1,3 @@
-
 /*global config*/
 body {
     font-family: 'Roboto', serif;
@@ -213,7 +212,7 @@ a {
 }
 
 #welcome_image_button:hover {
-    background-color: rgba(255,255,255, 0.1);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 #welcome_image {
@@ -302,12 +301,12 @@ a {
     text-shadow: 2px 2px 5px black;
 }
 
-.links_section_object:hover .links_section_image{
+.links_section_object:hover .links_section_image {
     opacity: 60%;
     transform: scale(1.1);
 }
 
-.links_section_object:hover .links_section_text{
+.links_section_object:hover .links_section_text {
     transform: scale(1.5);
 }
 
@@ -393,6 +392,103 @@ a {
     background-color: rgba(255, 255, 255, 70);
     color: black;
 
+}
+
+
+/*==============| car's details |==============*/
+#car_details_container {
+    margin: 120px 50px;
+}
+
+#car_details_name {
+    display: flex;
+    flex-direction: row;
+    font-size: 42pt;
+    font-weight: bold;
+}
+
+#car_details {
+    display: flex;
+}
+
+#car_details_image {
+    width: 40%;
+}
+
+.photo_fullscreen #car_details:active {
+    display: flex;
+}
+
+
+#car_details_info {
+    width: 60%;
+    background-color: #494e57;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#car_details_data_all {
+    /*nothing*/
+}
+
+.car_details_data {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 46%;
+    position: relative;
+    float: left;
+    color: white;
+    font-size: 12pt;
+    flex-direction: row;
+    display: flex;
+    border-bottom-color: #383d46;
+    border-bottom-style: solid;
+    transition: 100ms;
+}
+
+.car_details_data:hover {
+    background-color: rgba(56, 61, 70, 0.5);
+}
+
+.car_details_data_title {
+    width: 40%;
+    padding-left: 2px;
+}
+
+#car_details_info_bottom {
+    margin-top: 12px;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+#car_details_price {
+    font-size: 64pt;
+    color: white;
+    font-weight: bold;
+}
+
+#car_details_order {
+    display: flex;
+    justify-content: center;
+    font-size: 28pt;
+    border-color: white;
+    background-color: #c62815;
+    color: white;
+    padding: 24px;
+    transition: 200ms;
+    border-radius: 36px;
+    font-weight: bolder;
+}
+
+#car_details_order:hover {
+    transform: scale(1.05);
 }
 
 /*Animations*/

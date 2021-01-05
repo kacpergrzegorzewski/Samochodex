@@ -17,11 +17,12 @@
 
 <div id="car_list">
     <div th:each="car : ${cars}" class="car">
+        <a th:href="@{'/samochody/' + ${car.id}}">
         <div class="car_list_image">
             <div class="car_on_hover_info">
                 <div class="car_on_hover_info_name">
                     <span th:text="${car.carModel.carBrand.nazwa}" />
-                    <span th:text="${car.carModel.nazwa}" />
+                    <span th:text=" ${car.carModel.nazwa}" />
                 </div>
                 <div class="car_on_hover_info_price">
                     <span th:text="${car.cena}" /> zł
@@ -31,8 +32,14 @@
                     <a th:href="@{'/samochody/zamów/' + ${car.id}}">Zamów</a>
                 </div>
             </div>
-            <img th:src="@{/img/samochody.jpg}" class="fit_to_div"/>
+            <span th:if="${car.zdjecie != 'NULL'}">
+                <img th:src="@{${car.zdjecie}}" class="fit_to_div"/>
+            </span>
+            <span th:if="${car.zdjecie == 'NULL'}">
+                <img th:src="@{/img/logo.png}"/>
+            </span>
         </div>
+        </a>
     </div>
 </div>
 

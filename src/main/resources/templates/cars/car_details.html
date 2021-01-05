@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Samochodex</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1 th:text="${car.carModel.carBrand.nazwa} + ' ' + ${car.carModel.nazwa}">Samochoód</h1>
+    </header>
+
+    <img th:src="@{${car.zdjecie}}" style="margin: 0 auto; width: 50%; display: block;">
+
+    <table class="center">
+        <tr>
+            <td>Rocznik:</td>
+            <td th:text="${car.rokProdukcji}"></td>
+        </tr>
+        <tr>
+            <td>Kraj produkcji:</td>
+            <td th:text="${car.krajProdukcji}"></td>
+        </tr>
+        <tr>
+            <td>Rodzaj napędu:</td>
+            <td th:text="${car.naped}"></td>
+        </tr>
+        <tr>
+            <td>Ilość miejsc:</td>
+            <td th:text="${car.iloscMiejsc}"></td>
+        </tr>
+        <tr>
+            <td>Ilość drzwi:</td>
+            <td th:text="${car.iloscDrzwi}"></td>
+        </tr>
+        <tr>
+            <td>Opony:</td>
+            <td th:text="${car.opony}"></td>
+        </tr>
+        <tr>
+            <td>Rodzaj nadwozia:</td>
+            <td th:text="${car.nadwozie}"></td>
+        </tr>
+        <tr>
+            <td>Kolor nadwozia:</td>
+            <td th:text="${car.kolorNadwozia}"></td>
+        </tr>
+        <tr>
+            <td>Kolor tapicerki:</td>
+            <td th:text="${car.kolorTapicerki}"></td>
+        </tr>
+        <tr>
+            <td>Numer VIN:</td>
+            <td th:text="${car.VIN}"></td>
+        </tr>
+        <tr>
+            <td>Salon:</td>
+            <td th:text="${car.carDealer.nazwa}"></td>
+        </tr>
+        <tr>
+            <td>Silnik:</td>
+            <td th:text="${car.engine.nazwa}"></td>
+        </tr>
+        <tr>
+            <td>Wersja wyposażenia:</td>
+            <td th:text="${car.equipmentVersion.nazwa}"></td>
+        </tr>
+        <tr>
+            <td>Cena</td>
+            <td th:text="${car.cena} + ' zł'"></td>
+        </tr>
+    </table>
+</body>
+</html>

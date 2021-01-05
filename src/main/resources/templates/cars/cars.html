@@ -34,6 +34,8 @@
         <td th:text="${car.carModel.nazwa}">Model</td>
         <td th:text="${car.cena}">Cana</td>
         <td>
+            <a th:href="@{'/samochody/' + ${car.id}}">Szczegóły</a>
+
             <a th:href="@{'/samochody/zamów/' + ${car.id}}">Zamów</a>
         </td>
     </tr>

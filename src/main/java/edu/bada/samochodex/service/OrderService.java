@@ -40,7 +40,7 @@ public class OrderService {
         List<Order> orders = orderDao.findAll();
 
         return orders.stream()
-                .filter((order) -> order.getClient().getId().equals(employee.getId()))
+                .filter((order) -> order.getEmployee().getId().equals(employee.getId()))
                 .collect(Collectors.toList());
     }
 

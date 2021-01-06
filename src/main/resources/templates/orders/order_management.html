@@ -30,7 +30,7 @@
             <td th:text="${order.client.imie} + ' ' + ${order.client.nazwisko} + ', email: ' + ${order.client.email}">Klient</td>
             <td th:text="${order.carDealer.nazwa}">Salon</td>
             <td>
-                <a th:href="@{'/poczty/edytuj/' + ${order.id}}">Zrealizuj zamówienie</a>
+                <a th:href="@{'/zamowienia/zarzadzanie/zrealizuj/' + ${order.id}}">Zrealizuj zamówienie</a>
             </td>
         </tr>
         </tbody>

@@ -2,52 +2,90 @@
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Samochodex</title>
+    <title>Samochodex rejestracja</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{css/stylesheet.css}"/>
 </head>
 <body>
-    <form role="form" th:action="@{/rejestracja}" th:method="post">
-        <label>Email*</label>
-        <input type="email" id="username" name="username" th:value="${user.username}">
-        <br/>
 
-        <label>Hasło*</label>
-        <input type="password" id="password" name="password" th:field="*{user.password}">
-        <br/>
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
 
-        <label>Imię*</label>
-        <input type="text" id="imie" name="imie" th:value="${client.imie}">
-        <br/>
 
-        <label>Nazwisko*</label>
-        <input type="text" id="nazwisko" name="nazwisko" th:value="${client.nazwisko}">
-        <br/>
+<form th:action="@{/rejestracja}" th:method="post" class="login_container">
+    <div class="login_text">rejestracja</div>
 
-        <label>Miejscowość*</label>
-        <input type="text" id="miejscowosc" name="miejscowosc" th:value="${address.miejscowosc}">
-        <br/>
 
-        <label>Ulica*</label>
-        <input type="text" id="ulica" name="ulica" th:value="${address.ulica}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="username" name="username" class="login_input" placeholder=""
+               required="" autofocus="" />
+        <label for="username" class="login_label">Email</label>
+    </div>
 
-        <label>Nr bunynku*</label>
-        <input type="text" id="nrBudynku" name="nrBudynku" th:value="${address.nrBudynku}">
-        <br/>
+    <div class="login_part">
+        <input type="password" id="password" name="password" class="login_input" placeholder="" required="">
+        <label for="password" class="login_label">Hasło</label>
+    </div>
 
-        <label>Nr mieszkania</label>
-        <input type="text" id="nrMieszkania" name="nrMieszkania" th:value="${address.nrBudynku}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="imie" name="imie" class="login_input" placeholder=""
+               required="" autofocus="" />
+        <label for="imie" class="login_label">Imię</label>
+    </div>
 
-        <!-- TODO: Jeśli dana poczta istnieje to nie dodawać tylko wybrać tą co już jest -->
-        <label>Kod pocztowy*</label>
-        <input type="text" id="kodPocztowy" name="kodPocztowy" th:value="${post.kodPocztowy}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="nazwisko" name="nazwisko" class="login_input" placeholder=""
+               required="" autofocus="" />
+        <label for="nazwisko" class="login_label">Nazwisko</label>
+    </div>
 
-        <label>Poczta*</label>
-        <input type="text" id="poczta" name="poczta" th:value="${post.poczta}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="miejscowosc" name="miejscowosc" class="login_input" placeholder=""
+               required="" autofocus="" />
+        <label for="miejscowosc" class="login_label">Miejscowość</label>
+    </div>
 
-        <input type="submit">
-    </form>
+    <div class="login_part">
+        <input type="text" id="ulica" name="ulica" class="login_input" placeholder=""
+               required="" autofocus="" />
+        <label for="ulica" class="login_label">Ulica</label>
+    </div>
+
+    <div class="login_part">
+        <input type="text" id="nrBudynku" name="nrBudynku" class="login_input" placeholder=""
+               required="" autofocus="" />
+        <label for="nrBudynku" class="login_label">Nr budynku</label>
+    </div>
+
+    <div class="login_part">
+        <input type="text" id="nrMieszkania" name="nrMieszkania" class="login_input" placeholder=""
+               autofocus="" />
+        <label for="nrMieszkania" class="login_label">Nr mieszkania</label>
+    </div>
+
+    <!-- TODO: Jeśli dana poczta istnieje to nie dodawać tylko wybrać tą co już jest -->
+    <div class="login_part">
+        <input type="text" id="kodPocztowy" name="kodPocztowy" class="login_input" placeholder=""
+               required="" autofocus="" />
+        <label for="kodPocztowy" class="login_label">Kod pocztowy</label>
+    </div>
+
+    <div class="login_part">
+        <input type="text" id="poczta" name="poczta" class="login_input" placeholder=""
+               required="" autofocus="" />
+        <label for="poczta" class="login_label">Poczta</label>
+    </div>
+
+
+    <button class="login_button" type="submit">Zarejestruj się</button>
+
+</form>
+
+
+
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
 </body>
 </html>

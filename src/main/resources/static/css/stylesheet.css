@@ -368,7 +368,7 @@ a {
     margin-top: 24px;
     font-weight: bold;
     align-self: center;
-
+    text-transform: capitalize;
 }
 
 #login_error {
@@ -423,6 +423,7 @@ a {
 
 .login_button {
     border-radius: 11px;
+    margin-bottom: 24px;
     padding: 12px;
     width: 480px;
     margin-top: 24px;
@@ -443,7 +444,6 @@ a {
     border-radius: 11px;
     padding: 12px;
     width: 456px;
-    margin-top: 24px;
     margin-bottom: 48px;
     text-align: center;
     font-size: 16pt;

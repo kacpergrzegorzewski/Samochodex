@@ -16,8 +16,9 @@
 <div th:replace="templates :: navbar"></div>
 
 
-<form th:action="@{/logowanie}" method="post" id="login_container">
-    <div id="login_text">LOGOWANIE</div>
+<form th:action="@{/logowanie}" method="post" class="login_container">
+    <div class="login_text">LOGOWANIE</div>
+
 
     <div class="login_part">
 
@@ -32,18 +33,19 @@
         <label for="password" class="login_label">Hasło</label>
     </div>
 
+    <!--error message-->
+    <div th:if="${param.error}" id="login_error">
+        Nieprawidłowe dane logowania!
+    </div>
 
     <button class="login_button" type="submit">Zaloguj się</button>
 
-    <button th:href="@{/rejestracja}" id="login_register_button">
+    <a th:href="@{/rejestracja}" id="login_register_button">
         Zarejestruj się
-    </button>
+    </a>
 </form>
 
-<!--error message-->
-<div th:if="${param.error}" id="login_error">
-    Nieprawidłowe dane logowania!
-</div>
+
 
 
 <!-- footer -->

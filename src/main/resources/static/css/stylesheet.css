@@ -18,6 +18,35 @@ header {
     font-size: 42px;
 }
 
+button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: none;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out,
+    transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+    background: none;
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+
 /*images*/
 
 img {
@@ -63,6 +92,8 @@ a {
     display: flex;
     flex-direction: row;
 }
+
+
 
 
 /*==============| navbar |==============*/
@@ -321,7 +352,7 @@ a {
 
 /*==============| login |==============*/
 
-#login_container {
+.login_container {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -331,13 +362,24 @@ a {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-#login_text {
+.login_text {
     font-size: 32pt;
     margin-bottom: 44px;
     margin-top: 24px;
     font-weight: bold;
     align-self: center;
 
+}
+
+#login_error {
+    width: 60%;
+    text-align: center;
+    align-self: center;
+    padding: 24px;
+    background-color: rgba(198, 40, 21 , 0.5);
+    margin-top: 12px;
+    margin-bottom: 24px;
+    transition: 5s;
 }
 
 .login_part {
@@ -380,11 +422,9 @@ a {
 }
 
 .login_button {
-    border-style: solid;
     border-radius: 11px;
-    border-color: #b51714;
     padding: 12px;
-    width: 80%;
+    width: 480px;
     margin-top: 24px;
     text-align: center;
     font-size: 16pt;
@@ -400,11 +440,9 @@ a {
 }
 
 #login_register_button {
-    border-style: solid;
     border-radius: 11px;
-    border-color: #272c34;
     padding: 12px;
-    width: 80%;
+    width: 456px;
     margin-top: 24px;
     margin-bottom: 48px;
     text-align: center;
@@ -418,6 +456,10 @@ a {
 
 #login_register_button:hover {
     background-color: #272c34;
+}
+
+#login_error {
+
 }
 
 

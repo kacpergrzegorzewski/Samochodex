@@ -6,31 +6,51 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Samochodex logowanie</title>
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-    <link href="https://getbootstrap.com/docs/4.0/examples/signin/signin.css" rel="stylesheet" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{css/stylesheet.css}"/>
 </head>
 <body>
-<div class="container">
-    <form th:action="@{/logowanie}" method="post" style="max-width: 400px; margin: 0 auto;">
-        <h2 class="form-signin-heading">Zaloguj się</h2>
 
 
-        <p>
-            <label for="username" class="sr-only">Username</label>
-            <input type="text" id="username" name="username" class="form-control" placeholder="Nazwa użytkownika" required="" autofocus="">
-        </p>
-        <p>
-            <label for="password" class="sr-only">Password</label>
-            <input type="password" id="password" name="password" class="form-control" placeholder="Hasło" required="">
-        </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Zaloguj się</button>
-    </form>
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+
+<form th:action="@{/logowanie}" method="post" class="login_container">
+    <div class="login_text">LOGOWANIE</div>
+
+
+    <div class="login_part">
+
+        <input type="text" id="username" name="username" class="login_input" placeholder=""
+               required="" autofocus="" />
+        <label for="username" class="login_label">Email</label>
+
+    </div>
+
+    <div class="login_part">
+        <input type="password" id="password" name="password" class="login_input" placeholder="" required="">
+        <label for="password" class="login_label">Hasło</label>
+    </div>
 
     <!--error message-->
-    <div th:if="${param.error}" class="alert alert-error" style="color: #ff0000; font-size: 22px; text-align: center">
+    <div th:if="${param.error}" id="login_error">
         Nieprawidłowe dane logowania!
     </div>
 
-</div>
+    <button class="login_button" type="submit">Zaloguj się</button>
+
+    <a th:href="@{/rejestracja}" id="login_register_button">
+        Zarejestruj się
+    </a>
+</form>
+
+
+
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
+
 </body>
 </html>

@@ -55,7 +55,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/logowanie").permitAll()
                 .failureUrl("/logowanie?error=true")
-                .defaultSuccessUrl("/", false)
+                .defaultSuccessUrl("/", true)
                 // TODO: Add remember-me token to database if we deploy app to server
 //                .and()
 //                idk why its not working (problem with cookies?)

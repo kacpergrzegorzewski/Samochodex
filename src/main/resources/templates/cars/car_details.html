@@ -21,11 +21,8 @@
         <div id="car_details_image">
             <img th:src="@{${car.zdjecie}}" class="fit_to_div"/>
         </div>
-        <form action="#" th:action="@{/samochody/zapisz}" th:method="post" th:object="${car}" id="car_details_info">
-            <input type="hidden" th:field="*{id}" readonly="readonly">
-            <input type="hidden" th:field="*{carDealer.id}" readonly="readonly">
-            <input type="hidden" th:field="*{engine.id}" readonly="readonly">
-            <input type="hidden" th:field="*{equipmentVersion.id}" readonly="readonly">
+        <div id="car_details_info">
+
             <div id="car_details_data_all">
                 <div class="car_details_data">
                     <div class="car_details_data_title"> Rok produkcji:</div>
@@ -113,15 +110,18 @@
                     <span th:text="${car.cena} + ' zł'"/>
                 </div>
 
-<!--                <a th:href="@{'/samochody/zamów/' + ${car.id}}">-->
-<!--                TODO: Nie wiem czemu myszka nie zmiania się na łapkę do klikania jak się najedzie na przycisk-->
+                <form action="#" th:action="@{/samochody/zapisz}" th:method="post" th:object="${car}">
+                    <input type="hidden" th:field="*{id}" readonly="readonly">
+                    <input type="hidden" th:field="*{carDealer.id}" readonly="readonly">
+                    <input type="hidden" th:field="*{engine.id}" readonly="readonly">
+                    <input type="hidden" th:field="*{equipmentVersion.id}" readonly="readonly">
                     <button type="submit" id="car_details_order">
                         Zamów teraz
                     </button>
-<!--                </a>-->
+                </form>
             </div>
 
-        </form>
+        </div>
     </div>
 </div>
 

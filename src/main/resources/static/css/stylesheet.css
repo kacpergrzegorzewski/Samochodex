@@ -1,11 +1,16 @@
 
 /*global config*/
+html {
+    min-height: 100%;
+}
+
 body {
     font-family: 'Roboto', serif;
     color: Black;
     margin: 0;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -134,6 +139,8 @@ a {
     flex-direction: column;
     color: white;
     justify-content: space-around;
+    align-self: flex-end;
+    margin-top: auto;
 }
 
 .footer_column {
@@ -310,6 +317,110 @@ a {
 .links_section_object:hover .links_section_text{
     transform: scale(1.5);
 }
+
+
+/*==============| login |==============*/
+
+#login_container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 600px;
+    margin: 120px auto 70px;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#login_text {
+    font-size: 32pt;
+    margin-bottom: 44px;
+    margin-top: 24px;
+    font-weight: bold;
+    align-self: center;
+
+}
+
+.login_part {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 80%;
+    align-self: center;
+    margin-top: 30px;
+
+}
+
+.login_label {
+    position: absolute;
+    transition: 300ms;
+    font-size: 18pt;
+    bottom: 4px;
+}
+
+.login_input {
+    display: flex;
+    transition: 300ms;
+    width: 100%;
+    align-self: center;
+    border-style: none;
+    border-bottom-style: solid;
+    font-size: 18pt;
+}
+
+.login_input:focus {
+    outline: none;
+    border-style: none;
+    border-bottom-style: solid;
+    border-color: black;
+}
+
+.login_input:valid ~ label, .login_input:focus ~ label {
+    font-size: 12pt;
+    top: -18pt;
+}
+
+.login_button {
+    border-style: solid;
+    border-radius: 11px;
+    border-color: #b51714;
+    padding: 12px;
+    width: 80%;
+    margin-top: 24px;
+    text-align: center;
+    font-size: 16pt;
+    font-weight: bold;
+    align-self: center;
+    transition: 200ms;
+    background-color: #c62815;
+    color: white;
+}
+
+.login_button:hover {
+    background-color: #b51714;
+}
+
+#login_register_button {
+    border-style: solid;
+    border-radius: 11px;
+    border-color: #272c34;
+    padding: 12px;
+    width: 80%;
+    margin-top: 24px;
+    margin-bottom: 48px;
+    text-align: center;
+    font-size: 16pt;
+    font-weight: bold;
+    align-self: center;
+    transition: 200ms;
+    background-color: #383d46;
+    color: white;
+}
+
+#login_register_button:hover {
+    background-color: #272c34;
+}
+
+
 
 /*==============| cars |==============*/
 #car_list {

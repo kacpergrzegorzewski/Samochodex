@@ -3,6 +3,7 @@ package edu.bada.samochodex.api;
 import edu.bada.samochodex.model.*;
 import edu.bada.samochodex.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -84,7 +85,10 @@ public class CarController {
         return "redirect:/samochody";
     }
 
+    /* ------ EMPLOYEE ------- */
+
     @GetMapping("/dodaj")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public String addCarPage(Model model) {
         Car car = new Car();
         CarModel carModel = new CarModel();
@@ -104,6 +108,7 @@ public class CarController {
     }
 
     @PostMapping("/dodaj/zapisz")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public String saveCar(Model model, Car car, CarModel carModel) {
         model.addAttribute("car", car);
         model.addAttribute("carModel", carModel);

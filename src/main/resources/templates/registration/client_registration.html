@@ -22,6 +22,22 @@
         <input type="text" id="nazwisko" name="nazwisko" th:value="${client.nazwisko}">
         <br/>
 
+        <label>Nr telefonu</label>
+        <input type="text" id="nrTelefonu" name="nrTelefonu" th:value="${client.nrTelefonu}">
+        <br/>
+
+        <label>Data urodzenia</label>
+        <input type="date" id="dataUrodzenia" name="dataUrodzenia" th:value="${client.dataUrodzenia}">
+        <br/>
+
+        <label>Płeć</label>
+        <input type="text" id="plec" name="plec" th:value="${client.plec}">
+        <br/>
+
+        <label>PESEL</label>
+        <input type="text" id="PESEL" name="PESEL" th:value="${client.PESEL}">
+        <br/>
+
         <label>Miejscowość*</label>
         <input type="text" id="miejscowosc" name="miejscowosc" th:value="${address.miejscowosc}">
         <br/>
@@ -38,7 +54,6 @@
         <input type="text" id="nrMieszkania" name="nrMieszkania" th:value="${address.nrBudynku}">
         <br/>
 
-        <!-- TODO: Jeśli dana poczta istnieje to nie dodawać tylko wybrać tą co już jest -->
         <label>Kod pocztowy*</label>
         <input type="text" id="kodPocztowy" name="kodPocztowy" th:value="${post.kodPocztowy}">
         <br/>

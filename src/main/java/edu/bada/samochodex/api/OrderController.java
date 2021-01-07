@@ -47,7 +47,7 @@ public class OrderController {
     /* ------ EMPLOYEE ------- */
 
     @GetMapping("/zarzadzanie")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
     public String showOrderManagementPage(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         Employee currEmployee = employeeService.getByEmail(authentication.getName());
@@ -58,16 +58,14 @@ public class OrderController {
         return "orders/order_management";
     }
 
+    // TODO: Zamówienie trzeba też usunąć u klienta, czy na pewno się zmienia na sprzedaż ???
     @GetMapping("/zarzadzanie/zrealizuj/{id}")
-    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
     public String realizeOrder(@PathVariable("id") Long id) {
         Order realizedOrder = orderService.getById(id);
 
-        // Realizacja zamówienia sprawia, że samochód z zamówienia nie jest już na sprzedaż
-        realizedOrder.getCar().setNaSprzedaz(false);
-
         orderService.delete(realizedOrder);
 
-        return "redirect:/zamowienia";
+        return "redirect:/zamowienia/zarzadzanie";
     }
 }

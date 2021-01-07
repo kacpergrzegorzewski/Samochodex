@@ -110,11 +110,10 @@
                     <span th:text="${car.cena} + ' zł'"/>
                 </div>
 
-                <form action="#" th:action="@{/samochody/zapisz}" th:method="post" th:object="${car}">
+<!--                TODO: Przy klikaniu można zrobić, że wyskakuje napis, że pomyślnie złożnono zamówienie
+                    Już bez przenoszenia do strony zamówienia -->
+                <form action="#" th:action="@{/samochody/zamow}" th:method="post" th:object="${car}">
                     <input type="hidden" th:field="*{id}" readonly="readonly">
-                    <input type="hidden" th:field="*{carDealer.id}" readonly="readonly">
-                    <input type="hidden" th:field="*{engine.id}" readonly="readonly">
-                    <input type="hidden" th:field="*{equipmentVersion.id}" readonly="readonly">
                     <button type="submit" id="car_details_order">
                         Zamów teraz
                     </button>

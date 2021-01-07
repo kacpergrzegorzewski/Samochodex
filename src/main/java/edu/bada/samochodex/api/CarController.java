@@ -46,7 +46,7 @@ public class CarController {
 
     @GetMapping
     public String showCarPage(Model model) {
-        List<Car> cars = carService.getAll();
+        List<Car> cars = carService.getAllForSale();
 
         model.addAttribute("cars", cars);
 
@@ -62,8 +62,8 @@ public class CarController {
         return "cars/car_details";
     }
 
-    @PostMapping("/zapisz")
-    public String savePost(@ModelAttribute("car") Car orderedCar) {
+    @PostMapping("/zamow")
+    public String savePost(@ModelAttribute("car") Car car) {
         Order order = new Order();
         Random random = new Random();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -74,18 +74,26 @@ public class CarController {
         // Client who is currently logged-in
         Client client = clientService.getByEmail(authentication.getName());
 
+        // Potrzebuję tego, żeby zebrać wszystkie atrytuby obowiązkowe samochodu w zamówieniu,
+        // bo przez forma się nie przesyłają
+        Car orderedCar = carService.getById(car.getId());
+
         order.setData(new Date(System.currentTimeMillis()));
         order.setCar(orderedCar);
         order.setCarDealer(orderedCar.getCarDealer());
         order.setEmployee(employee);
         order.setClient(client);
 
+        // Klikanie "zamów teraz" sprawia, że samochód z zamówienia nie jest już na sprzedaż
+        orderedCar.setNaSprzedaz(false);
+        carService.save(orderedCar);
+
         orderService.save(order);
 
         return "redirect:/samochody";
     }
 
-    /* ------ EMPLOYEE ------- */
+    /* ------ EMPLOYEE, ADMIN ------- */
 
     @GetMapping("/dodaj")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")

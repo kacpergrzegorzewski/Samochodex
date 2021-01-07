@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class CarService {
@@ -23,6 +24,12 @@ public class CarService {
 
     public List<Car> getAll() {
         return carDao.findAll();
+    }
+
+    public List<Car> getAllForSale() {
+        return carDao.findAll().stream()
+                .filter(Car::getNaSprzedaz)
+                .collect(Collectors.toList());
     }
 
     public void save(Car car) {

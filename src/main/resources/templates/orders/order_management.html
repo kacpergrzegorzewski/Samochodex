@@ -30,6 +30,7 @@
             <td th:text="${order.client.imie} + ' ' + ${order.client.nazwisko} + ', email: ' + ${order.client.email}">Klient</td>
             <td th:text="${order.carDealer.nazwa}">Salon</td>
             <td>
+<!--                TODO: Przy klikaniu można zrobić, że wyskakuje gdzieś napis, że pomyślnie zrealizowno-->
                 <a th:href="@{'/zamowienia/zarzadzanie/zrealizuj/' + ${order.id}}">Zrealizuj zamówienie</a>
             </td>
         </tr>

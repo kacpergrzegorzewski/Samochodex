@@ -44,12 +44,11 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-                // TODO: Remove line below as soon as csrf token can be passed to server via requests
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "index", "/css/*", "/img/*", "/js/*", "/menu").permitAll()
-                .antMatchers("/rejestracja", "/samochody", "/samochody/*").permitAll()
-                .antMatchers("/poczty/**").hasAnyRole(ADMIN.name(), EMPLOYEE.name())
+                .antMatchers("/", "/css/*", "/img/*", "/js/*", "/menu").permitAll()
+                // Wszystko dla klienta (rejestracja, przeglądanie samochodów, szczegóły i zamawianie samochodu, kontakt)
+                .antMatchers("/rejestracja", "/samochody", "/samochody/*", "/kontakt").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

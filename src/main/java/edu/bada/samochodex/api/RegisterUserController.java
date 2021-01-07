@@ -1,18 +1,19 @@
 package edu.bada.samochodex.api;
 
-import edu.bada.samochodex.model.Address;
-import edu.bada.samochodex.model.Client;
-import edu.bada.samochodex.model.Post;
+import edu.bada.samochodex.model.*;
+import edu.bada.samochodex.security.ApplicationUserRole;
 import edu.bada.samochodex.security.auth.ApplicationUser;
 import edu.bada.samochodex.security.auth.ApplicationUserService;
-import edu.bada.samochodex.service.AddressService;
-import edu.bada.samochodex.service.ClientService;
-import edu.bada.samochodex.service.PostService;
+import edu.bada.samochodex.service.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import java.sql.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/rejestracja")
@@ -20,14 +21,22 @@ public class RegisterUserController {
 
     private final ApplicationUserService applicationUserService;
     private final ClientService clientService;
+    private final EmployeeService employeeService;
     private final AddressService addressService;
     private final PostService postService;
+    private final PositionService positionService;
+    private final CarDealerService carDealerService;
 
-    public RegisterUserController(ApplicationUserService applicationUserService, ClientService clientService, AddressService addressService, PostService postService) {
+    public RegisterUserController(ApplicationUserService applicationUserService, ClientService clientService,
+                                  EmployeeService employeeService, AddressService addressService, PostService postService,
+                                  PositionService positionService, CarDealerService carDealerService) {
         this.applicationUserService = applicationUserService;
         this.clientService = clientService;
+        this.employeeService = employeeService;
         this.addressService = addressService;
         this.postService = postService;
+        this.positionService = positionService;
+        this.carDealerService = carDealerService;
     }
 
     @GetMapping
@@ -37,7 +46,7 @@ public class RegisterUserController {
         model.addAttribute("address", new Address());
         model.addAttribute("post", new Post());
 
-        return "registration";
+        return "registration/client_registration";
     }
 
     @PostMapping
@@ -47,9 +56,9 @@ public class RegisterUserController {
         model.addAttribute("address", address);
         model.addAttribute("post", post);
 
-        postService.save(post);
+        Post savedPost = postService.save(post);
 
-        address.setPost(post);
+        address.setPost(savedPost);
         addressService.save(address);
 
         applicationUserService.registerUser(user);
@@ -58,6 +67,48 @@ public class RegisterUserController {
         client.setEmail(user.getUsername());
         clientService.save(client);
 
-        return "index";
+        return "redirect:/";
+    }
+
+    /* ------ ADMIN ------- */
+
+    @GetMapping("/pracownik")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String getEmployeeRegistrationView(Model model) {
+        List<CarDealer> carDealers = carDealerService.getAll();
+        List<Position> positions = positionService.getAll();
+
+        model.addAttribute("user", new ApplicationUser());
+        model.addAttribute("employee", new Employee());
+        model.addAttribute("address", new Address());
+        model.addAttribute("post", new Post());
+        model.addAttribute("carDealers", carDealers);
+        model.addAttribute("positions", positions);
+
+        return "registration/employee_registration";
+    }
+
+    @PostMapping("/pracownik")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String registerUserEmployee (ApplicationUser user, Employee employee, Address address, Post post, Model model) {
+        model.addAttribute("user", user);
+        model.addAttribute("employee", employee);
+        model.addAttribute("address", address);
+        model.addAttribute("post", post);
+
+        Post savedPost = postService.save(post);
+
+        address.setPost(savedPost);
+        addressService.save(address);
+
+        user.setRole(ApplicationUserRole.EMPLOYEE.name());
+        applicationUserService.registerUser(user);
+
+        employee.setAddress(address);
+        employee.setEmail(user.getUsername());
+        employee.setDataZatrudniena(new Date(System.currentTimeMillis()));
+        employeeService.save(employee);
+
+        return "redirect:/";
     }
 }

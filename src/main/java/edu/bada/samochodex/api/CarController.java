@@ -3,6 +3,7 @@ package edu.bada.samochodex.api;
 import edu.bada.samochodex.model.*;
 import edu.bada.samochodex.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -19,7 +20,8 @@ public class CarController {
 
     private final CarService carService;
     private final CarDealerService carDealerService;
-
+    private final CarBrandService carBrandService;
+    private final CarModelService carModelService;
     private final EngineService engineService;
     private final EquipmentVersionService equipmentVersionService;
     private final OrderService orderService;
@@ -27,11 +29,14 @@ public class CarController {
     private final ClientService clientService;
 
     @Autowired
-    public CarController(CarService carService, CarDealerService carDealerService, EngineService engineService,
+    public CarController(CarService carService, CarDealerService carDealerService, CarBrandService carBrandService,
+                         CarModelService carModelService, EngineService engineService,
                          EquipmentVersionService equipmentVersionService, OrderService orderService,
                          EmployeeService employeeService, ClientService clientService) {
         this.carService = carService;
         this.carDealerService = carDealerService;
+        this.carBrandService = carBrandService;
+        this.carModelService = carModelService;
         this.engineService = engineService;
         this.equipmentVersionService = equipmentVersionService;
         this.orderService = orderService;
@@ -80,18 +85,40 @@ public class CarController {
         return "redirect:/samochody";
     }
 
-    @GetMapping("/zamów/{id}")
-    public String showCarOrderForm(@PathVariable("id") long id, Model model) {
-        Car car = carService.getById(id);
+    /* ------ EMPLOYEE ------- */
+
+    @GetMapping("/dodaj")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public String addCarPage(Model model) {
+        Car car = new Car();
+        CarModel carModel = new CarModel();
+        List<CarDealer> carDealers = carDealerService.getAll();
         List<Engine> engines = engineService.getAll();
         List<EquipmentVersion> equipmentVersions = equipmentVersionService.getAll();
-        List<CarDealer> carDealers = carDealerService.getAll();
+        List<CarBrand> carBrands = carBrandService.getAll();
 
         model.addAttribute("car", car);
+        model.addAttribute("carBrands", carBrands);
+        model.addAttribute("carModel", carModel);
+        model.addAttribute("carDealers", carDealers);
         model.addAttribute("engines", engines);
         model.addAttribute("equipmentVersions", equipmentVersions);
-        model.addAttribute("carDealers", carDealers);
 
-        return "cars/order_car";
+        return "cars/add_car";
+    }
+
+    @PostMapping("/dodaj/zapisz")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public String saveCar(Model model, Car car, CarModel carModel) {
+        model.addAttribute("car", car);
+        model.addAttribute("carModel", carModel);
+
+        carModel.setCarBrand(car.getCarModel().getCarBrand());
+        carModelService.save(carModel);
+
+        car.setCarModel(carModel);
+        carService.save(car);
+
+        return "redirect:/samochody";
     }
 }

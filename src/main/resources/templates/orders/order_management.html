@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Samochodex</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Twoje zamówienia do zrealizowania</h1>
+    </header>
+    <table id="poczty" class="center">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Data złożenia zamówienia</th>
+            <th>Samochód</th>
+            <th>Klient</th>
+            <th>Salon</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="order : ${orders}">
+            <td th:text="${order.id}">ID</td>
+            <td th:text="${order.data}">Data złożenia zamówienia</td>
+            <td th:text="'Samochód nr ' + ${order.car.id} + '. ' + ${order.car.carModel.carBrand.nazwa} + ' ' + ${order.car.carModel.nazwa} +
+                        ', cena: ' + ${order.car.cena} + ' zł'">Samochód</td>
+            <td th:text="${order.client.imie} + ' ' + ${order.client.nazwisko} + ', email: ' + ${order.client.email}">Klient</td>
+            <td th:text="${order.carDealer.nazwa}">Salon</td>
+            <td>
+                <a th:href="@{'/zamowienia/zarzadzanie/zrealizuj/' + ${order.id}}">Zrealizuj zamówienie</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</body>
+</html>

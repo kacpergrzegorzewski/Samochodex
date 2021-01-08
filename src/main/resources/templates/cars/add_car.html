@@ -29,15 +29,15 @@
 
     <!--Model-->
     <div class="form_part">
-        <input type="text" id="carModelNazwa" name="carModelNazwa" class="form_input" placeholder="" required="">
-        <label for="carModelNazwa" class="form_label">Model</label>
+        <input type="text" id="nazwa" name="nazwa" class="form_input" placeholder="" required="">
+        <label for="nazwa" class="form_label">Model</label>
     </div>
 
 
     <!--Generacja-->
     <div class="form_part">
-        <input type="number" id="generacja" name="generacja" class="form_input" placeholder=""
-               required="" autofocus=""/>
+        <input type="number" id="generacja" name="generacja" class="form_input" placeholder="(niewymagane)"
+               autofocus=""/>
         <label for="generacja" class="form_label">Generacja</label>
     </div>
 
@@ -72,8 +72,12 @@
 
     <!--Skrzynia biegów-->
     <div class="form_part">
-        <input type="text" id="skrzyniaBiegow" name="skrzyniaBiegow" class="form_input" placeholder=""
-               required="" autofocus=""/>
+        <select required="" name="skrzyniaBiegow" id="skrzyniaBiegow" class="form_input"
+                autofocus="">
+            <option value="automatyczna">Automatyczna</option>
+            <option value="manualna">Manualna</option>
+            <option value="">Brak</option>
+        </select>
         <label for="skrzyniaBiegow" class="form_label">Skrzynia biegów</label>
     </div>
 
@@ -96,7 +100,7 @@
 
     <!--Opony-->
     <div class="form_part">
-        <input type="number" id="opony" name="opony" class="form_input" placeholder=""
+        <input type="text" id="opony" name="opony" class="form_input" placeholder=""
                required="" autofocus=""/>
         <label for="opony" class="form_label">Opony</label>
     </div>
@@ -136,8 +140,11 @@
 
     <!--Na sprzedaz-->
     <div class="form_part">
-        <input type="text" id="naSprzedaz" name="naSprzedaz" class="form_input" placeholder=""
-               required="" autofocus=""/>
+        <select required="" name="naSprzedaz" id="naSprzedaz" class="form_input"
+                autofocus="">
+            <option value="1">Tak</option>
+            <option value="0">Nie</option>
+        </select>
         <label for="naSprzedaz" class="form_label">Na sprzedaż?</label>
     </div>
 
@@ -185,6 +192,15 @@
         <input type="number" id="cena" name="cena" class="form_input" placeholder=""
                required="" autofocus=""/>
         <label for="cena" class="form_label">Cena</label>
+    </div>
+
+
+
+    <!--zdjecie-->
+    <div class="form_part">
+        <input type="url" id="zdjecie" name="zdjecie" class="form_input" placeholder="(niewymagane)"
+               autofocus=""/>
+        <label for="zdjecie" class="form_label">URL zdjęcia</label>
     </div>
 
     <button class="form_button" type="submit">Dodaj samochód</button>

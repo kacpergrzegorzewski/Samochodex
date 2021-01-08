@@ -16,21 +16,21 @@
 <div th:replace="templates :: navbar"></div>
 
 
-<form th:action="@{/logowanie}" method="post" class="login_container">
-    <div class="login_text">LOGOWANIE</div>
+<form th:action="@{/logowanie}" method="post" class="form_container">
+    <div class="form_text">LOGOWANIE</div>
 
 
-    <div class="login_part">
+    <div class="form_part">
 
-        <input type="text" id="username" name="username" class="login_input" placeholder=""
+        <input type="text" id="username" name="username" class="form_input" placeholder=""
                required="" autofocus="" />
-        <label for="username" class="login_label">Email</label>
+        <label for="username" class="form_label">Email</label>
 
     </div>
 
-    <div class="login_part">
-        <input type="password" id="password" name="password" class="login_input" placeholder="" required="">
-        <label for="password" class="login_label">Hasło</label>
+    <div class="form_part">
+        <input type="password" id="password" name="password" class="form_input" placeholder="" required="">
+        <label for="password" class="form_label">Hasło</label>
     </div>
 
     <!--error message-->
@@ -38,7 +38,7 @@
         Nieprawidłowe dane logowania!
     </div>
 
-    <button class="login_button" type="submit">Zaloguj się</button>
+    <button class="form_button" type="submit">Zaloguj się</button>
 
     <a th:href="@{/rejestracja}" id="login_register_button">
         Zarejestruj się

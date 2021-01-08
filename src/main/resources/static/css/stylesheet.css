@@ -380,7 +380,7 @@ a {
 
 /*==============| login |==============*/
 
-.login_container {
+.form_container {
     display: flex;
     flex-direction: column;
     height: auto;
@@ -390,7 +390,7 @@ a {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.login_text {
+.form_text {
     font-size: 32pt;
     margin-bottom: 44px;
     margin-top: 24px;
@@ -410,7 +410,7 @@ a {
     transition: 5s;
 }
 
-.login_part {
+.form_part {
     display: flex;
     position: relative;
     flex-direction: column;
@@ -420,14 +420,14 @@ a {
 
 }
 
-.login_label {
+.form_label {
     position: absolute;
     transition: 300ms;
     font-size: 18pt;
     bottom: 4px;
 }
 
-.login_input {
+.form_input {
     display: flex;
     transition: 300ms;
     width: 100%;
@@ -437,19 +437,19 @@ a {
     font-size: 18pt;
 }
 
-.login_input:focus {
+.form_input:focus {
     outline: none;
     border-style: none;
     border-bottom-style: solid;
     border-color: black;
 }
 
-.login_input:valid ~ label, .login_input:focus ~ label {
+.form_input:valid ~ label, .form_input:focus ~ label {
     font-size: 12pt;
     top: -18pt;
 }
 
-.login_button {
+.form_button {
     border-radius: 11px;
     margin-bottom: 24px;
     padding: 12px;
@@ -464,7 +464,7 @@ a {
     color: white;
 }
 
-.login_button:hover {
+.form_button:hover {
     background-color: #b51714;
 }
 

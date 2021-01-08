@@ -5,120 +5,196 @@
     <meta charset="UTF-8">
     <title>Samochodex</title>
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
 </head>
 <body>
-<div align="center">
-    <h1>Dodaj nowy samochód</h1> <br/>
 
-    <form action="#" th:action="@{/samochody/dodaj/zapisz}" th:method="post">
-        <table>
-            <tr>
-                <td>Marka:</td>
-                <td>
-                    <select th:field="*{car.carModel.carBrand}" required>
-                        <th:block th:each="carBrand : ${carBrands}">
-                            <option th:text="${carBrand.nazwa}" th:value="${carBrand.id}"></option>
-                        </th:block>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Model*:</td>
-                <td><input type="text" id="carModelNazwa" name="nazwa" th:value="${carModel.nazwa}"></td>
-            </tr>
-            <tr>
-                <td>Generacja:</td>
-                <td><input type="text" id="generacja" name="generacja" th:value="${carModel.generacja}"></td>
-            </tr>
-            <tr>
-                <td>Rok produkcji*:</td>
-                <td><input type="text" id="rokProdukcji" name="rokProdukcji" th:value="${car.rokProdukcji}"></td>
-            </tr>
-            <tr>
-                <td>Kraj produkcji*:</td>
-                <td><input type="text" id="krajProdukcji" name="krajProdukcji" th:value="${car.krajProdukcji}"></td>
-            </tr>
-            <tr>
-                <td>Rodzaj napędu*:</td>
-                <td><input type="text" id="naped" name="naped" th:value="${car.naped}"></td>
-            </tr>
-            <tr>
-                <td>Skrzynia biegów:</td>
-                <td><input type="text" id="skrzyniaBiegow" name="skrzyniaBiegow" th:value="${car.skrzyniaBiegow}"></td>
-            </tr>
-            <tr>
-                <td>Ilość miejsc*:</td>
-                <td><input type="text" id="iloscMiejsc" name="iloscMiejsc" th:value="${car.iloscMiejsc}"></td>
-            </tr>
-            <tr>
-                <td>Ilość drzwi*:</td>
-                <td><input type="text" id="iloscDrzwi" name="iloscDrzwi" th:value="${car.iloscDrzwi}"></td>
-            </tr>
-            <tr>
-                <td>Opony*:</td>
-                <td><input type="text" id="opony" name="opony" th:value="${car.opony}"></td>
-            </tr>
-            <tr>
-                <td>Rodzaj nadwozia*:</td>
-                <td><input type="text" id="nadwozie" name="nadwozie" th:value="${car.nadwozie}"></td>
-            </tr>
-            <tr>
-                <td>Kolor nadwozia*:</td>
-                <td><input type="text" id="kolorNadwozia" name="kolorNadwozia" th:value="${car.kolorNadwozia}"></td>
-            </tr>
-            <tr>
-                <td>Kolor tapicerki*:</td>
-                <td><input type="text" id="kolorTapicerki" name="kolorTapicerki" th:value="${car.kolorTapicerki}"></td>
-            </tr>
-            <tr>
-                <td>Numer VIN*:</td>
-                <td><input type="text" id="VIN" name="VIN" th:value="${car.VIN}"></td>
-            </tr>
-            <tr>
-                <td>Na sprzedaż*:</td>
-                <td><input type="text" id="naSprzedaz" name="naSprzedaz" th:value="${car.naSprzedaz}"></td>
-            </tr>
-            <tr>
-                <td>Salon:</td>
-                <td>
-                    <select th:field="*{car.carDealer}" required>
-                        <th:block th:each="carDealer : ${carDealers}">
-                            <option th:text="${carDealer.nazwa}" th:value="${carDealer.id}"></option>
-                        </th:block>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Silnik:</td>
-                <td>
-                    <select th:field="*{car.engine}" required>
-                        <th:block th:each="engine : ${engines}">
-                            <option th:text="${engine.nazwa} + ' ' + ${engine.pojemnosc} + ' ' + ${engine.KM} + 'KM'"
-                                    th:value="${engine.id}"></option>
-                        </th:block>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Wersja wyposażenia:</td>
-                <td>
-                    <select th:field="*{car.equipmentVersion}" required>
-                        <th:block th:each="equipmentVersion : ${equipmentVersions}">
-                            <option th:text="${equipmentVersion.nazwa}" th:value="${equipmentVersion.id}"></option>
-                        </th:block>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>Cena*:</td>
-                <td><input type="text" id="cena" name="cena" th:value="${car.cena}"></td>
-            </tr>
-            <tr>
-                <td colspan="2"><button type="submit">Dodaj</button></td>
-            </tr>
-        </table>
-    </form>
-</div>
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+
+<form th:action="@{/samochody/dodaj/zapisz}" th:method="post" class="form_container">
+    <div class="form_text">Dodaj nowy samochód</div>
+
+    <!--Marka-->
+    <div class="form_part">
+        <select th:field="*{car.carModel.carBrand}" required="" name="marka" id="marka" class="form_input"
+                autofocus="">
+            <th:block th:each="carBrand : ${carBrands}">
+                <option th:text="${carBrand.nazwa}" th:value="${carBrand.id}"></option>
+            </th:block>
+        </select>
+        <label for="marka" class="form_label">Marka</label>
+    </div>
+
+    <!--Model-->
+    <div class="form_part">
+        <input type="text" id="carModelNazwa" name="carModelNazwa" class="form_input" placeholder="" required="">
+        <label for="carModelNazwa" class="form_label">Model</label>
+    </div>
+
+
+    <!--Generacja-->
+    <div class="form_part">
+        <input type="number" id="generacja" name="generacja" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="generacja" class="form_label">Generacja</label>
+    </div>
+
+
+    <!--Rok produkcji-->
+    <div class="form_part">
+        <input type="number" id="rokProdukcji" name="rokProdukcji" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="rokProdukcji" class="form_label">Rok produkcji</label>
+    </div>
+
+
+    <!--Kraj produkcji-->
+    <div class="form_part">
+        <input type="text" id="krajProdukcji" name="krajProdukcji" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="krajProdukcji" class="form_label">Kraj produkcji</label>
+    </div>
+
+
+    <!--Rodzaj napędu-->
+    <div class="form_part">
+        <select required="" name="naped" id="naped" class="form_input"
+                autofocus="">
+            <option value="przod">Przód</option>
+            <option value="tyl">Tył</option>
+            <option value="4x4">4x4</option>
+        </select>
+        <label for="naped" class="form_label">Rodzaj napedu</label>
+    </div>
+
+
+    <!--Skrzynia biegów-->
+    <div class="form_part">
+        <input type="text" id="skrzyniaBiegow" name="skrzyniaBiegow" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="skrzyniaBiegow" class="form_label">Skrzynia biegów</label>
+    </div>
+
+
+    <!--Ilość miejsc-->
+    <div class="form_part">
+        <input type="number" id="iloscMiejsc" name="iloscMiejsc" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="iloscMiejsc" class="form_label">Ilość miejsc</label>
+    </div>
+
+
+    <!--Ilość drzwi-->
+    <div class="form_part">
+        <input type="number" id="iloscDrzwi" name="iloscDrzwi" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="iloscDrzwi" class="form_label">Ilość drzwi</label>
+    </div>
+
+
+    <!--Opony-->
+    <div class="form_part">
+        <input type="number" id="opony" name="opony" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="opony" class="form_label">Opony</label>
+    </div>
+
+
+    <!--Rodzaj nadwozia-->
+    <div class="form_part">
+        <input type="text" id="nadwozie" name="nadwozie" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="nadwozie" class="form_label">Rodzaj nadwozia</label>
+    </div>
+
+
+    <!--Kolor nadwozia-->
+    <div class="form_part">
+        <input type="text" id="kolorNadwozia" name="kolorNadwozia" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="kolorNadwozia" class="form_label">Kolor nadwozia</label>
+    </div>
+
+
+    <!--Kolor tapicerki-->
+    <div class="form_part">
+        <input type="text" id="kolorTapicerki" name="kolorTapicerki" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="kolorTapicerki" class="form_label">Kolor tapicerki</label>
+    </div>
+
+
+    <!--Numer VIN-->
+    <div class="form_part">
+        <input type="text" id="VIN" name="VIN" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="VIN" class="form_label">Numer VIN</label>
+    </div>
+
+
+    <!--Na sprzedaz-->
+    <div class="form_part">
+        <input type="text" id="naSprzedaz" name="naSprzedaz" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="naSprzedaz" class="form_label">Na sprzedaż?</label>
+    </div>
+
+
+    <!--Salon-->
+    <div class="form_part">
+        <select th:field="*{car.carDealer}" required="" name="salon" id="salon" class="form_input"
+                autofocus="">
+            <th:block th:each="carDealer : ${carDealers}">
+                <option th:text="${carDealer.nazwa}" th:value="${carDealer.id}"></option>
+            </th:block>
+        </select>
+        <label for="salon" class="form_label">Salon</label>
+    </div>
+
+
+    <!--Silnik-->
+    <div class="form_part">
+        <select th:field="*{car.engine}" required="" name="silnik" id="silnik" class="form_input"
+                autofocus="">
+            <th:block th:each="engine : ${engines}">
+                <option th:text="${engine.nazwa} + ' ' + ${engine.pojemnosc} + ' ' + ${engine.KM} + 'KM'"
+                        th:value="${engine.id}"></option>
+            </th:block>
+        </select>
+        <label for="silnik" class="form_label">Silnik</label>
+    </div>
+
+
+    <!--Wersja wyposażenia-->
+    <div class="form_part">
+        <select th:field="*{car.equipmentVersion}" required="" name="wersjaWyposazenia" id="wersjaWyposazenia"
+                class="form_input"
+                autofocus="">
+            <th:block th:each="equipmentVersion : ${equipmentVersions}">
+                <option th:text="${equipmentVersion.nazwa}" th:value="${equipmentVersion.id}"></option>
+            </th:block>
+        </select>
+        <label for="wersjaWyposazenia" class="form_label">Wersja wyposażenia</label>
+    </div>
+
+
+    <!--Cena-->
+    <div class="form_part">
+        <input type="number" id="cena" name="cena" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="cena" class="form_label">Cena</label>
+    </div>
+
+    <button class="form_button" type="submit">Dodaj samochód</button>
+
+</form>
+
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
+
 </body>
 </html>

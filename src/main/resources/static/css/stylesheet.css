@@ -449,7 +449,7 @@ a {
     top: -16pt;
 }
 
-.login_input_without_label_animation {
+.form_input_without_label_animation {
     display: flex;
     transition: 300ms;
     width: 100%;
@@ -459,14 +459,14 @@ a {
     font-size: 16pt;
 }
 
-.login_input_without_label_animation:focus {
+.form_input_without_label_animation:focus {
     outline: none;
     border-style: none;
     border-bottom-style: solid;
     border-color: black;
 }
 
-.login_input_without_label_animation ~ label, .login_input:focus ~ label {
+.form_input_without_label_animation ~ label, .login_input:focus ~ label {
     font-size: 12pt;
     top: -16pt;
 }

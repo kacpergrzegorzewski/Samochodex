@@ -63,7 +63,7 @@ public class CarController {
     }
 
     @PostMapping("/zamow")
-    public String savePost(@ModelAttribute("car") Car car) {
+    public String orderCar(@ModelAttribute("car") Car car) {
         Order order = new Order();
         Random random = new Random();
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();

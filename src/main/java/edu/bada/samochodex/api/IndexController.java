@@ -12,4 +12,14 @@ public class IndexController {
     public String getHomeView() {
         return "index";
     }
+
+    @GetMapping("/logowanie")
+    public String getLoginView() {
+        return "login";
+    }
+
+    @GetMapping("/kontakt")
+    public String getContactView() {
+        return "contact";
+    }
 }

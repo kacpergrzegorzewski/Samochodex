@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+<body>
+<header>
+    <h1>Pracownicy</h1>
+</header>
+<table id="poczty" class="center">
+    <thead>
+    <tr>
+        <th>Pracownik</th>
+        <th>Email</th>
+        <th>Data zatrudnienia</th>
+        <th>Numer konta bankowego</th>
+        <th>Salon</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="employee : ${employees}">
+        <td th:text="${employee.imie} + ' ' + ${employee.nazwisko}">Pracownik</td>
+        <td th:text="${employee.email}">Email</td>
+        <td th:text="${employee.dataZatrudniena}">Data zatrudnienia</td>
+        <td th:text="${employee.nrKonta}">Numer konta bankowego</td>
+        <td th:text="${employee.carDealer.nazwa}">Salon</td>
+        <td>
+            <!--                TODO: Przy klikaniu można zrobić, że wyskakuje gdzieś napis, że zwolniono pracownika-->
+            <a th:href="@{'/admin/zwolnij-pracownika/' + ${employee.id}}">Zwolnij</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

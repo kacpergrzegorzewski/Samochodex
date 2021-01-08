@@ -11,9 +11,8 @@
 <!--menu-->
 <div th:replace="templates :: navbar"></div>
 
-<form th:action="@{/rejestracja}" th:method="post" class="login_container">
+<form role="form" th:action="@{/admin/zarejestruj-pracownika}" th:method="post" class="login_container">
     <div class="login_text">rejestracja pracownika</div>
-
 
     <div class="login_part">
         <input type="email" id="username" name="username" class="login_input" placeholder=""
@@ -71,7 +70,8 @@
     </div>
 
     <div class="login_part">
-        <input type="date" id="dataUrodzenia" name="dataUrodzenia" class="login_input_without_label_animation" placeholder=""
+        <input type="date" id="dataUrodzenia" name="dataUrodzenia" class="login_input_without_label_animation"
+               placeholder=""
                required="" autofocus=""/>
         <label for="dataUrodzenia" class="login_label">Data urodzenia</label>
     </div>
@@ -127,6 +127,9 @@
         <label for="poczta" class="login_label">Poczta</label>
     </div>
 
+    <label>Poczta*</label>
+    <input type="text" id="poczta" name="poczta" th:value="${post.poczta}">
+    <br/>
 
     <button class="login_button" type="submit">Zarejestruj pracownika</button>
 

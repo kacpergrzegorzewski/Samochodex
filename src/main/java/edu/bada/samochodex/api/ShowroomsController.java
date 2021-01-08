@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/salony")
-public class SalonsController {
+public class ShowroomsController {
 
     @GetMapping
     public String getLoginView() {

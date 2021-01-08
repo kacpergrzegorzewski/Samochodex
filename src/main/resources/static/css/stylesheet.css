@@ -416,14 +416,14 @@ a {
     flex-direction: column;
     width: 80%;
     align-self: center;
-    margin-top: 30px;
+    margin-top: 36px;
 
 }
 
 .login_label {
     position: absolute;
     transition: 300ms;
-    font-size: 18pt;
+    font-size: 16pt;
     bottom: 4px;
 }
 
@@ -434,7 +434,7 @@ a {
     align-self: center;
     border-style: none;
     border-bottom-style: solid;
-    font-size: 18pt;
+    font-size: 16pt;
 }
 
 .login_input:focus {
@@ -446,7 +446,29 @@ a {
 
 .login_input:valid ~ label, .login_input:focus ~ label {
     font-size: 12pt;
-    top: -18pt;
+    top: -16pt;
+}
+
+.login_input_without_label_animation {
+    display: flex;
+    transition: 300ms;
+    width: 100%;
+    align-self: center;
+    border-style: none;
+    border-bottom-style: solid;
+    font-size: 16pt;
+}
+
+.login_input_without_label_animation:focus {
+    outline: none;
+    border-style: none;
+    border-bottom-style: solid;
+    border-color: black;
+}
+
+.login_input_without_label_animation ~ label, .login_input:focus ~ label {
+    font-size: 12pt;
+    top: -16pt;
 }
 
 .login_button {

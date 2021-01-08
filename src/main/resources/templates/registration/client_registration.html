@@ -4,7 +4,7 @@
 <head>
     <title>Samochodex rejestracja</title>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
-    <link rel="stylesheet" th:href="@{css/stylesheet.css}"/>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
 </head>
 <body>
 
@@ -40,25 +40,28 @@
     </div>
 
     <div class="login_part">
-        <input type="text" id="nrTelefonu" name="nrTelefonu" class="login_input" placeholder=""
+        <input type="text" id="nrTelefonu" name="nrTelefonu" class="login_input" placeholder="(niewymagane)"
                autofocus="" />
         <label for="nrTelefonu" class="login_label">Numer telefonu</label>
     </div>
 
     <div class="login_part">
-        <input type="date" id="dataUrodzenia" name="dataUrodzenia" class="login_input" placeholder=""
-               autofocus="" />
+        <input type="date" id="dataUrodzenia" name="dataUrodzenia" class="login_input_without_label_animation" placeholder=""
+               required="" autofocus="" />
         <label for="dataUrodzenia" class="login_label">Data urodzenia</label>
     </div>
 
     <div class="login_part">
-        <input type="text" id="plec" name="plec" class="login_input" placeholder=""
-               autofocus="" />
+        <select required="" name="plec" id="plec" class="login_input"
+                autofocus="">
+            <option value="M">Chłop</option>
+            <option value="K">Baba</option>
+        </select>
         <label for="plec" class="login_label">Płeć</label>
     </div>
 
     <div class="login_part">
-        <input type="text" id="PESEL" name="PESEL" class="login_input" placeholder=""
+        <input type="text" id="PESEL" name="PESEL" class="login_input" placeholder="(niewymagane)"
                autofocus="" />
         <label for="PESEL" class="login_label">PESEL</label>
     </div>
@@ -82,7 +85,7 @@
     </div>
 
     <div class="login_part">
-        <input type="text" id="nrMieszkania" name="nrMieszkania" class="login_input" placeholder=""
+        <input type="text" id="nrMieszkania" name="nrMieszkania" class="login_input" placeholder="(niewymagane)"
                autofocus="" />
         <label for="nrMieszkania" class="login_label">Nr mieszkania</label>
     </div>

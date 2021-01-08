@@ -12,8 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import static edu.bada.samochodex.security.ApplicationUserRole.*;
-
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(prePostEnabled = true)
@@ -48,7 +46,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/css/*", "/img/*", "/js/*", "/menu").permitAll()
                 // Wszystko dla klienta (rejestracja, przeglądanie samochodów, szczegóły i zamawianie samochodu, kontakt)
-                .antMatchers("/rejestracja", "/samochody", "/samochody/*", "/kontakt").permitAll()
+                .antMatchers("/rejestracja", "/samochody", "/samochody/*", "/kontakt", "/salony").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()

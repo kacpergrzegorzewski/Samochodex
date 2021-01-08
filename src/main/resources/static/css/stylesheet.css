@@ -729,6 +729,35 @@ a {
 }
 
 
+/*==============| showrooms |==============*/
+
+#showrooms_container{
+    margin: 120px auto 120px;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#showrooms_title {
+    font-size: 44px;
+    padding: 40px;
+}
+
+#showrooms_map_container {
+    align-self: center;
+    margin-bottom: 50px;
+    border-style: solid;
+    border-color: #494e57;
+    border-width: 1px;
+}
+
+#showrooms_map {
+    width: 1200px;
+    height: 620px;
+}
+
+
 /*Animations*/
 
 

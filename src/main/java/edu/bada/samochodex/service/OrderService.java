@@ -32,6 +32,8 @@ public class OrderService {
         List<Order> orders = orderDao.findAll();
 
         return orders.stream()
+                // Pokazuje niezrealizowane zamówenia
+                .filter(order -> !order.isDone())
                 .filter((order) -> order.getClient().getId().equals(client.getId()))
                 .collect(Collectors.toList());
     }
@@ -40,6 +42,8 @@ public class OrderService {
         List<Order> orders = orderDao.findAll();
 
         return orders.stream()
+                // Pokazuje niezrealizowane zamówenia
+                .filter(order -> !order.isDone())
                 .filter((order) -> order.getEmployee().getId().equals(employee.getId()))
                 .collect(Collectors.toList());
     }
@@ -48,11 +52,19 @@ public class OrderService {
         orderDao.save(order);
     }
 
+    public void saveAll(List<Order> orders) {
+        orderDao.saveAll(orders);
+    }
+
     public void deleteById(Long id) {
         orderDao.deleteById(id);
     }
 
     public void delete(Order order) {
         orderDao.delete(order);
+    }
+
+    public void deleteAll() {
+        orderDao.deleteAll();
     }
 }

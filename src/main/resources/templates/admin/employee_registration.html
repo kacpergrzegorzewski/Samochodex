@@ -5,7 +5,7 @@
     <title>Samochodex</title>
 </head>
 <body>
-    <form role="form" th:action="@{/rejestracja/pracownik}" th:method="post">
+    <form role="form" th:action="@{/admin/zarejestruj-pracownika}" th:method="post">
         <label>Email*</label>
         <input type="email" id="username" name="username" th:value="${user.username}">
         <br/>
@@ -82,6 +82,7 @@
         <input type="text" id="poczta" name="poczta" th:value="${post.poczta}">
         <br/>
 
+<!--        TODO: Przy kliknięciu przekierowuje na /admin i fajnie by było jak by wyskakiwało okienko gdzieś "Zarejestrowano pracownika", czy coś tam-->
         <input type="submit">
     </form>
 </body>

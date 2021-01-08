@@ -23,6 +23,9 @@ public class Order {
     @Column(name = "data", nullable = false)
     private Date data;
 
+    @Column(name = "zrealizowane", nullable = false)
+    private boolean isDone = false;
+
     @ManyToOne
     @JoinColumn(name = "id_pracownika", foreignKey = @ForeignKey(name = "podpisuje_zamowienie"), nullable = false)
     private Employee employee;

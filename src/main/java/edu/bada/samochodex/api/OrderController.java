@@ -58,13 +58,13 @@ public class OrderController {
         return "orders/order_management";
     }
 
-    // TODO: Zamówienie trzeba też usunąć u klienta, czy na pewno się zmienia na sprzedaż ???
     @GetMapping("/zarzadzanie/zrealizuj/{id}")
     @PreAuthorize("hasRole('ROLE_EMPLOYEE')")
     public String realizeOrder(@PathVariable("id") Long id) {
-        Order realizedOrder = orderService.getById(id);
+        Order relizedOrderd = orderService.getById(id);
 
-        orderService.delete(realizedOrder);
+        relizedOrderd.setDone(true);
+        orderService.save(relizedOrderd);
 
         return "redirect:/zamowienia/zarzadzanie";
     }

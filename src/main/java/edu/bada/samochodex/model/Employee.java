@@ -44,7 +44,7 @@ public class Employee {
     @Column(name = "plec", nullable = false)
     private String plec;
 
-    @Column(name = "pesel", nullable = false)
+    @Column(name = "pesel")
     private String PESEL;
 
     @ManyToOne

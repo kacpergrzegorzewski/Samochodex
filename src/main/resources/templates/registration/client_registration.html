@@ -12,98 +12,95 @@
 <div th:replace="templates :: navbar"></div>
 
 
-<form th:action="@{/rejestracja}" th:method="post" class="login_container">
-    <div class="login_text">rejestracja</div>
+<form th:action="@{/rejestracja}" th:method="post" class="form_container">
+    <div class="form_text">rejestracja</div>
 
 
-    <div class="login_part">
-        <input type="text" id="username" name="username" class="login_input" placeholder=""
+    <div class="form_part">
+        <input type="text" id="username" name="username" class="form_input" placeholder=""
                required="" autofocus="" />
-        <label for="username" class="login_label">Email</label>
+        <label for="username" class="form_label">Email</label>
     </div>
 
-    <div class="login_part">
-        <input type="password" id="password" name="password" class="login_input" placeholder="" required="">
-        <label for="password" class="login_label">Hasło</label>
+    <div class="form_part">
+        <input type="password" id="password" name="password" class="form_input" placeholder="" required="">
+        <label for="password" class="form_label">Hasło</label>
     </div>
 
-    <div class="login_part">
-        <input type="text" id="imie" name="imie" class="login_input" placeholder=""
+    <div class="form_part">
+        <input type="text" id="imie" name="imie" class="form_input" placeholder=""
                required="" autofocus="" />
-        <label for="imie" class="login_label">Imię</label>
+        <label for="imie" class="form_label">Imię</label>
     </div>
 
-    <div class="login_part">
-        <input type="text" id="nazwisko" name="nazwisko" class="login_input" placeholder=""
+    <div class="form_part">
+        <input type="text" id="nazwisko" name="nazwisko" class="form_input" placeholder=""
                required="" autofocus="" />
-        <label for="nazwisko" class="login_label">Nazwisko</label>
+        <label for="nazwisko" class="form_label">Nazwisko</label>
     </div>
 
-    <div class="login_part">
-        <input type="text" id="nrTelefonu" name="nrTelefonu" class="login_input" placeholder="(niewymagane)"
+    <div class="form_part">
+        <input type="text" id="nrTelefonu" name="nrTelefonu" class="form_input" placeholder=""
                autofocus="" />
-        <label for="nrTelefonu" class="login_label">Numer telefonu</label>
+        <label for="nrTelefonu" class="form_label">Numer telefonu</label>
     </div>
 
-    <div class="login_part">
-        <input type="date" id="dataUrodzenia" name="dataUrodzenia" class="login_input_without_label_animation" placeholder=""
-               required="" autofocus="" />
-        <label for="dataUrodzenia" class="login_label">Data urodzenia</label>
-    </div>
-
-    <div class="login_part">
-        <select required="" name="plec" id="plec" class="login_input"
-                autofocus="">
-            <option value="M">Chłop</option>
-            <option value="K">Baba</option>
-        </select>
-        <label for="plec" class="login_label">Płeć</label>
-    </div>
-
-    <div class="login_part">
-        <input type="text" id="PESEL" name="PESEL" class="login_input" placeholder="(niewymagane)"
+    <div class="form_part">
+        <input type="date" id="dataUrodzenia" name="dataUrodzenia" class="form_input" placeholder=""
                autofocus="" />
-        <label for="PESEL" class="login_label">PESEL</label>
+        <label for="dataUrodzenia" class="form_label">Data urodzenia</label>
     </div>
 
-    <div class="login_part">
-        <input type="text" id="miejscowosc" name="miejscowosc" class="login_input" placeholder=""
-               required="" autofocus="" />
-        <label for="miejscowosc" class="login_label">Miejscowość</label>
-    </div>
-
-    <div class="login_part">
-        <input type="text" id="ulica" name="ulica" class="login_input" placeholder=""
-               required="" autofocus="" />
-        <label for="ulica" class="login_label">Ulica</label>
-    </div>
-
-    <div class="login_part">
-        <input type="text" id="nrBudynku" name="nrBudynku" class="login_input" placeholder=""
-               required="" autofocus="" />
-        <label for="nrBudynku" class="login_label">Nr budynku</label>
-    </div>
-
-    <div class="login_part">
-        <input type="text" id="nrMieszkania" name="nrMieszkania" class="login_input" placeholder="(niewymagane)"
+    <div class="form_part">
+        <input type="text" id="plec" name="plec" class="form_input" placeholder=""
                autofocus="" />
-        <label for="nrMieszkania" class="login_label">Nr mieszkania</label>
+        <label for="plec" class="form_label">Płeć</label>
     </div>
 
-    <div class="login_part">
-        <input type="text" id="kodPocztowy" name="kodPocztowy" class="login_input" placeholder=""
+    <div class="form_part">
+        <input type="text" id="PESEL" name="PESEL" class="form_input" placeholder=""
+               autofocus="" />
+        <label for="PESEL" class="form_label">PESEL</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="miejscowosc" name="miejscowosc" class="form_input" placeholder=""
                required="" autofocus="" />
-        <label for="kodPocztowy" class="login_label">Kod pocztowy</label>
+        <label for="miejscowosc" class="form_label">Miejscowość</label>
     </div>
 
-    <div class="login_part">
-        <input type="text" id="poczta" name="poczta" class="login_input" placeholder=""
+    <div class="form_part">
+        <input type="text" id="ulica" name="ulica" class="form_input" placeholder=""
                required="" autofocus="" />
-        <label for="poczta" class="login_label">Poczta</label>
+        <label for="ulica" class="form_label">Ulica</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="nrBudynku" name="nrBudynku" class="form_input" placeholder=""
+               required="" autofocus="" />
+        <label for="nrBudynku" class="form_label">Nr budynku</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="nrMieszkania" name="nrMieszkania" class="form_input" placeholder=""
+               autofocus="" />
+        <label for="nrMieszkania" class="form_label">Nr mieszkania</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="kodPocztowy" name="kodPocztowy" class="form_input" placeholder=""
+               required="" autofocus="" />
+        <label for="kodPocztowy" class="form_label">Kod pocztowy</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="poczta" name="poczta" class="form_input" placeholder=""
+               required="" autofocus="" />
+        <label for="poczta" class="form_label">Poczta</label>
     </div>
 
 
-    <button class="login_button" type="submit">Zarejestruj się</button>
+    <button class="form_button" type="submit">Zarejestruj się</button>
 
 </form>
 

@@ -3,86 +3,136 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Samochodex</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
 </head>
 <body>
-    <form role="form" th:action="@{/rejestracja/pracownik}" th:method="post">
-        <label>Email*</label>
-        <input type="email" id="username" name="username" th:value="${user.username}">
-        <br/>
 
-        <label>Hasło*</label>
-        <input type="password" id="password" name="password" th:field="*{user.password}">
-        <br/>
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
 
-        <label>Imię*</label>
-        <input type="text" id="imie" name="imie" th:value="${employee.imie}">
-        <br/>
+<form th:action="@{/rejestracja}" th:method="post" class="login_container">
+    <div class="login_text">rejestracja pracownika</div>
 
-        <label>Nazwisko*</label>
-        <input type="text" id="nazwisko" name="nazwisko" th:value="${employee.nazwisko}">
-        <br/>
 
-        <label>Salon*</label>
-            <select th:field="*{employee.carDealer}" required>
-                <th:block th:each="carDealer : ${carDealers}">
-                    <option th:text="${carDealer.nazwa}" th:value="${carDealer.id}"></option>
-                </th:block>
-            </select>
-        <br/>
+    <div class="login_part">
+        <input type="email" id="username" name="username" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="username" class="login_label">Email</label>
+    </div>
 
-        <label>Stanowisko*</label>
-        <select th:field="*{employee.position}" required>
+    <div class="login_part">
+        <input type="password" id="password" name="password" class="login_input" placeholder="" required="">
+        <label for="password" class="login_label">Hasło</label>
+    </div>
+
+    <div class="login_part">
+        <input type="text" id="imie" name="imie" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="imie" class="login_label">Imię</label>
+    </div>
+
+    <div class="login_part">
+        <input type="text" id="nazwisko" name="nazwisko" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="nazwisko" class="login_label">Nazwisko</label>
+    </div>
+
+    <div class="login_part">
+        <select th:field="*{employee.carDealer}" required="" name="salon" id="salon" class="login_input"
+                autofocus="">
+            <th:block th:each="carDealer : ${carDealers}">
+                <option th:text="${carDealer.nazwa}" th:value="${carDealer.id}"></option>
+            </th:block>
+        </select>
+        <label for="salon" class="login_label">Salon</label>
+    </div>
+
+    <div class="login_part">
+        <select th:field="*{employee.carDealer}" required="" name="stanowisko" id="stanowisko" class="login_input"
+                autofocus="">
             <th:block th:each="position : ${positions}">
                 <option th:text="${position.nazwa}" th:value="${position.id}"></option>
             </th:block>
         </select>
-        <br/>
+        <label for="stanowisko" class="login_label">Stanowisko</label>
+    </div>
 
-        <label>Nr konta bankowego*</label>
-        <input type="text" id="nrKonta" name="nrKonta" th:value="${employee.nrKonta}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="nrKonta" name="nrKonta" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="nrKonta" class="login_label">Numer konta bankowego</label>
+    </div>
 
-        <label>Nr telefonu*</label>
-        <input type="text" id="nrTelefonu" name="nrTelefonu" th:value="${employee.nrTelefonu}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="nrTelefonu" name="nrTelefonu" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="nrTelefonu" class="login_label">Numer telefonu</label>
+    </div>
 
-        <label>Data urodzenia*</label>
-        <input type="date" id="dataUrodzenia" name="dataUrodzenia" th:value="${employee.dataUrodzenia}">
-        <br/>
+    <div class="login_part">
+        <input type="date" id="dataUrodzenia" name="dataUrodzenia" class="login_input_without_label_animation" placeholder=""
+               required="" autofocus=""/>
+        <label for="dataUrodzenia" class="login_label">Data urodzenia</label>
+    </div>
 
-        <label>Płeć*</label>
-        <input type="text" id="plec" name="plec" th:value="${employee.plec}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="plec" name="plec" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="plec" class="login_label">Płeć</label>
+    </div>
 
-        <label>PESEL</label>
-        <input type="text" id="PESEL" name="PESEL" th:value="${employee.PESEL}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="PESEL" name="PESEL" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="PESEL" class="login_label">PESEL</label>
+    </div>
 
-        <label>Miejscowość*</label>
-        <input type="text" id="miejscowosc" name="miejscowosc" th:value="${address.miejscowosc}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="miejscowosc" name="miejscowosc" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="miejscowosc" class="login_label">Miejscowość</label>
+    </div>
 
-        <label>Ulica*</label>
-        <input type="text" id="ulica" name="ulica" th:value="${address.ulica}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="ulica" name="ulica" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="ulica" class="login_label">Ulica</label>
+    </div>
 
-        <label>Nr bunynku*</label>
-        <input type="text" id="nrBudynku" name="nrBudynku" th:value="${address.nrBudynku}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="nrBudynku" name="nrBudynku" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="nrBudynku" class="login_label">Numer budynku</label>
+    </div>
 
-        <label>Nr mieszkania</label>
-        <input type="text" id="nrMieszkania" name="nrMieszkania" th:value="${address.nrBudynku}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="nrMieszkania" name="nrMieszkania" class="login_input" placeholder="(niewymagane)"
+               autofocus=""/>
+        <label for="nrMieszkania" class="login_label">Numer mieszkania</label>
+    </div>
 
-        <label>Kod pocztowy*</label>
-        <input type="text" id="kodPocztowy" name="kodPocztowy" th:value="${post.kodPocztowy}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="kodPocztowy" name="kodPocztowy" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="kodPocztowy" class="login_label">Kod pocztowy</label>
+    </div>
 
-        <label>Poczta*</label>
-        <input type="text" id="poczta" name="poczta" th:value="${post.poczta}">
-        <br/>
+    <div class="login_part">
+        <input type="text" id="poczta" name="poczta" class="login_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="poczta" class="login_label">Poczta</label>
+    </div>
 
-        <input type="submit">
-    </form>
+
+    <button class="login_button" type="submit">Zarejestruj pracownika</button>
+
+</form>
+
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
+
 </body>
 </html>

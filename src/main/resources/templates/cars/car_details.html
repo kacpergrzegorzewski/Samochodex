@@ -112,7 +112,7 @@
 
 <!--                TODO: Przy klikaniu można zrobić, że wyskakuje napis, że pomyślnie złożnono zamówienie
                     Już bez przenoszenia do strony zamówienia -->
-                <form action="#" th:action="@{/samochody/zamow}" th:method="post" th:object="${car}">
+                <form action="#" th:if="${car.naSprzedaz == true}" th:action="@{/samochody/zamow}" th:method="post" th:object="${car}">
                     <input type="hidden" th:field="*{id}" readonly="readonly">
                     <button type="submit" id="car_details_order">
                         Zamów teraz

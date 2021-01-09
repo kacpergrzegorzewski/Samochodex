@@ -8,33 +8,95 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-    <header>
-        <h1>Twoje zamówienia do zrealizowania</h1>
-    </header>
-    <table id="poczty" class="center">
-        <thead>
-        <tr>
-            <th>ID</th>
-            <th>Data złożenia zamówienia</th>
-            <th>Samochód</th>
-            <th>Klient</th>
-            <th>Salon</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr th:each="order : ${orders}">
-            <td th:text="${order.id}">ID</td>
-            <td th:text="${order.data}">Data złożenia zamówienia</td>
-            <td th:text="'Samochód nr ' + ${order.car.id} + '. ' + ${order.car.carModel.carBrand.nazwa} + ' ' + ${order.car.carModel.nazwa} +
-                        ', cena: ' + ${order.car.cena} + ' zł'">Samochód</td>
-            <td th:text="${order.client.imie} + ' ' + ${order.client.nazwisko} + ', email: ' + ${order.client.email}">Klient</td>
-            <td th:text="${order.carDealer.nazwa}">Salon</td>
-            <td>
-<!--                TODO: Przy klikaniu można zrobić, że wyskakuje gdzieś napis, że pomyślnie zrealizowno-->
-                <a th:href="@{'/zamowienia/zarzadzanie/zrealizuj/' + ${order.id}}">Zrealizuj zamówienie</a>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+<div class="table_container">
+    <div class="table_title">
+        Twoje zamówienia do zrealizowania
+    </div>
+    <div class="table_data">
+        <div class="table_part" th:each="order : ${orders}">
+
+            <div class="table_column">
+                <!--Numer zamówienia-->
+                <div class="table_column_title">
+                    Numer zamówienia
+                </div>
+                <div class="table_column_value" th:text="${order.id}"></div>
+            </div>
+
+            <div class="table_column">
+
+                <!--Data złożenia zamówienia-->
+                <div class="table_column_title">
+                    Data złożenia zamówienia
+                </div>
+                <div class="table_column_value" th:text="${order.data}"></div>
+            </div>
+
+            <div class="table_column">
+                <!--Klient-->
+                <div class="table_column_title">
+                    Klient
+                </div>
+                <div class="table_column_value" th:text="${order.client.imie} + ' ' + ${order.client.nazwisko}" ></div>
+            </div>
+
+            <div class="table_column">
+                <!--Email-->
+                <div class="table_column_title">
+                    E-mail
+                </div>
+                <div class="table_column_value" th:text="${order.client.email}" ></div>
+            </div>
+
+
+            <div class="table_column">
+                <!--Salon-->
+                <div class="table_column_title">
+                    Salon
+                </div>
+                <div class="table_column_value" th:text="${order.carDealer.nazwa}"></div>
+            </div>
+
+            <div class="table_column">
+                <!--Samochód-->
+                <div class="table_column_title">
+                    Samochód
+                </div>
+                <a th:href="@{'/samochody/' + ${order.car.id}}">
+                    <div class="table_column_value"
+                         th:text="${order.car.carModel.carBrand.nazwa} + ' ' + ${order.car.carModel.nazwa}"></div>
+                </a>
+            </div>
+
+            <div class="table_column">
+                <!--Cena-->
+                <div class="table_column_title">
+                    Cena
+                </div>
+                <div class="table_column_value" th:text="${order.car.cena}"></div>
+            </div>
+
+            <!--Zarządzaj-->
+            <div class="table_column">
+                <div class="table_column_title">
+                    Zarządzaj
+                </div>
+                <div class="table_column_manage">
+                    <a th:href="@{/}">Anuluj</a>
+                    <a th:href="@{'/zamowienia/zarzadzanie/zrealizuj/' + ${order.id}}">Zrealizuj</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
 </body>
 </html>

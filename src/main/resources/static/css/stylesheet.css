@@ -845,6 +845,45 @@ a:hover .table_column_value {
 }
 
 
+/*==============| admin site |==============*/
+#admin_site_container {
+    display: flex;
+    flex-direction: column;
+    margin: 120px auto;
+    width: 80%;
+}
+
+#admin_site_title {
+    font-size: 44pt;
+    margin-bottom: 24px;
+}
+
+
+#admin_site_links {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.admin_site_link {
+    width: 20%;
+    padding: 24px 40px;
+    transition: 300ms;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.admin_site_link:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#big_red_button {
+    margin-top: 80px;
+    margin-bottom: 120px;
+    width: auto;
+    height: 600px;
+}
+
 /*Animations*/
 
 

@@ -15,7 +15,7 @@
     <div class="form_text">rejestracja pracownika</div>
 
     <div class="form_part">
-        <input type="email" id="username" name="username" class="form_input" placeholder=""
+        <input type="text" id="username" name="username" class="form_input" placeholder=""
                required="" autofocus=""/>
         <label for="username" class="form_label">Email</label>
     </div>
@@ -58,13 +58,13 @@
     </div>
 
     <div class="form_part">
-        <input type="text" id="nrKonta" name="nrKonta" class="form_input" placeholder=""
+        <input type="text" id="nrKonta" name="nrKonta" class="form_input_without_label_animation" placeholder="KKAAAAAAAABBBBBBBBBBBBBBBB"
                required="" autofocus="" minlength="28" maxlength="28"/>
         <label for="nrKonta" class="form_label">Numer konta bankowego</label>
     </div>
 
     <div class="form_part">
-        <input type="text" id="nrTelefonu" name="nrTelefonu" class="form_input" placeholder=""
+        <input type="number" id="nrTelefonu" name="nrTelefonu" class="form_input" placeholder=""
                required="" autofocus=""/>
         <label for="nrTelefonu" class="form_label">Numer telefonu</label>
     </div>
@@ -86,8 +86,8 @@
     </div>
 
     <div class="form_part">
-        <input type="text" id="PESEL" name="PESEL" class="form_input" placeholder=""
-               required="" autofocus=""/>
+        <input type="number" id="PESEL" name="PESEL" class="form_input" placeholder=""
+               required="" autofocus="" minlength="11" maxlength="11" />
         <label for="PESEL" class="form_label">PESEL</label>
     </div>
 
@@ -116,7 +116,7 @@
     </div>
 
     <div class="form_part">
-        <input type="text" id="kodPocztowy" name="kodPocztowy" class="form_input" placeholder=""
+        <input type="text" id="kodPocztowy" name="kodPocztowy" class="form_input_without_label_animation" placeholder="xx-xxx"
                required="" autofocus=""/>
         <label for="kodPocztowy" class="form_label">Kod pocztowy</label>
     </div>

@@ -52,8 +52,11 @@
     </div>
 
     <div class="form_part">
-        <input type="text" id="plec" name="plec" class="form_input" placeholder=""
-               autofocus="" />
+        <select required="" name="plec" id="plec" class="form_input"
+                autofocus="">
+            <option value="M">Chłop</option>
+            <option value="K">Baba</option>
+        </select>
         <label for="plec" class="form_label">Płeć</label>
     </div>
 
@@ -82,13 +85,13 @@
     </div>
 
     <div class="form_part">
-        <input type="text" id="nrMieszkania" name="nrMieszkania" class="form_input" placeholder=""
+        <input type="number" id="nrMieszkania" name="nrMieszkania" class="form_input" placeholder=""
                autofocus="" />
         <label for="nrMieszkania" class="form_label">Nr mieszkania</label>
     </div>
 
     <div class="form_part">
-        <input type="text" id="kodPocztowy" name="kodPocztowy" class="form_input" placeholder=""
+        <input type="text" id="kodPocztowy" name="kodPocztowy" class="form_input_without_label_animation" placeholder="xx-xxx"
                required="" autofocus="" />
         <label for="kodPocztowy" class="form_label">Kod pocztowy</label>
     </div>

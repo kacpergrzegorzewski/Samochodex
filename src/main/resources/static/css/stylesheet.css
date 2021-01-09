@@ -46,6 +46,18 @@ button:focus {
 }
 
 
+/* hide arrows on number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
 /*images*/
 
 img {
@@ -378,7 +390,7 @@ a {
 }
 
 
-/*==============| login |==============*/
+/*==============| form |==============*/
 
 .form_container {
     display: flex;
@@ -435,18 +447,21 @@ a {
     border-style: none;
     border-bottom-style: solid;
     font-size: 16pt;
+    outline-color: rgba(255, 255, 255, 0);
+
 }
 
 .form_input:focus {
-    outline: none;
     border-style: none;
     border-bottom-style: solid;
     border-color: black;
+    z-index: 10;
 }
 
 .form_input:valid ~ label, .form_input:focus ~ label {
     font-size: 12pt;
     top: -16pt;
+    z-index: 5;
 }
 
 .form_input_without_label_animation {
@@ -457,6 +472,7 @@ a {
     border-style: none;
     border-bottom-style: solid;
     font-size: 16pt;
+    outline-color: rgba(255, 255, 255, 0);
 }
 
 .form_input_without_label_animation:focus {
@@ -464,11 +480,13 @@ a {
     border-style: none;
     border-bottom-style: solid;
     border-color: black;
+    z-index: 10;
 }
 
 .form_input_without_label_animation ~ label, .login_input:focus ~ label {
     font-size: 12pt;
     top: -16pt;
+    z-index: 5;
 }
 
 .form_button {
@@ -506,10 +524,6 @@ a {
 
 #login_register_button:hover {
     background-color: #272c34;
-}
-
-#login_error {
-
 }
 
 

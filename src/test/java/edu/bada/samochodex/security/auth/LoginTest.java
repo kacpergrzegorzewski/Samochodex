@@ -46,22 +46,4 @@ class LoginTest {
         mockMvc.perform(formLogin("/logowanie").user("kacper").password("admin"))
                 .andExpect(authenticated().withUsername("kacper").withAuthorities(ADMIN.getGrantedAuthorities()));
     }
-
-    @Test
-    void loginMonikaTest() throws Exception {
-        mockMvc.perform(formLogin("/logowanie").user("monika").password("12345"))
-                .andExpect(authenticated().withUsername("monika").withAuthorities(EMPLOYEE.getGrantedAuthorities()));
-    }
-
-    @Test
-    void loginZbyszekTest() throws Exception {
-        mockMvc.perform(formLogin("/logowanie").user("zbyszek").password("123"))
-                .andExpect(authenticated().withUsername("zbyszek").withAuthorities(CLIENT.getGrantedAuthorities()));
-    }
-
-    @Test
-    void loginUnauthenticatedTest() throws Exception {
-        mockMvc.perform(formLogin("/logowanie").user("mateusz").password("password"))
-                .andExpect(unauthenticated());
-    }
 }

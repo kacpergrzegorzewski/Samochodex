@@ -66,6 +66,6 @@ public class OrderController {
         relizedOrderd.setDone(true);
         orderService.save(relizedOrderd);
 
-        return "redirect:/zamowienia/zarzadzanie";
+        return "redirect:/zamowienia/zarzadzanie?zrealizowano=true";
     }
 }

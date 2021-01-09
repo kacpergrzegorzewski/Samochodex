@@ -68,7 +68,7 @@ public class AdminController {
         realizedOrder.setDone(true);
         orderService.save(realizedOrder);
 
-        return "redirect:/admin/zarzadzanie-zamowieniami";
+        return "redirect:/admin/zarzadzanie-zamowieniami?zrealizowano=true";
     }
 
     @GetMapping("/anuluj-zamowienie/{id}")
@@ -81,7 +81,7 @@ public class AdminController {
 
         orderService.delete(realizedOrder);
 
-        return "redirect:/admin/zarzadzanie-zamowieniami";
+        return "redirect:/admin/zarzadzanie-zamowieniami?anulowano=true";
     }
     //endregion
 
@@ -121,7 +121,7 @@ public class AdminController {
         employee.setDataZatrudniena(new Date(System.currentTimeMillis()));
         employeeService.save(employee);
 
-        return "redirect:/admin";
+        return "redirect:/admin?zarejestrowano=true";
     }
     //endregion
 
@@ -139,7 +139,7 @@ public class AdminController {
     public String fireEmployee(@PathVariable("id") Long id, Model model) {
         employeeService.deleteById(id);
 
-        return "redirect:/admin/zarzadzanie-pracownikami";
+        return "redirect:/admin/zarzadzanie-pracownikami?zwolniono=true";
     }
     //endregion
 

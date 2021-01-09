@@ -90,7 +90,7 @@ public class CarController {
 
         orderService.save(order);
 
-        return "redirect:/samochody";
+        return "redirect:/samochody?zamowiono=true";
     }
 
     /* ------ EMPLOYEE, ADMIN ------- */
@@ -132,6 +132,6 @@ public class CarController {
         car.setEngine(engine);
         carService.save(car);
 
-        return "redirect:/samochody";
+        return "redirect:/samochody?dodano=true";
     }
 }

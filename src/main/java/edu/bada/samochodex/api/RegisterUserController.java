@@ -61,6 +61,6 @@ public class RegisterUserController {
         client.setEmail(user.getUsername());
         clientService.save(client);
 
-        return "redirect:/";
+        return "redirect:/?zarejestrowano=true";
     }
 }

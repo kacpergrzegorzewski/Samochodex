@@ -163,15 +163,51 @@
 
     <!--Silnik-->
     <div class="form_part">
-        <select th:field="*{car.engine}" required="" name="silnik" id="silnik" class="form_input"
-                autofocus="">
-            <th:block th:each="engine : ${engines}">
-                <option th:text="${engine.nazwa} + ' ' + ${engine.pojemnosc} + ' ' + ${engine.KM} + 'KM'"
-                        th:value="${engine.id}"></option>
-            </th:block>
-        </select>
-        <label for="silnik" class="form_label">Silnik</label>
+        <input type="text" id="nazwaSilnika" name="nazwaSilnika" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="nazwaSilnika" class="form_label">Nazwa silnika</label>
     </div>
+
+    <div class="form_part">
+        <input type="text" id="pojemnosc" name="pojemnosc" class="form_input" placeholder="(niewymagane)"
+               autofocus=""/>
+        <label for="pojemnosc" class="form_label">Pojemność silnika</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="KM" name="KM" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="KM" class="form_label">Konie mechaniczne</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="momentObrotowy" name="momentObrotowy" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="momentObrotowy" class="form_label">Moment obrotowy</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="rodzajPaliwa" name="paliwo" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="rodzajPaliwa" class="form_label">Rodzaj paliwa</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="masa" name="masa" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="masa" class="form_label">Masa silnika</label>
+    </div>
+
+<!--    <div class="form_part">-->
+<!--        <select th:field="*{car.engine}" required="" name="silnik" id="silnik" class="form_input"-->
+<!--                autofocus="">-->
+<!--            <th:block th:each="engine : ${engines}">-->
+<!--                <option th:text="${engine.nazwa} + ' ' + ${engine.pojemnosc} + ' ' + ${engine.KM} + 'KM'"-->
+<!--                        th:value="${engine.id}"></option>-->
+<!--            </th:block>-->
+<!--        </select>-->
+<!--        <label for="silnik" class="form_label">Silnik</label>-->
+<!--    </div>-->
 
 
     <!--Wersja wyposażenia-->

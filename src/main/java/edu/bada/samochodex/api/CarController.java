@@ -95,13 +95,14 @@ public class CarController {
 
     /* ------ EMPLOYEE, ADMIN ------- */
 
+    // TODO: Zrobić dodawanie silników
     @GetMapping("/dodaj")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public String addCarPage(Model model) {
         Car car = new Car();
         CarModel carModel = new CarModel();
+        Engine engine = new Engine();
         List<CarDealer> carDealers = carDealerService.getAll();
-        List<Engine> engines = engineService.getAll();
         List<EquipmentVersion> equipmentVersions = equipmentVersionService.getAll();
         List<CarBrand> carBrands = carBrandService.getAll();
 
@@ -109,7 +110,7 @@ public class CarController {
         model.addAttribute("carBrands", carBrands);
         model.addAttribute("carModel", carModel);
         model.addAttribute("carDealers", carDealers);
-        model.addAttribute("engines", engines);
+        model.addAttribute("engine", engine);
         model.addAttribute("equipmentVersions", equipmentVersions);
 
         return "cars/add_car";
@@ -117,14 +118,18 @@ public class CarController {
 
     @PostMapping("/dodaj/zapisz")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
-    public String saveCar(Model model, Car car, CarModel carModel) {
+    public String saveCar(Model model, Car car, CarModel carModel, Engine engine) {
         model.addAttribute("car", car);
         model.addAttribute("carModel", carModel);
+        model.addAttribute("engine", engine);
+
+        engineService.save(engine);
 
         carModel.setCarBrand(car.getCarModel().getCarBrand());
         carModelService.save(carModel);
 
         car.setCarModel(carModel);
+        car.setEngine(engine);
         carService.save(car);
 
         return "redirect:/samochody";

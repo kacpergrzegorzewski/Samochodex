@@ -25,12 +25,13 @@ public class PostService {
     }
 
     public Post getByPostCode(String code) {
-        List<Post> posts = postDao.findAll();
-
-        return posts.stream()
-                .filter(post -> post.getKodPocztowy().equals(code))
-                .findFirst()
-                .orElse(null);
+        return postDao.findPostByKodPocztowy(code);
+//        List<Post> posts = postDao.findAll();
+//
+//        return posts.stream()
+//                .filter(post -> post.getKodPocztowy().equals(code))
+//                .findFirst()
+//                .orElse(null);
     }
 
     public List<Post> getAll() {
@@ -46,8 +47,6 @@ public class PostService {
             return postDao.save(post);
         }
     }
-
-    public void update(Post post) {}
 
     public void deleteById(Long id) {
         postDao.deleteById(id);

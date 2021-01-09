@@ -46,17 +46,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/", "/css/*", "/img/*", "/js/*", "/menu").permitAll()
                 // Wszystko dla klienta (rejestracja, przeglądanie samochodów, szczegóły i zamawianie samochodu, kontakt)
-                .antMatchers("/rejestracja", "/samochody", "/samochody/*", "/kontakt").permitAll()
+                .antMatchers("/rejestracja", "/samochody", "/samochody/*", "/kontakt", "/historia").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/logowanie").permitAll()
                 .failureUrl("/logowanie?error=true")
                 .defaultSuccessUrl("/", true)
-                // TODO: Add remember-me token to database if we deploy app to server
-//                .and()
-//                idk why its not working (problem with cookies?)
-//                .rememberMe()
-
     ;}
 }

@@ -564,6 +564,7 @@ a {
 .table_column {
     display: flex;
     flex-direction: column;
+    width: auto;
 }
 
 a:hover .table_column_value {

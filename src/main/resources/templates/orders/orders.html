@@ -57,12 +57,14 @@
                 <div class="table_column_value" th:text="${order.car.cena}"></div>
             </div>
 
+            <!--Zarządzaj-->
             <div class="table_column">
-                <!--Numer zamaówienia-->
                 <div class="table_column_title">
-                    Numer zamówienia
+                    Zarządzaj
                 </div>
-                <div class="table_column_value" th:text="${order.id}"></div>
+                <div class="table_column_manage">
+                    <a th:href="@{/}">Anuluj</a>
+                </div>
             </div>
 
         </div>

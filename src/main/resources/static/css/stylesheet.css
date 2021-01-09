@@ -584,6 +584,24 @@ a:hover .table_column_value {
     margin-bottom: 24px;
 }
 
+.table_column_manage {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    font-weight: lighter;
+    font-size: 18pt;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.table_column_manage a {
+    padding-left: 8px;
+    padding-right: 8px;
+    text-decoration: underline;
+
+}
+
 
 
 /*==============| cars |==============*/

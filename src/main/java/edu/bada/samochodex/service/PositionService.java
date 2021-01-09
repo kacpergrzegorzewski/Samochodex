@@ -25,8 +25,8 @@ public class PositionService {
         return positionDao.findAll();
     }
 
-    public void save(Position position) {
-        positionDao.save(position);
+    public Position save(Position position) {
+        return positionDao.save(position);
     }
 
     public void deleteById(Long id) {

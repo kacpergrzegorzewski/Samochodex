@@ -26,8 +26,8 @@ public class EngineService {
         return engineDao.findAll();
     }
 
-    public void save(Engine engine) {
-        engineDao.save(engine);
+    public Engine save(Engine engine) {
+        return engineDao.save(engine);
     }
 
     public void deleteById(Long id) {

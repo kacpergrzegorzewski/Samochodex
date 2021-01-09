@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PostDao extends JpaRepository<Post, Long> {
 
+    Post findPostByKodPocztowy(String postCode);
 }

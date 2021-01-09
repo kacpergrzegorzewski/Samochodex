@@ -25,11 +25,9 @@ public class AddressService {
         return addressDao.findAll();
     }
 
-    public void save(Address address) {
-        addressDao.save(address);
+    public Address save(Address address) {
+        return addressDao.save(address);
     }
-
-    public void update(Address address) {}
 
     public void deleteById(Long id) {
         addressDao.deleteById(id);

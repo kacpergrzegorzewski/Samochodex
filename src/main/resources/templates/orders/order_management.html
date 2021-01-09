@@ -8,6 +8,100 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
+
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+<div class="table_container">
+    <div class="table_title">
+        Twoje zamówienia do zrealizowania
+    </div>
+    <div class="table_data">
+        <div class="table_part" th:each="order : ${orders}">
+
+            <div class="table_column">
+                <!--Numer zamówienia-->
+                <div class="table_column_title">
+                    Numer zamówienia
+                </div>
+                <div class="table_column_value" th:text="${order.id}"></div>
+            </div>
+
+            <div class="table_column">
+
+                <!--Data złożenia zamówienia-->
+                <div class="table_column_title">
+                    Data złożenia zamówienia
+                </div>
+                <div class="table_column_value" th:text="${order.data}"></div>
+            </div>
+
+            <div class="table_column">
+                <!--Klient-->
+                <div class="table_column_title">
+                    Klient
+                </div>
+                <div class="table_column_value" th:text="${order.client.imie} + ' ' + ${order.client.nazwisko}" ></div>
+            </div>
+
+            <div class="table_column">
+                <!--Email-->
+                <div class="table_column_title">
+                    E-mail
+                </div>
+                <div class="table_column_value" th:text="${order.client.email}" ></div>
+            </div>
+
+
+            <div class="table_column">
+                <!--Salon-->
+                <div class="table_column_title">
+                    Salon
+                </div>
+                <div class="table_column_value" th:text="${order.carDealer.nazwa}"></div>
+            </div>
+
+            <div class="table_column">
+                <!--Samochód-->
+                <div class="table_column_title">
+                    Samochód
+                </div>
+                <a th:href="@{'/samochody/' + ${order.car.id}}">
+                    <div class="table_column_value"
+                         th:text="${order.car.carModel.carBrand.nazwa} + ' ' + ${order.car.carModel.nazwa}"></div>
+                </a>
+            </div>
+
+            <div class="table_column">
+                <!--Cena-->
+                <div class="table_column_title">
+                    Cena
+                </div>
+                <div class="table_column_value" th:text="${order.car.cena}"></div>
+            </div>
+
+            <!--Zarządzaj-->
+            <div class="table_column">
+                <div class="table_column_title">
+                    Zarządzaj
+                </div>
+                <div class="table_column_manage">
+                    <a th:href="@{/}">Anuluj</a>
+                    <a th:href="@{'/zamowienia/zarzadzanie/zrealizuj/' + ${order.id}}">Zrealizuj</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
+
+
+
+
     <header>
         <h1>Twoje zamówienia do zrealizowania</h1>
     </header>

@@ -528,6 +528,64 @@ a {
 
 
 
+/*==============| table |==============*/
+
+.table_container {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.table_title {
+    padding: 40px;
+    font-size: 44pt;
+}
+
+.table_part {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20pt;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 36px;
+    padding-left: 36px;
+    transition: 300ms;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.table_part:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.table_column {
+    display: flex;
+    flex-direction: column;
+}
+
+a:hover .table_column_value {
+    font-weight: bolder;
+}
+
+.table_column_title {
+    font-size: 12pt;
+    margin-top: 24px;
+    align-self: center;
+}
+
+.table_column_value {
+    font-size: 22pt;
+    font-weight: lighter;
+    align-self: center;
+    margin-top: 12px;
+    margin-bottom: 24px;
+}
+
+
+
 /*==============| cars |==============*/
 #car_list {
     overflow: hidden;

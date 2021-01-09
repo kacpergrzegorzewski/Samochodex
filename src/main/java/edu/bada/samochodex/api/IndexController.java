@@ -22,4 +22,9 @@ public class IndexController {
     public String getContactView() {
         return "contact";
     }
+
+    @GetMapping("/historia")
+    public String getHistoryView() {
+        return "history";
+    }
 }

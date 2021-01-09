@@ -20,7 +20,7 @@ public class Engine {
     private Long id;
 
     @Column(name = "nazwa_silnika", unique = true, nullable = false)
-    private String nazwa;
+    private String nazwaSilnika;
 
     @Column(name = "pojemnosc")
     private Integer pojemnosc;
@@ -52,8 +52,8 @@ public class Engine {
     @Column(name = "masa", nullable = false)
     private Integer masa;
 
-    public Engine(String nazwa, Integer KM, Integer momentObrotowy, String paliwo, Integer masa) {
-        this.nazwa = nazwa;
+    public Engine(String nazwaSilnika, Integer KM, Integer momentObrotowy, String paliwo, Integer masa) {
+        this.nazwaSilnika = nazwaSilnika;
         this.KM = KM;
         this.momentObrotowy = momentObrotowy;
         this.paliwo = paliwo;

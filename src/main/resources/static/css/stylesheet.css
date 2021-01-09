@@ -564,7 +564,7 @@ a {
 .table_column {
     display: flex;
     flex-direction: column;
-    width: auto;
+    width: 100%;
 }
 
 a:hover .table_column_value {
@@ -575,6 +575,7 @@ a:hover .table_column_value {
     font-size: 12pt;
     margin-top: 24px;
     align-self: center;
+    text-align: center;
 }
 
 .table_column_value {
@@ -583,6 +584,7 @@ a:hover .table_column_value {
     align-self: center;
     margin-top: 12px;
     margin-bottom: 24px;
+    text-align: center;
 }
 
 .table_column_manage {
@@ -594,13 +596,14 @@ a:hover .table_column_value {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    text-align: center;
 }
 
 .table_column_manage a {
     padding-left: 8px;
     padding-right: 8px;
     text-decoration: underline;
-
+    text-align: center;
 }
 
 

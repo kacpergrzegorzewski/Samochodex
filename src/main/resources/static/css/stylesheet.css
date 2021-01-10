@@ -840,7 +840,7 @@ a:hover .table_column_value {
     font-weight: bold;
 }
 
-#car_details_order {
+.car_details_order {
     display: flex;
     justify-content: center;
     font-size: 28pt;
@@ -853,8 +853,9 @@ a:hover .table_column_value {
     font-weight: bolder;
 }
 
-#car_details_order:hover {
+.car_details_order:hover {
     transform: scale(1.05);
+    background-color: #c62815;
 }
 
 

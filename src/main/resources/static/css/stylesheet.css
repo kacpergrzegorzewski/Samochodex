@@ -182,6 +182,27 @@ a {
 }
 
 
+/*==============| errors |==============*/
+
+#error_404_container {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+
+#error_500_container {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+
 
 /*==============| navbar |==============*/
 

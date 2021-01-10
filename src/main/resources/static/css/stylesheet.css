@@ -845,6 +845,64 @@ a:hover .table_column_value {
 }
 
 
+/*==============| showrooms |==============*/
+
+#car_dealers_container{
+    margin: 120px auto 120px;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#car_dealers_title {
+    font-size: 44pt;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+#car_dealers_list {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: 64px;
+    display: flex;
+    flex-direction: column;
+}
+
+.car_dealer {
+    font-size: 24pt;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+.car_dealer_name {
+    font-size: 24pt;
+}
+
+.car_dealer_address {
+    font-size: 16pt;
+    margin-left: 20px;
+}
+
+
+#car_dealers_map_container {
+    align-self: center;
+    margin-bottom: 50px;
+    border-style: solid;
+    border-color: #494e57;
+    border-width: 1px;
+}
+
+#car_dealers_map {
+    width: 1200px;
+    height: 620px;
+}
+
+
+
+
 /*==============| admin site |==============*/
 #admin_site_container {
     display: flex;

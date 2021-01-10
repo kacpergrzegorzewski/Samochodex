@@ -13,6 +13,16 @@
 <div th:replace="templates :: navbar"></div>
 
 
+<!--message-->
+<div class="message" th:if="${param.zamowiono}">
+    Pomyślnie utworzono zamówienie
+</div>
+
+<!--message-->
+<div class="message" th:if="${param.dodano}">
+    Pomyślnie dodano samochód
+</div>
+
 <!--cars' list-->
 
 <div id="car_list">

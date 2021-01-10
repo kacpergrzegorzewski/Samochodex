@@ -10,6 +10,11 @@
 <!--menu-->
 <div th:replace="templates :: navbar"></div>
 
+<!--message-->
+<div class="message" th:if="${param.zarejestrowano}">
+    Konto zostało utworzone
+</div>
+
 <!--welcome image-->
 <div id="welcome">
     <div id="welcome_image_inside">

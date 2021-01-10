@@ -136,6 +136,53 @@ a {
     flex-direction: row;
 }
 
+/*==============| message |==============*/
+.message {
+    position: fixed;
+    margin-top: 50px;
+    background-color: #c62815;
+    color: white;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    text-align: center;
+    width: 45%;
+    height: 35px;
+    line-height: 35px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    z-index: 1000;
+    -moz-animation: hide_message 1s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: hide_message 1s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: hide_message 1s ease-in 5s forwards;
+    /* Opera */
+    animation: hide_message 1s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes hide_message {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes hide_message {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+
+
+
 /*==============| navbar |==============*/
 
 #navbar_container {

@@ -22,7 +22,7 @@
                 <a th:href="@{/samochody}">Samochody</a>
             </div>
             <div class="navbar_object">
-                <a th:href="@{/kontakt}">salony</a>
+                <a th:href="@{/kontakt}">Kontakt</a>
             </div>
             <div class="navbar_object">
                 <a th:href="@{/historia}">O nas</a>
@@ -31,7 +31,7 @@
                 <a th:href="@{/zamowienia}">Twoje zamowienia</a>
             </div>
             <div class="navbar_object" sec:authorize="hasRole('ROLE_EMPLOYEE')">
-                <a th:href="@{/zamowienia/zarzadzanie}">zamowienia</a>
+                <a th:href="@{/zamowienia/zarzadzanie}">Zamowienia</a>
             </div>
             <div class="navbar_object" sec:authorize="hasRole('ROLE_ADMIN')">
                 <a th:href="@{/admin}">Panel administratora</a>

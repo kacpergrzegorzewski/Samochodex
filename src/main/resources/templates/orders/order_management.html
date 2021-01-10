@@ -12,6 +12,16 @@
 <!--menu-->
 <div th:replace="templates :: navbar"></div>
 
+<!--message-->
+<div class="message" th:if="${param.zrealizowano}">
+    Zamówienie zostało zrealizowane
+</div>
+
+<!--message-->
+<div class="message" th:if="${param.anulowano}">
+    Anulowano zamówienie
+</div>
+
 <div class="table_container">
     <div class="table_title">
         Twoje zamówienia do zrealizowania

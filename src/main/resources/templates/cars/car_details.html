@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Samochodex</title>
@@ -110,12 +110,31 @@
                     <span th:text="${car.cena} + ' zł'"/>
                 </div>
 
-<!--                TODO: Przy klikaniu można zrobić, że wyskakuje napis, że pomyślnie złożnono zamówienie
-                    Już bez przenoszenia do strony zamówienia -->
-                <form action="#" th:if="${car.naSprzedaz == true}" th:action="@{/samochody/zamow}" th:method="post" th:object="${car}">
+                <!--Guest-->
+                <form action="#" th:if="${car.naSprzedaz == true}" th:action="@{/samochody/zamow}" th:method="post"
+                      th:object="${car}" sec:authorize="isAnonymous()">
                     <input type="hidden" th:field="*{id}" readonly="readonly">
-                    <button type="submit" id="car_details_order">
+                    <button type="submit" class="car_details_order">
+                        Zaloguj się
+                    </button>
+                </form>
+
+                <!--Client-->
+                <form action="#" th:if="${car.naSprzedaz == true}" th:action="@{/samochody/zamow}" th:method="post"
+                      th:object="${car}" sec:authorize="hasRole('ROLE_CLIENT')">
+                    <input type="hidden" th:field="*{id}" readonly="readonly">
+                    <button type="submit" class="car_details_order">
                         Zamów teraz
+                    </button>
+                </form>
+
+                <!--Employee-->
+                <!-- TODO -->
+                <form action="#" th:if="${car.naSprzedaz == true}" th:action="@{/samochody/zamow}" th:method="post"
+                      th:object="${car}" sec:authorize="hasAnyRole('ROLE_EMPLOYEE', 'ROLE_ADMIN')">
+                    <input type="hidden" th:field="*{id}" readonly="readonly">
+                    <button type="submit" class="car_details_order">
+                        Edytuj dane
                     </button>
                 </form>
             </div>

@@ -86,7 +86,7 @@
                     Zarządzaj
                 </div>
                 <div class="table_column_manage">
-                    <a th:href="@{/}">Anuluj</a>
+                    <a th:href="@{'/zamowienia/zarzadzanie/anuluj/' + ${order.id}}">Anuluj</a>
                     <a th:href="@{'/zamowienia/zarzadzanie/zrealizuj/' + ${order.id}}">Zrealizuj</a>
                 </div>
             </div>

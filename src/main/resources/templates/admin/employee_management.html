@@ -4,36 +4,78 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
     <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
 </head>
 <body>
-<header>
-    <h1>Pracownicy</h1>
-</header>
-<table id="poczty" class="center">
-    <thead>
-    <tr>
-        <th>Pracownik</th>
-        <th>Email</th>
-        <th>Data zatrudnienia</th>
-        <th>Numer konta bankowego</th>
-        <th>Salon</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr th:each="employee : ${employees}">
-        <td th:text="${employee.imie} + ' ' + ${employee.nazwisko}">Pracownik</td>
-        <td th:text="${employee.email}">Email</td>
-        <td th:text="${employee.dataZatrudniena}">Data zatrudnienia</td>
-        <td th:text="${employee.nrKonta}">Numer konta bankowego</td>
-        <td th:text="${employee.carDealer.nazwa}">Salon</td>
-        <td>
-            <!--                TODO: Przy klikaniu można zrobić, że wyskakuje gdzieś napis, że zwolniono pracownika-->
-            <a th:href="@{'/admin/zwolnij-pracownika/' + ${employee.id}}">Zwolnij</a>
-        </td>
-    </tr>
-    </tbody>
-</table>
+
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+<div class="table_container">
+    <div class="table_title">
+        Pracownicy
+    </div>
+    <div class="table_data">
+        <div class="table_part" th:each="employee : ${employees}">
+
+            <div class="table_column">
+                <!--Imię i nazwisko-->
+                <div class="table_column_title">
+                    Imię i nazwisko
+                </div>
+                <div class="table_column_value" th:text="${employee.imie} + ' ' + ${employee.nazwisko}"></div>
+            </div>
+
+            <div class="table_column">
+
+                <!--E-mail-->
+                <div class="table_column_title">
+                    E-mail
+                </div>
+                <div class="table_column_value" th:text="${employee.email}"></div>
+            </div>
+
+            <div class="table_column">
+                <!--Data zatrudnienia-->
+                <div class="table_column_title">
+                    Data zatrudnienia
+                </div>
+                <div class="table_column_value" th:text="${employee.dataZatrudniena}"></div>
+            </div>
+
+            <div class="table_column">
+                <!--Numer konta bankowego-->
+                <div class="table_column_title">
+                    Numer konta bankowego
+                </div>
+                <div class="table_column_value" th:text="${employee.nrKonta}"></div>
+            </div>
+
+            <div class="table_column">
+                <!--Salon-->
+                <div class="table_column_title">
+                    Salon
+                </div>
+                <div class="table_column_value" th:text="${employee.carDealer.nazwa}"></div>
+            </div>
+
+            <!--Zarządzaj-->
+            <div class="table_column">
+                <div class="table_column_title">
+                    Zarządzaj
+                </div>
+                <div class="table_column_manage">
+                    <a th:href="@{'/admin/zwolnij-pracownika/' + ${employee.id}}">Zwolnij</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
 </body>
 </html>

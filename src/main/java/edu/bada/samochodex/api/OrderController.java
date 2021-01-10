@@ -1,8 +1,10 @@
 package edu.bada.samochodex.api;
 
+import edu.bada.samochodex.model.Car;
 import edu.bada.samochodex.model.Client;
 import edu.bada.samochodex.model.Employee;
 import edu.bada.samochodex.model.Order;
+import edu.bada.samochodex.service.CarService;
 import edu.bada.samochodex.service.ClientService;
 import edu.bada.samochodex.service.EmployeeService;
 import edu.bada.samochodex.service.OrderService;
@@ -25,12 +27,15 @@ public class OrderController {
     private final OrderService orderService;
     private final ClientService clientService;
     private final EmployeeService employeeService;
+    private final CarService carService;
 
     @Autowired
-    public OrderController(OrderService orderService, ClientService clientService, EmployeeService employeeService) {
+    public OrderController(OrderService orderService, ClientService clientService, EmployeeService employeeService,
+                           CarService carService) {
         this.orderService = orderService;
         this.clientService = clientService;
         this.employeeService = employeeService;
+        this.carService = carService;
     }
 
     @GetMapping
@@ -42,6 +47,20 @@ public class OrderController {
         model.addAttribute("orders", orders);
 
         return "orders/orders";
+    }
+
+    @GetMapping("/anuluj/{id}")
+    public String clientRejectOrder(@PathVariable("id") Long id) {
+        Order orderToReject = orderService.getById(id);
+        // Samochód z odrzucanego zamówienia
+        Car carInOrder = carService.getById(orderToReject.getCar().getId());
+
+        carInOrder.setNaSprzedaz(true);
+        carService.save(carInOrder);
+
+        orderService.delete(orderToReject);
+
+        return "redirect:/zamowienia?anulowano=true";
     }
 
     /* ------ EMPLOYEE ------- */
@@ -67,5 +86,19 @@ public class OrderController {
         orderService.save(relizedOrderd);
 
         return "redirect:/zamowienia/zarzadzanie?zrealizowano=true";
+    }
+
+    @GetMapping("/zarzadzanie/anuluj/{id}")
+    public String employeeRejectOrder(@PathVariable("id") Long id) {
+        Order orderToReject = orderService.getById(id);
+        // Samochód z odrzucanego zamówienia
+        Car carInOrder = carService.getById(orderToReject.getCar().getId());
+
+        carInOrder.setNaSprzedaz(true);
+        carService.save(carInOrder);
+
+        orderService.delete(orderToReject);
+
+        return "redirect:/zamowienia/zarzadzanie?anulowano=true";
     }
 }

@@ -36,6 +36,9 @@
             <div class="navbar_object" sec:authorize="hasRole('ROLE_ADMIN')">
                 <a th:href="@{/admin}">Panel administratora</a>
             </div>
+            <div class="navbar_object" sec:authorize="hasAnyRole('ROLE_EMPLOYEE, ROLE_ADMIN')">
+                <a th:href="@{/samochody/dodaj}">Dodaj samochód</a>
+            </div>
         </div>
         <div sec:authorize="isAuthenticated()" class="right_navbar">
             <div id="navbar_welcome_text">

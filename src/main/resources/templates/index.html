@@ -94,7 +94,7 @@
         </div>
     </a>
 
-    <a href="/zamowienia" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+    <a href="/zamowienia/zarzadzanie" sec:authorize="hasRole('ROLE_EMPLOYEE')">
         <div class="links_section_object">
             <div class="links_section_text">
                 Zamówienia
@@ -103,7 +103,7 @@
         </div>
     </a>
 
-    <a href="/zamowienia" sec:authorize="hasRole('ROLE_ADMIN')">
+    <a href="/admin" sec:authorize="hasRole('ROLE_ADMIN')">
         <div class="links_section_object">
             <div class="links_section_text">
                 Panel administratora
@@ -112,7 +112,7 @@
         </div>
     </a>
 
-    <a href="/zamowienia" sec:authorize="hasAnyRole('ROLE_EMPLOYEE, ROLE_ADMIN')">
+    <a href="/samochody/dodaj" sec:authorize="hasAnyRole('ROLE_EMPLOYEE, ROLE_ADMIN')">
         <div class="links_section_object">
             <div class="links_section_text">
                 Dodaj samochód

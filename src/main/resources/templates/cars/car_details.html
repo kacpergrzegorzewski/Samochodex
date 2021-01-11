@@ -128,16 +128,11 @@
                     </button>
                 </form>
 
-                <!--Employee-->
-                <!-- TODO -->
-<!--                <form action="#" th:if="${car.naSprzedaz == true}" th:action="@{'/samochody/edytuj/' + ${car.id}}" th:method="post"-->
-<!--                      th:object="${car}" sec:authorize="hasAnyRole('ROLE_EMPLOYEE', 'ROLE_ADMIN')">-->
-<!--                    <input type="hidden" th:field="*{id}" readonly="readonly">-->
-                <a th:href="@{'/samochody/edytuj/' + ${car.id}}">
+                <!--Employee, Admin-->
+                <a th:href="@{'/samochody/edytuj/' + ${car.id}}" sec:authorize="hasAnyRole('ROLE_EMPLOYEE', 'ROLE_ADMIN')">
                     <button type="submit" class="car_details_order">
                         Edytuj dane
                     </button>
-<!--                </form>-->
                 </a>
             </div>
 

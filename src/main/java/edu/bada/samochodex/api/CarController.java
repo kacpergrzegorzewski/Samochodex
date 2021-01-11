@@ -138,16 +138,32 @@ public class CarController {
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public String editCarPage(Model model, @PathVariable("id") Long id) {
         Car car = carService.getById(id);
+        Engine engine = engineService.getById(car.getEngine().getId());
 
         List<CarDealer> carDealers = carDealerService.getAll();
         List<EquipmentVersion> equipmentVersions = equipmentVersionService.getAll();
         List<CarBrand> carBrands = carBrandService.getAll();
 
         model.addAttribute("car", car);
+        model.addAttribute("engine", engine);
         model.addAttribute("carBrands", carBrands);
         model.addAttribute("carDealers", carDealers);
         model.addAttribute("equipmentVersions", equipmentVersions);
 
         return "cars/edit_car";
+    }
+
+    @PostMapping("/edytuj/zapisz")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public String saveCar(Model model, Car car, Engine engine) {
+        model.addAttribute("car", car);
+        model.addAttribute("engine", engine);
+
+        engineService.save(engine);
+
+        car.setEngine(engine);
+        carService.save(car);
+
+        return "redirect:/samochody?edytowano=true";
     }
 }

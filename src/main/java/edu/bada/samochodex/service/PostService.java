@@ -26,12 +26,6 @@ public class PostService {
 
     public Post getByPostCode(String code) {
         return postDao.findPostByKodPocztowy(code);
-//        List<Post> posts = postDao.findAll();
-//
-//        return posts.stream()
-//                .filter(post -> post.getKodPocztowy().equals(code))
-//                .findFirst()
-//                .orElse(null);
     }
 
     public List<Post> getAll() {

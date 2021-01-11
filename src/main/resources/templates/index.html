@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Samochodex</title>
@@ -67,15 +67,6 @@
     </div>
     </a>
 
-    <a href="/zamowienie">
-    <div class="links_section_object">
-        <div class="links_section_text">
-            Złóż zamówienie
-        </div>
-        <div class="links_section_image"><img th:src="@{/img/zamowienie.jpg}" class="fit_to_div" /></div>
-    </div>
-    </a>
-
     <a href="/kontakt">
     <div class="links_section_object">
         <div class="links_section_text">
@@ -90,7 +81,43 @@
             <div class="links_section_text">
                 O nas
             </div>
-            <div class="links_section_image"><img th:src="@{/img/logo.png}" class="fit_to_div" /></div>
+            <div class="links_section_image"><img th:src="@{/img/o_nas.jpg}" class="fit_to_div" /></div>
+        </div>
+    </a>
+
+    <a href="/zamowienia" sec:authorize="hasRole('ROLE_CLIENT')">
+        <div class="links_section_object">
+            <div class="links_section_text">
+                Twoje zamówienia
+            </div>
+            <div class="links_section_image"><img th:src="@{/img/zamowienie.jpg}" class="fit_to_div" /></div>
+        </div>
+    </a>
+
+    <a href="/zamowienia" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+        <div class="links_section_object">
+            <div class="links_section_text">
+                Zamówienia
+            </div>
+            <div class="links_section_image"><img th:src="@{/img/zamowienie.jpg}" class="fit_to_div" /></div>
+        </div>
+    </a>
+
+    <a href="/zamowienia" sec:authorize="hasRole('ROLE_ADMIN')">
+        <div class="links_section_object">
+            <div class="links_section_text">
+                Panel administratora
+            </div>
+            <div class="links_section_image"><img th:src="@{/img/admin.png}" class="fit_to_div" /></div>
+        </div>
+    </a>
+
+    <a href="/zamowienia" sec:authorize="hasAnyRole('ROLE_EMPLOYEE, ROLE_ADMIN')">
+        <div class="links_section_object">
+            <div class="links_section_text">
+                Dodaj samochód
+            </div>
+            <div class="links_section_image"><img th:src="@{/img/dodaj_samochod.png}" class="fit_to_div" /></div>
         </div>
     </a>
 

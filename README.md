@@ -9,60 +9,36 @@ Developing by two University of Technology students.
 
 ## Used Technologies
 
-- Java with Maven
+- Java CI with Maven
 - Spring Boot
 - Spring Security
-- Thymeleaf
+- HTML, CSS, Thymeleaf
 - JDBC with Oracle database
 - JPA and Hibernate
+- JUnit 5
+- MVC Model
 
 ## Features
 
-- retrieving data from a database and displaying them on the website
-- modifying data from database in website
-- logging to the website excluding home page
-- https connection and self-signed ssl certificate (very trusted)
-- user credentials stored in a database on a very secure server and password stored are encrypted (not MD5)
-- user registration
+- browsing cars, information about app, developers
+- ordering cars, and browsing orders after sing-in
+- adding and editing cars as an employee
+- managing clients' orders as an employee
+- firing employees as an admin
+- registration of employees as an admin in order to fire them
+- DROP DATABASE button in admin panel
+- storing hashed passwords in DB
 
 ## To do list
 
-1. Add user registration
+1. User registration
     - add password check (length)
-    - add verification via email
+    - add verification via email 
 
-2. Improve web design
-    - html/css/js (React framework)
-    - add csrf token in authentication form via React
+2. Add trusted ssl certificate to the server
 
-3. Use ORM
-    - for big databases its better and convenient to use ORM
-    - Hibernate framework
-    - easier, baster, better way of defining database objects
+3. Encrypt personal data in application.properties
 
-4. Create own server to host the application
-    - azure ???
-    - if this won't be working we will use hosting server (Heroku)
-    - add trusted ssl certificate to the server... maybe
-
-5. Encrypt personal data in application.properties
-
-6. Proper site
-    - first /index, in it:
-        * register and successful register site
-        * login
-        * show current user logged in
-        * logout if user is sign-in
-        * buttons to other html files (poczty, salony, użytkownicy), secured with role based authorization
-    - proper URL structure (things forbidden for normal clients, employees in separate URL paths)
-
-7. This is how site should look like from client account
-   ![Strona z konta klienta](https://user-images.githubusercontent.com/52577030/103287091-eb5ad580-49e1-11eb-84cc-c87aefc6074a.png)
-
-8. Orders need to depend on current logged-in user
-    - match client and employee with application user
-    - display orders of current logged-in user
-    
 ## How to contribute
 
 If you want to add any feature to the project please create a new branch from the `develop`.

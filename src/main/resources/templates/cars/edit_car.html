@@ -14,9 +14,12 @@
 
 
 <form th:action="@{/samochody/dodaj/zapisz}" th:method="post" class="form_container">
-    <div class="form_text">Dodaj nowy samochód</div>
+    <div class="form_text">Edytuj samochód</div>
 
     <!--Marka-->
+    <!--TODO: Rzeczy takie jak marka, model i silnik (za dużo roboty będzie, usunąłem,
+            żeby nie można było dodawać silnika i modelu, więc nie rób tak, żeby był do zmiany)
+            mogą zostać na stałe, do zmiany są tylko jakieś małe atrybuty-->
     <div class="form_part">
         <select th:field="*{car.carModel.carBrand}" required="" name="marka" id="marka" class="form_input"
                 autofocus="">
@@ -28,9 +31,11 @@
     </div>
 
     <!--Model-->
+    <!--TODO: Ma się wyświetlać to co jest już wpisane w dane samochodu-->
     <div class="form_part">
-        <input type="text" id="nazwa" name="nazwa" class="form_input" placeholder="" required="">
-        <label for="nazwa" class="form_label">Model</label>
+        <input type="text" id="nazwa" name="nazwa" class="form_input" placeholder="" required="" readonly="readonly"
+               th:text="${car.carModel.nazwa}">
+        <label for="nazwa" class="form_label" >Model</label>
     </div>
 
 

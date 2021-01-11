@@ -95,7 +95,6 @@ public class CarController {
 
     /* ------ EMPLOYEE, ADMIN ------- */
 
-    // TODO: Zrobić dodawanie silników
     @GetMapping("/dodaj")
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
     public String addCarPage(Model model) {
@@ -133,5 +132,22 @@ public class CarController {
         carService.save(car);
 
         return "redirect:/samochody?dodano=true";
+    }
+
+    @GetMapping("/edytuj/{id}")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_EMPLOYEE')")
+    public String editCarPage(Model model, @PathVariable("id") Long id) {
+        Car car = carService.getById(id);
+
+        List<CarDealer> carDealers = carDealerService.getAll();
+        List<EquipmentVersion> equipmentVersions = equipmentVersionService.getAll();
+        List<CarBrand> carBrands = carBrandService.getAll();
+
+        model.addAttribute("car", car);
+        model.addAttribute("carBrands", carBrands);
+        model.addAttribute("carDealers", carDealers);
+        model.addAttribute("equipmentVersions", equipmentVersions);
+
+        return "cars/edit_car";
     }
 }

@@ -19,7 +19,7 @@ public class Engine {
     @Column(name = "id_silnika", unique = true)
     private Long id;
 
-    @Column(name = "nazwa_silnika", unique = true, nullable = false)
+    @Column(name = "nazwa_silnika", nullable = false)
     private String nazwaSilnika;
 
     @Column(name = "pojemnosc")

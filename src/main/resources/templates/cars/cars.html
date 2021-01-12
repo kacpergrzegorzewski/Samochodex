@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Samochodex</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+<body>
+
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+
+<!--message-->
+<div class="message" th:if="${param.zamowiono}">
+    Pomyślnie utworzono zamówienie
+</div>
+
+<!--message-->
+<div class="message" th:if="${param.dodano}">
+    Pomyślnie dodano samochód
+</div>
+
+<div id="cars_title">
+    Nasze samochody
+</div>
+
+<!--cars' list-->
+
+<div id="car_list">
+    <div th:each="car : ${cars}" class="car">
+        <a th:href="@{'/samochody/' + ${car.id}}">
+            <div class="car_list_image">
+                <div class="car_on_hover_info">
+                    <div class="car_on_hover_info_name">
+                        <span th:text="${car.carModel.carBrand.nazwa}"/>
+                        <span th:text=" ${car.carModel.nazwa}"/>
+                    </div>
+                    <div class="car_on_hover_info_price">
+                        <span th:text="${car.cena}"/> zł
+                    </div>
+                    <a th:href="@{'/samochody/' + ${car.id}}">
+                        <div class="car_on_hover_info_order">
+                            Szczegóły
+                        </div>
+                    </a>
+                </div>
+                <span th:if="${car.zdjecie != 'NULL'}">
+                <img th:src="@{${car.zdjecie}}" class="fit_to_div"/>
+            </span>
+                <span th:if="${car.zdjecie == 'NULL'}">
+                <img th:src="@{/img/logo.png}"/>
+            </span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
+
+</body>
+</html>

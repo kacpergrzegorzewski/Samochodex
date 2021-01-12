@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Salony Samochodex</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+</head>
+<body>
+
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+<div id="car_dealers_container">
+    <div id="car_dealers_title">
+        Nasze salony
+    </div>
+
+    <div id="car_dealers_list">
+        <div th:each="carDealer : ${carDealers}" class="car_dealer">
+            <div th:text="${carDealer.nazwa}" class="car_dealer_name"></div>
+            <div th:text="${carDealer.address.post.kodPocztowy}+ ' ' + ${carDealer.address.miejscowosc}" class="car_dealer_address"></div>
+            <div th:text="${carDealer.address.ulica}+ ' ' + ${carDealer.address.nrBudynku}" class="car_dealer_address"></div>
+        </div>
+    </div>
+
+    <div id="car_dealers_map_container">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2565.1508918390964!2d22.018468315931994!3d49.98978042833126!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x473cfa037bf4b04b%3A0x48effd5da9a35d5!2sSAMOCHODEX%20WYPO%C5%BBYCZALNIA%20LAWET%20I%20PRZYCZEP!5e0!3m2!1sen!2snl!4v1610107671272!5m2!1sen!2snl"
+            id="car_dealers_map"
+            frameborder="0"
+            style="border:0;"
+            allowfullscreen=""
+            aria-hidden="false"
+            tabindex="0">
+        </iframe>
+    </div>
+
+</div>
+
+
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
+</body>
+</html>

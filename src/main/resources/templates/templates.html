@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>menu</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+</head>
+<body>
+
+<!-- navbar -->
+
+<div  style="width: 100%">
+    <div id="navbar_container" th:fragment="navbar">
+        <div id="left_navbar">
+            <a href="/">
+                <div id="navbar_logo"><img th:src="@{/img/logo.png}"/></div>
+            </a>
+            <div class="navbar_object">
+                <a th:href="@{/salony}">Salony</a>
+            </div>
+            <div class="navbar_object">
+                <a th:href="@{/samochody}">Samochody</a>
+            </div>
+            <div class="navbar_object">
+                <a th:href="@{/kontakt}">Kontakt</a>
+            </div>
+            <div class="navbar_object">
+                <a th:href="@{/historia}">O nas</a>
+            </div>
+            <div class="navbar_object" sec:authorize="hasRole('ROLE_CLIENT')">
+                <a th:href="@{/zamowienia}">Twoje zamowienia</a>
+            </div>
+            <div class="navbar_object" sec:authorize="hasRole('ROLE_EMPLOYEE')">
+                <a th:href="@{/zamowienia/zarzadzanie}">Zamowienia</a>
+            </div>
+            <div class="navbar_object" sec:authorize="hasRole('ROLE_ADMIN')">
+                <a th:href="@{/admin}">Panel administratora</a>
+            </div>
+            <div class="navbar_object" sec:authorize="hasAnyRole('ROLE_EMPLOYEE, ROLE_ADMIN')">
+                <a th:href="@{/samochody/dodaj}">Dodaj samochód</a>
+            </div>
+        </div>
+        <div sec:authorize="isAuthenticated()" class="right_navbar">
+            <div id="navbar_welcome_text">
+                Witaj&nbsp <span th:text="${#authentication.getPrincipal().getUsername()}"></span>
+            </div>
+
+            <div class="navbar_object">
+                <a th:href="@{/logout}">wyloguj się</a>
+            </div>
+        </div>
+
+        <div sec:authorize="isAnonymous()" class="right_navbar">
+            <div class="navbar_object">
+                <a th:href="@{/logowanie}">Zaloguj się</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<div th:fragment="footer" id="footer_container">
+    <div class="row footer_row">
+        <div class="column footer_column">
+            <div class="footer_column_header">
+                Samochodex
+            </div>
+            <div id="footer_description">
+                Samochodex stanowi rozwiązanie drugiej części projektu z przedmiotu BADA.
+                Autorami witryny są Mateusz Suchocki oraz Kacper Grzegorzewski.
+            </div>
+        </div>
+
+        <div class="column footer_column">
+            <div class="footer_column_header">
+                Pomocne linki
+            </div>
+            <a th:href="@{/}">Strona główna</a>
+            <a th:href="@{/samochody}">Samochody</a>
+            <a th:href="@{/salony}">Salony</a>
+            <a th:href="@{/historia}">O nas</a>
+            <a href="https://pointerpointer.com/" target="_blank">pointerpointer</a>
+            <a href="http://ninjaflex.com/" target="_blank">Ninja flex</a>
+            <a href="http://endless.horse/" target="_blank">Endless horse</a>
+        </div>
+
+        <div class="column footer_column">
+            <div class="footer_column_header">
+                Więcej pomocnych linków
+            </div>
+            <a href="https://seoi.net/penint/" target="_blank">Seoi</a>
+            <a href="http://www.republiquedesmangues.fr/" target="_blank">Republique des mangues</a>
+            <a href="http://www.rrrgggbbb.com/" target="_blank">Rrrgggbbb</a>
+            <a href="http://nooooooooooooooo.com/" target="_blank">Nooooooooooooooo</a>
+            <a href="https://www.mapcrunch.com/" target="_blank">Map crunch</a>
+            <a href="http://pleaselike.com/" target="_blank">Please like</a>
+            <a href="http://corndogoncorndog.com/" target="_blank">Corn dog corn dog</a>
+        </div>
+
+        <div class="column footer_column">
+            <div class="footer_column_header">
+                Jeszcze więcej jeszcze bardziej pomocnych linków
+            </div>
+            <a href="https://thatsthefinger.com/" target="_blank">That's the finger</a>
+            <a href="http://movenowthinklater.com/" target="_blank">Move now think later</a>
+            <a href="http://beesbeesbees.com/" target="_blank">Bees Bees</a>
+            <a href="https://cat-bounce.com/" target="_blank">Cat Bounce</a>
+            <a href="http://www.koalastothemax.com/" target="_blank">Kolastothemax</a>
+            <a href="https://corgiorgy.com/" target="_blank">Corgiorgy</a>
+            <a href="https://weirdorconfusing.com/" target="_blank">Weirdorconfusing</a>
+        </div>
+    </div>
+    <div class="row footer_row">
+
+        <a href="https://www.facebook.com/" target="_blank">
+            <img th:src="@{/img/facebook.png}" class="fit_to_div footer_social_link"/>
+        </a>
+
+
+        <a href="https://www.instagram.com/" target="_blank">
+            <img th:src="@{/img/instagram.png}" class="fit_to_div footer_social_link"/>
+        </a>
+
+        <a href="https://www.otomoto.pl/" target="_blank">
+            <img th:src="@{/img/otomoto.png}" class="fit_to_div footer_social_link"/>
+        </a>
+
+        <a href="https://twitter.com/" target="_blank">
+            <img th:src="@{/img/twitter.png}" class="fit_to_div footer_social_link"/>
+        </a>
+    </div>
+
+    <div class="row footer_row">
+        Samochodex® 2021
+    </div>
+
+</div>
+</body>
+</html>

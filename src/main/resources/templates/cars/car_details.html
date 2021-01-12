@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Samochodex</title>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+</head>
+<body>
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+<!--car's description-->
+<div id="car_details_container">
+    <div id="car_details_name">
+        <span th:text="${car.carModel.carBrand.nazwa}"/>&nbsp
+        <span th:text="${car.carModel.nazwa}"/>
+    </div>
+    <div id="car_details">
+        <div id="car_details_image">
+            <img th:src="@{${car.zdjecie}}" class="fit_to_div"/>
+        </div>
+        <div id="car_details_info">
+
+            <div id="car_details_data_all">
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Rok produkcji:</div>
+                    <span th:text="${car.rokProdukcji}"/>r
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title">produkcji:</div>
+                    <span th:text="${car.krajProdukcji}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Model silnika:</div>
+                    <span th:text="${car.engine.nazwaSilnika}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Pojemność silnika:</div>
+                    <span th:text="${car.engine.pojemnosc}"/>cm^3
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Moc silnika:</div>
+                    <span th:text="${car.engine.KM}"/> KM
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Moment obrotowy:</div>
+                    <span th:text="${car.engine.momentObrotowy}"/> Nm
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Rodzaj paliwa:</div>
+                    <span th:text="${car.engine.paliwo}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Rodzaj napędu:</div>
+                    <span th:text="${car.naped}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Ilość miejsc:</div>
+                    <span th:text="${car.iloscMiejsc}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Ilość drzwi:</div>
+                    <span th:text="${car.iloscDrzwi}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Opony:</div>
+                    <span th:text="${car.opony}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Rodzaj nadwozia:</div>
+                    <span th:text="${car.nadwozie}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Kolor nadwozia:</div>
+                    <span th:text="${car.kolorNadwozia}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Kolor tapicerki:</div>
+                    <span th:text="${car.kolorTapicerki}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Numer VIN:</div>
+                    <span th:text="${car.VIN}"/>
+                </div>
+
+                <div class="car_details_data">
+                    <div class="car_details_data_title"> Wersja wyposażenia:</div>
+                    <span th:text="${car.equipmentVersion.nazwa}"/>
+                </div>
+            </div>
+
+            <div id="car_details_info_bottom">
+                <div id="car_details_price">
+                    <span th:text="${car.cena} + ' zł'"/>
+                </div>
+
+                <!--Guest-->
+                <form action="#" th:if="${car.naSprzedaz == true}" th:action="@{/samochody/zamow}" th:method="post"
+                      th:object="${car}" sec:authorize="isAnonymous()">
+                    <input type="hidden" th:field="*{id}" readonly="readonly">
+                    <button type="submit" class="car_details_order">
+                        Zaloguj się
+                    </button>
+                </form>
+
+                <!--Client-->
+                <form action="#" th:if="${car.naSprzedaz == true}" th:action="@{/samochody/zamow}" th:method="post"
+                      th:object="${car}" sec:authorize="hasRole('ROLE_CLIENT')">
+                    <input type="hidden" th:field="*{id}" readonly="readonly">
+                    <button type="submit" class="car_details_order">
+                        Zamów teraz
+                    </button>
+                </form>
+
+                <!--Employee, Admin-->
+                <a th:href="@{'/samochody/edytuj/' + ${car.id}}" sec:authorize="hasAnyRole('ROLE_EMPLOYEE', 'ROLE_ADMIN')">
+                    <button type="submit" class="car_details_order">
+                        Edytuj dane
+                    </button>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
+</body>
+</html>

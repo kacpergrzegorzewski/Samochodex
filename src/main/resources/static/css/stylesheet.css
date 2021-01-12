@@ -1,8 +1,15 @@
+/*global config*/
+html {
+    min-height: 100%;
+}
+
 body {
-    /* Background pattern from Subtle Patterns */
-    background-image: url(../img/footer_lodyas.png);
-    font-family: 'Lato', sans-serif;
-    color: azure;
+    font-family: 'Roboto', serif;
+    color: Black;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 header {
@@ -10,6 +17,1014 @@ header {
     font-size: 42px;
 }
 
+button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: none;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out,
+    transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+    background: none;
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+
+/* hide arrows on number input */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+
+/*images*/
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.fit_to_div {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+button {
+    display: inline-block;
+    border: none;
+    padding: 1rem 2rem;
+    margin: 0;
+    text-decoration: none;
+    background: #0069ed;
+    color: #ffffff;
+    font-family: sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    text-align: center;
+    transition: background 250ms ease-in-out,
+    transform 150ms ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+button:hover,
+button:focus {
+    background: #0053ba;
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    transform: scale(0.99);
+}
+
+
+/*links*/
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/*basic classes*/
+.left {
+    float: left;
+    margin-right: auto;
+    display: inherit;
+    flex-direction: inherit;
+}
+
+.right {
+    float: right;
+    margin-left: auto;
+    display: inherit;
+    flex-direction: inherit;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+/*==============| message |==============*/
+.message {
+    position: fixed;
+    margin-top: 50px;
+    background-color: #c62815;
+    color: white;
+    margin-left: auto;
+    left: 0;
+    right: 0;
+    margin-right: auto;
+    text-align: center;
+    width: 45%;
+    height: 35px;
+    line-height: 35px;
+    display: flex;
+    justify-items: center;
+    justify-content: center;
+    z-index: 1000;
+    -moz-animation: hide_message 1s ease-in 5s forwards;
+    /* Firefox */
+    -webkit-animation: hide_message 1s ease-in 5s forwards;
+    /* Safari and Chrome */
+    -o-animation: hide_message 1s ease-in 5s forwards;
+    /* Opera */
+    animation: hide_message 1s ease-in 5s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+}
+
+
+@keyframes hide_message {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+    }
+}
+@-webkit-keyframes hide_message {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+    }
+}
+
+
+/*==============| errors |==============*/
+
+#error_404_container {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: black;
+}
+
+#error_500_container {
+    padding-top: 120px;
+    padding-bottom: 120px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: white;
+}
+
+
+
+/*==============| navbar |==============*/
+
+#navbar_container {
+    width: 100%;
+    height: 50px;
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+    border-bottom-width: 1px;
+    border-bottom-color: darkslategrey;
+    border-bottom-style: solid;
+    box-shadow: 0 2px 5px grey;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    position: fixed;
+    z-index: 500;
+    background-color: white;
+}
+
+#navbar_container:visited {
+    color: black;
+}
+
+#navbar_logo {
+    height: 40px;
+    margin: auto 5px;
+}
+
+.navbar_object {
+    width: auto;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 300ms;
+
+}
+
+
+.navbar_object:hover {
+    background-color: #383d46;
+    color: white;
+}
+
+#navbar_welcome_text {
+    display: flex;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 4px;
+}
+
+#left_navbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.right_navbar {
+    display: flex;
+    flex-direction: row;
+}
+
+/*==============| footer |==============*/
+
+#footer_container {
+    padding-top: 30px;
+    background-color: #272c34;
+    height: 360px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: space-around;
+    align-self: flex-end;
+    margin-top: auto;
+}
+
+.footer_column {
+    margin-right: 16px;
+    margin-left: 16px;
+    width: 20%;
+}
+
+.footer_row {
+    display: inherit;
+    justify-content: center;
+}
+
+.footer_column_header {
+    margin-bottom: 12px;
+    margin-top: 12px;
+    font-weight: bolder;
+    font-size: 18pt;
+}
+
+#footer_description {
+    width: 90%;
+    text-align: justify;
+}
+
+.footer_social_link {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border-collapse: separate;
+    margin: 12px;
+    padding: 4px;
+}
+
+
+/*==============| index |==============*/
+
+/*welcome section*/
+#welcome {
+    position: relative;
+    height: 650px;
+    background-color: black;
+    overflow: hidden;
+}
+
+#welcome_image_inside {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#welcome_image_text {
+    display: flex;
+    align-self: center;
+    font-size: 48pt;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 10%;
+    /*text border 1px to all sites*/
+    /*text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;*/
+}
+
+#welcome_image_button {
+    display: flex;
+    align-self: center;
+    text-align: center;
+    padding: 30px 60px;
+    /*background-color: darkslategrey;*/
+    color: white;
+    font-size: 14pt;
+    border: solid white 3px;
+}
+
+#welcome_image_button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+#welcome_image {
+    height: 100%;
+    width: 100%;
+    transition: 300ms;
+    z-index: 10;
+}
+
+#welcome:hover #welcome_image {
+    opacity: 60%;
+    transform: scale(1.1);
+}
+
+/*About section*/
+#samochodex_description_section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+}
+
+#samochodex_description_title {
+    display: flex;
+    width: 40%;
+    font-size: 30pt;
+    margin: 15px;
+}
+
+#samochodex_description {
+    display: flex;
+    width: 40%;
+    text-align: justify;
+    text-justify: inter-word;
+    flex-direction: column;
+    font-size: 14pt;
+
+}
+
+
+/*links section*/
+
+#links_section {
+    overflow: hidden;
+    width: 70%;
+    margin: 100px auto;
+    align-items: center;
+}
+
+.links_section_object {
+    overflow: hidden;
+    position: relative;
+    width: 31.3%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 2%;
+    float: left;
+    text-align: center;
+    z-index: 2;
+    transition: 300ms;
+    background-color: black;
+}
+
+.links_section_image {
+    position: relative;
+    height: 300px;
+    object-fit: cover;
+    display: flex;
+    z-index: 1;
+    transition: 300ms;
+}
+
+.links_section_text {
+    text-align: center;
+    font-size: 24pt;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: 300ms;
+    text-shadow: 2px 2px 5px black;
+}
+
+.links_section_object:hover .links_section_image {
+    opacity: 60%;
+    transform: scale(1.1);
+}
+
+.links_section_object:hover .links_section_text {
+    transform: scale(1.5);
+}
+
+
+/*==============| form |==============*/
+
+.form_container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    width: 600px;
+    margin: 120px auto 70px;
+    justify-content: center;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.form_text {
+    font-size: 32pt;
+    margin-bottom: 44px;
+    margin-top: 24px;
+    font-weight: bold;
+    align-self: center;
+    text-transform: capitalize;
+}
+
+#login_error {
+    width: 60%;
+    text-align: center;
+    align-self: center;
+    padding: 24px;
+    background-color: rgba(198, 40, 21 , 0.5);
+    margin-top: 12px;
+    margin-bottom: 24px;
+    transition: 5s;
+}
+
+.form_part {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    width: 80%;
+    align-self: center;
+    margin-top: 36px;
+
+}
+
+.form_label {
+    position: absolute;
+    transition: 300ms;
+    font-size: 16pt;
+    bottom: 4px;
+}
+
+.form_input {
+    display: flex;
+    transition: 300ms;
+    width: 100%;
+    align-self: center;
+    border-style: none;
+    border-bottom-style: solid;
+    font-size: 16pt;
+    outline-color: rgba(255, 255, 255, 0);
+
+}
+
+.form_input:focus {
+    border-style: none;
+    border-bottom-style: solid;
+    border-color: black;
+    z-index: 10;
+}
+
+.form_input:valid ~ label, .form_input:focus ~ label {
+    font-size: 12pt;
+    top: -16pt;
+    z-index: 5;
+}
+
+.form_input_without_label_animation {
+    display: flex;
+    transition: 300ms;
+    width: 100%;
+    align-self: center;
+    border-style: none;
+    border-bottom-style: solid;
+    font-size: 16pt;
+    outline-color: rgba(255, 255, 255, 0);
+}
+
+.form_input_without_label_animation:focus {
+    outline: none;
+    border-style: none;
+    border-bottom-style: solid;
+    border-color: black;
+    z-index: 10;
+}
+
+.form_input_without_label_animation ~ label, .login_input:focus ~ label {
+    font-size: 12pt;
+    top: -16pt;
+    z-index: 5;
+}
+
+.form_button {
+    border-radius: 11px;
+    margin-bottom: 24px;
+    padding: 12px;
+    width: 480px;
+    margin-top: 24px;
+    text-align: center;
+    font-size: 16pt;
+    font-weight: bold;
+    align-self: center;
+    transition: 200ms;
+    background-color: #c62815;
+    color: white;
+}
+
+.form_button:hover {
+    background-color: #b51714;
+}
+
+#login_register_button {
+    border-radius: 11px;
+    padding: 12px;
+    width: 456px;
+    margin-bottom: 48px;
+    text-align: center;
+    font-size: 16pt;
+    font-weight: bold;
+    align-self: center;
+    transition: 200ms;
+    background-color: #383d46;
+    color: white;
+}
+
+#login_register_button:hover {
+    background-color: #272c34;
+}
+
+
+
+/*==============| table |==============*/
+
+.table_container {
+    margin-top: 120px;
+    margin-bottom: 120px;
+    display: flex;
+    flex-direction: column;
+}
+
+.table_title {
+    padding: 40px;
+    font-size: 44pt;
+}
+
+.table_part {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20pt;
+    justify-content: space-between;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 36px;
+    padding-left: 36px;
+    transition: 300ms;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.table_part:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+}
+
+.table_column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+a:hover .table_column_value {
+    font-weight: bolder;
+}
+
+.table_column_title {
+    font-size: 12pt;
+    margin-top: 24px;
+    align-self: center;
+    text-align: center;
+}
+
+.table_column_value {
+    font-size: 18pt;
+    font-weight: lighter;
+    align-self: center;
+    margin-top: 12px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.table_column_manage {
+    margin-top: 12px;
+    margin-bottom: 24px;
+    font-weight: lighter;
+    font-size: 16pt;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.table_column_manage a {
+    padding-left: 8px;
+    padding-right: 8px;
+    text-decoration: underline;
+    text-align: center;
+}
+
+
+
+/*==============| cars |==============*/
+
+#cars_title {
+    font-size: 48pt;
+    margin-top: 120px;
+    font-weight: bold;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#car_list {
+    overflow: hidden;
+    width: 70%;
+    margin: 36px auto 50px;
+    align-items: center;
+}
+
+.car {
+    overflow: hidden;
+    position: relative;
+    width: 31.3%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-bottom: 2%;
+    float: left;
+    text-align: center;
+    z-index: 2;
+    transition: 300ms;
+    background-color: gray;
+    color: white;
+}
+
+
+.car_list_image {
+    position: relative;
+    height: 300px;
+    object-fit: cover;
+    display: flex;
+    z-index: 1;
+    transition: display 0ms, margin-top 300ms;
+
+}
+
+.car_on_hover_info {
+    position: absolute;
+    background-color: #494e57;
+    color: white;
+    opacity: 90%;
+    width: 100%;
+    height: 300px;
+    transition: margin-top 300ms;
+    margin-top: 300px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.car_list_image:hover .car_on_hover_info {
+    margin-top: 0;
+}
+
+.car_on_hover_info_name {
+    font-size: 24pt;
+    margin-top: 15px;
+}
+
+.car_on_hover_info_price {
+    font-size: 14pt;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 30%;
+}
+
+.car_on_hover_info_order {
+    margin-right: 10px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20pt;
+    border-color: white;
+    border-radius: 20px;
+    border-style: solid;
+    transition: 300ms;
+}
+
+.car_on_hover_info_order:hover {
+    background-color: rgba(255, 255, 255, 70);
+    color: black;
+
+}
+
+
+/*==============| car's details |==============*/
+#car_details_container {
+    margin: 120px 50px;
+}
+
+#car_details_name {
+    display: flex;
+    flex-direction: row;
+    font-size: 42pt;
+    font-weight: bold;
+}
+
+#car_details {
+    display: flex;
+}
+
+#car_details_image {
+    width: 40%;
+}
+
+.photo_fullscreen #car_details:active {
+    display: flex;
+}
+
+
+#car_details_info {
+    width: 60%;
+    background-color: #494e57;
+    padding-top: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#car_details_data_all {
+    /*nothing*/
+}
+
+.car_details_data {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 46%;
+    position: relative;
+    float: left;
+    color: white;
+    font-size: 12pt;
+    flex-direction: row;
+    display: flex;
+    border-bottom-color: #383d46;
+    border-bottom-style: solid;
+    transition: 100ms;
+}
+
+.car_details_data:hover {
+    background-color: rgba(56, 61, 70, 0.5);
+}
+
+.car_details_data_title {
+    width: 40%;
+    padding-left: 2px;
+}
+
+#car_details_info_bottom {
+    margin-top: 12px;
+    margin-bottom: 36px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+#car_details_price {
+    font-size: 64pt;
+    color: white;
+    font-weight: bold;
+}
+
+.car_details_order {
+    display: flex;
+    justify-content: center;
+    font-size: 28pt;
+    border-color: white;
+    background-color: #c62815;
+    color: white;
+    padding: 24px;
+    transition: 200ms;
+    border-radius: 36px;
+    font-weight: bolder;
+}
+
+.car_details_order:hover {
+    transform: scale(1.05);
+    background-color: #c62815;
+}
+
+
+/*==============| contact |==============*/
+
+#contact_container {
+    height: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin: 160px auto 110px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+
+}
+
+#contact_image {
+    width: 50%;
+    transition: 2s;
+}
+
+#contact_image:hover {
+    transform: rotate(360deg);
+}
+
+#contact_right {
+    display: flex;
+    flex-direction: column;
+    font-size: 18pt;
+    width: 50%;
+    justify-content: center;
+}
+
+.contact_row {
+    margin-left: 24px;
+    margin-top: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    width: 75%;
+    transition: 1000ms;
+    align-self: center;
+}
+
+.contact_row:hover {
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.19);
+}
+
+.contact_title {
+    font-weight: bold;
+}
+
+.contact_value {
+    margin-left: 24px;
+}
+
+
+/*==============| showrooms |==============*/
+
+#car_dealers_container{
+    margin: 120px auto 120px;
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#car_dealers_title {
+    font-size: 44pt;
+    margin-left: 40px;
+    margin-top: 40px;
+}
+
+#car_dealers_list {
+    margin-top: 24px;
+    margin-bottom: 24px;
+    margin-left: 64px;
+    display: flex;
+    flex-direction: column;
+}
+
+.car_dealer {
+    font-size: 24pt;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+
+.car_dealer_name {
+    font-size: 24pt;
+}
+
+.car_dealer_address {
+    font-size: 16pt;
+    margin-left: 20px;
+}
+
+
+#car_dealers_map_container {
+    align-self: center;
+    margin-bottom: 50px;
+    border-style: solid;
+    border-color: #494e57;
+    border-width: 1px;
+}
+
+#car_dealers_map {
+    width: 1200px;
+    height: 620px;
+}
+
+
+
+
+/*==============| admin site |==============*/
+#admin_site_container {
+    display: flex;
+    flex-direction: column;
+    margin: 120px auto;
+    width: 80%;
+}
+
+#admin_site_title {
+    font-size: 44pt;
+    margin-bottom: 24px;
+}
+
+
+#admin_site_links {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+
+.admin_site_link {
+    width: 20%;
+    padding: 24px 40px;
+    transition: 300ms;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.05), 0 6px 20px 0 rgba(0, 0, 0, 0.05);
+}
+
+.admin_site_link:hover {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+#big_red_button {
+    margin-top: 80px;
+    margin-bottom: 120px;
+    width: auto;
+    height: 600px;
+}
+
+/*Animations*/
+
+
+/*Suchodolski's styles*/
 #time {
     text-align: right;
 }
@@ -31,4 +1046,11 @@ table#poczty th {
 table#poczty td {
     padding: 10px;
     border: 1px solid azure;
+}
+
+#new_post {
+    font-size: 26px;
+    text-decoration: none;
+    text-align: center;
+    margin-bottom: 30px;
 }

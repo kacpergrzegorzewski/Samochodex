@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Samochodex</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+</head>
+<body>
+
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+<!--message-->
+<div class="message" th:if="${param.anulowano}">
+    Anulowano zamówienie
+</div>
+
+<div class="table_container">
+    <div class="table_title">
+        Twoje zamówienia
+    </div>
+    <div class="table_data">
+        <div class="table_part" th:each="order : ${orders}">
+
+            <div class="table_column">
+                <!--Samochód-->
+                <div class="table_column_title">
+                    Samochód
+                </div>
+                <a th:href="@{'/samochody/' + ${order.car.id}}">
+                    <div class="table_column_value"
+                         th:text="${order.car.carModel.carBrand.nazwa} + ' ' + ${order.car.carModel.nazwa}"></div>
+                </a>
+            </div>
+
+            <div class="table_column">
+
+                <!--Numer zamaówienia-->
+                <div class="table_column_title">
+                    Numer zamówienia
+                </div>
+                <div class="table_column_value" th:text="${order.id}"></div>
+            </div>
+
+            <div class="table_column">
+                <!--Data zamówienia-->
+                <div class="table_column_title">
+                    Data zamówienia
+                </div>
+                <div class="table_column_value" th:text="${order.data}"></div>
+            </div>
+
+
+
+            <div class="table_column">
+                <!--Cena-->
+                <div class="table_column_title">
+                    Cena
+                </div>
+                <div class="table_column_value" th:text="${order.car.cena}"></div>
+            </div>
+
+            <!--Zarządzaj-->
+            <div class="table_column">
+                <div class="table_column_title">
+                    Zarządzaj
+                </div>
+                <div class="table_column_manage">
+                    <a th:href="@{'/zamowienia/anuluj/' + ${order.id}}">Anuluj</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
+</body>
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="pl" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Samochodex</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link rel="stylesheet" th:href="@{/css/stylesheet.css}"/>
+</head>
+<body>
+
+<!--menu-->
+<div th:replace="templates :: navbar"></div>
+
+<form role="form" th:action="@{/admin/zarejestruj-pracownika}" th:method="post" class="form_container">
+    <div class="form_text">rejestracja pracownika</div>
+
+    <div class="form_part">
+        <input type="text" id="username" name="username" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="username" class="form_label">Email</label>
+    </div>
+
+    <div class="form_part">
+        <input type="password" id="password" name="password" class="form_input" placeholder="" required="">
+        <label for="password" class="form_label">Hasło</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="imie" name="imie" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="imie" class="form_label">Imię</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="nazwisko" name="nazwisko" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="nazwisko" class="form_label">Nazwisko</label>
+    </div>
+
+    <div class="form_part">
+        <select th:field="*{employee.carDealer}" required="" name="salon" id="salon" class="form_input"
+                autofocus="">
+            <th:block th:each="carDealer : ${carDealers}">
+                <option th:text="${carDealer.nazwa}" th:value="${carDealer.id}"></option>
+            </th:block>
+        </select>
+        <label for="salon" class="form_label">Salon</label>
+    </div>
+
+    <div class="form_part">
+        <select th:field="*{employee.carDealer}" required="" name="stanowisko" id="stanowisko" class="form_input"
+                autofocus="">
+            <th:block th:each="position : ${positions}">
+                <option th:text="${position.nazwa}" th:value="${position.id}"></option>
+            </th:block>
+        </select>
+        <label for="stanowisko" class="form_label">Stanowisko</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="nrKonta" name="nrKonta" class="form_input_without_label_animation" placeholder="KKAAAAAAAABBBBBBBBBBBBBBBB"
+               required="" autofocus="" minlength="28" maxlength="28"/>
+        <label for="nrKonta" class="form_label">Numer konta bankowego</label>
+    </div>
+
+    <div class="form_part">
+        <input type="number" id="nrTelefonu" name="nrTelefonu" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="nrTelefonu" class="form_label">Numer telefonu</label>
+    </div>
+
+    <div class="form_part">
+        <input type="date" id="dataUrodzenia" name="dataUrodzenia" class="form_input_without_label_animation"
+               placeholder=""
+               required="" autofocus=""/>
+        <label for="dataUrodzenia" class="form_label">Data urodzenia</label>
+    </div>
+
+    <div class="form_part">
+        <select required="" name="plec" id="plec" class="form_input"
+                autofocus="">
+            <option value="M">Chłop</option>
+            <option value="K">Baba</option>
+        </select>
+        <label for="plec" class="form_label">Płeć</label>
+    </div>
+
+    <div class="form_part">
+        <input type="number" id="PESEL" name="PESEL" class="form_input" placeholder=""
+               required="" autofocus="" minlength="11" maxlength="11" />
+        <label for="PESEL" class="form_label">PESEL</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="miejscowosc" name="miejscowosc" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="miejscowosc" class="form_label">Miejscowość</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="ulica" name="ulica" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="ulica" class="form_label">Ulica</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="nrBudynku" name="nrBudynku" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="nrBudynku" class="form_label">Numer budynku</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="nrMieszkania" name="nrMieszkania" class="form_input" placeholder="(niewymagane)"
+               autofocus=""/>
+        <label for="nrMieszkania" class="form_label">Numer mieszkania</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="kodPocztowy" name="kodPocztowy" class="form_input_without_label_animation" placeholder="xx-xxx"
+               required="" autofocus=""/>
+        <label for="kodPocztowy" class="form_label">Kod pocztowy</label>
+    </div>
+
+    <div class="form_part">
+        <input type="text" id="poczta" name="poczta" class="form_input" placeholder=""
+               required="" autofocus=""/>
+        <label for="poczta" class="form_label">Poczta</label>
+    </div>
+
+    <button class="form_button" type="submit">Zarejestruj pracownika</button>
+
+</form>
+
+
+<!-- footer -->
+<div th:replace="templates :: footer"></div>
+
+
+</body>
+</html>

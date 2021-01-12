@@ -15,7 +15,7 @@
 
 <form th:action="@{/samochody/edytuj/zapisz}" th:method="post" class="form_container">
     <div class="form_text">Edytuj samochód</div>
-<!--    <input type="hidden" id="id" name="id" th:value="${car.id}" readonly="readonly">-->
+    <input type="hidden" th:field="${car.id}" readonly="readonly">
 
     <!--Marka-->
     <!--TODO: Rzeczy takie jak marka, model i silnik (za dużo roboty będzie, usunąłem,

@@ -66,6 +66,4 @@ class ApplicationUserDaoTest {
         assertThat(existUser.getRole()).isEqualTo(user.getRole());
         assertThat(existUser.isEnabled()).isEqualTo(user.isEnabled());
     }
-
-    // TODO: Testing constraints (password, role)
 }

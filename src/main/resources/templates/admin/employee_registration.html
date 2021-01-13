@@ -48,7 +48,7 @@
     </div>
 
     <div class="form_part">
-        <select th:field="*{employee.carDealer}" required="" name="stanowisko" id="stanowisko" class="form_input"
+        <select th:field="*{employee.position}" required="" name="stanowisko" id="stanowisko" class="form_input"
                 autofocus="">
             <th:block th:each="position : ${positions}">
                 <option th:text="${position.nazwa}" th:value="${position.id}"></option>
